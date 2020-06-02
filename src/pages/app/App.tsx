@@ -1,10 +1,13 @@
 import * as React from 'react'
 import ProjectInfo from '../../components/project-info/project-info';
+import NavBar from '../../components/navbar/navbar';
 
 const App: React.FunctionComponent = () => {
   return (
 
+
     <div>
+      <NavBar></NavBar>
       {navigationMenu()}
       {getIntroduction()}
       {getBackgroundParagraph()}
