@@ -1,8 +1,13 @@
 import * as React from 'react'
 import "./fadeInSection.css"
 
-const FadeInSection: React.FC = (props) => {
-    const [isVisible, setVisible] = React.useState(false);
+type Props = {
+    isVisible: boolean;
+    handleVisualise: (isIntersecting: boolean) => void;
+    children: React.ReactNode;
+}
+const FadeInSection: React.FC<Props> = ({ isVisible, handleVisualise, children }) => {
+    // const [isVisible, setVisible] = React.useState(false);
     const domRef: React.MutableRefObject<any> = React.useRef();
 
     //observer entries are just the div we have below
@@ -10,18 +15,18 @@ const FadeInSection: React.FC = (props) => {
     //unobserve function happens on unmount
     React.useEffect(() => {
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => setVisible(entry.isIntersecting));
+            entries.forEach(entry => handleVisualise(entry.isIntersecting));
         });
         observer.observe(domRef.current);
         return () => observer.unobserve(domRef.current);
     }, []);
     return (
         <div
-            className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+            className={isVisible ? 'fade-in-section is-visible' : 'fade-in-section'}
             ref={domRef}
         >
             {/* //this are all the child HTML components */}
-            {props.children}
+            {children}
         </div>
     );
 }

@@ -7,6 +7,7 @@ const NavBar = () => {
     const [visible, setVisible] = React.useState(true);
     const [prevScrollPos, setPrevScrollPos] = React.useState(window.pageYOffset);
 
+    //call this every time the scrollbar position changes
     const handleScroll = () => {
 
         const currentScrollPos = window.pageYOffset;
@@ -24,7 +25,7 @@ const NavBar = () => {
     }, [prevScrollPos]);
 
     return (
-        <nav className={!visible ? "navbar navbar-hidden" : "navbar"}>
+        <nav className={visible ? "navbar" : "navbar navbar-hidden"}>
             <span>This is Navbar</span>
         </nav>
     );

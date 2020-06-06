@@ -5,13 +5,16 @@ import FadeInSection from '../common/FadeInSection/fadeInSection';
 
 const ProjectInfo = () => (
 
-    <FadeInSection>
-        <div>
-            <img src="https://picsum.photos/500/800"></img>
+    <div>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-        </div>
-    </FadeInSection>
+    </div>
+    // <FadeInSection>
+    //     <div>
+    //         <img src="https://picsum.photos/500/800"></img>
+
+    //         <p>Lorem ipsum dolor sit amet, consectetur adipisicing </p>
+    //     </div>
+    // </FadeInSection>
 )
 
 // this guide looks like what I want
