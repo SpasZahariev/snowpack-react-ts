@@ -1,5 +1,5 @@
 import * as React from 'react'
-import ProjectInfo from '../../components/project-info/project-info';
+import "./App.css";
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import { useState } from 'react';
@@ -13,22 +13,33 @@ const App: React.FunctionComponent = () => {
 
 
   const getIntroduction = () => {
-    return <section>
-      <h4>Hello, there - I'm</h4>
-      <h1>SPAS ZAHARIEV</h1>
-      <h1>I like creating things and solving problems</h1>
-      <h4>I'm a backend software engineer based in the UK, focusing on scalable and fault tolerant solutions</h4>
+    return <section className="padded-section">
+      <h4 className="hello-there">Hello there, I'm</h4>
+      <h2 className="my-name">Spas Zahariev</h2>
+      <h2 className="under-my-name">>I like creating things and solving problems.</h2>
+      <p className="intro-paragraph">I'm a backend software engineer based in the UK, focused on
+       designing scalable and fault tolerant solutions.</p>
       <button>Reach out pdf</button>
       <button>Resume</button>
     </section>
   }
 
   const getBackgroundParagraph = () => {
-    return <section>
-      <h1>About Me</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore unde consequuntur ex voluptates ad? Dolore, sapiente ea cum consequuntur eaque adipisci tempora nostrum quaerat ad sequi! Nostrum consectetur maiores libero?
-    </p>
+    return <section className="padded-section">
+      <h3>About Me</h3>
+      <p className="styled-paragraph">
+        I recently graduated from the <b>University of Southampton</b> and started my career as a Java developer.
+        At the moment I am a software engineer at <b>JPM Chase</b> where I've helped my departemnt take ownership of new applications
+        and expand our existing ones.
+        {/* (insert sentance about how much work my SPF saves compared to the previous PPR)
+        Automated a system where users needed to send messages throught the day. The average manual user interactions per day were reduced from 1200 to 100
+        since a user just needs to activate it. */}
+      </p>
+
+      <p className="styled-paragraph">
+        I like building cool things in my free time and coding gives me the freedom to do that without limits.
+        My goals are to always provide clean, efficient code and never stop searching for ways to improve.
+      </p>
     </section>
   }
 

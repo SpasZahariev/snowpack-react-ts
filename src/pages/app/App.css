@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,51 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.padded-section {
+  /* 50 vertically 25 horizontally */
+  /* width: 100%; */
+  padding: 50px 25px;
+}
+
+.hello-there {
+  margin-block-start: 3.5rem;
+  /* margin-block-start: 1rem; */
+  /* margin-block-end: 1.5rem; */
+  margin-block-end: 0.5rem;
+  font-size: 1rem;
+  color: var(--dark-blue);
+}
+
+.my-name {
+  /* margin-left: 0.4rem; */
+  font-family: var(--kongtext);
+  font-size: 2.5rem;
+  margin-block-start: 0.5rem;
+  margin-block-end: 1rem;
+}
+.under-my-name {
+  margin-block-start: 1rem;
+  /* margin-left: 10px; */
+  margin-block-end: 1.5rem;
+  /* margin-block-end: 4rem; */
+  font-family: var(--kongtext);
+  font-size: 1rem;
+  color: var(--grayish);
+
+}
+
+.intro-paragraph {
+  color: var(--grayish);
+  /* width: 50%; */
+}
+
+
+h3 {
+  color: var(--dark-blue);
+  font-size: 1.7rem;
+}
+b {
+  color: var(--dark-blue);
 }

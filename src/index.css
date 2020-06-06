@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+/* @import url("https://allfont.net/allfont.css?fonts=joystix");
+@import url("https://allfont.net/allfont.css?fonts=digitek");
+@import url("https://allfont.net/allfont.css?fonts=arcadeclassic"); */
+@import url("https://allfont.net/allfont.css?fonts=kongtext-regular");
 
 :root {
   --open-sans: "Open Sans", sans-serif;
+  --dark-blue: #28518a;
+  --grayish: #414b58;
+  --kongtext: 'Kongtext Regular', arial, sans-serif;
+  /* --joystix: 'Joystix', arial, sans-serif; */
 }
 
 body {
@@ -9,6 +17,7 @@ body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  font-size: 1.1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
