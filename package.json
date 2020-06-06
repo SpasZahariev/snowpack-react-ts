@@ -18,5 +18,8 @@
     "react-dom": "^16.13.0",
     "snowpack": "^2.0.0",
     "typescript": "^3.8.0"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.10.1"
   }
 }

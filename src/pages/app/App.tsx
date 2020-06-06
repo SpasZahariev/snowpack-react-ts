@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import { useState } from 'react';
+import Button from '@material-ui/core/Button';
 
 const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
@@ -16,11 +17,11 @@ const App: React.FunctionComponent = () => {
     return <section className="padded-section">
       <h4 className="hello-there">Hello there, I'm</h4>
       <h2 className="my-name">Spas Zahariev</h2>
-      <h2 className="under-my-name">>I like creating things and solving problems.</h2>
+      <h2 className="under-my-name">&gt;I like creating things and solving problems</h2>
       <p className="intro-paragraph">I'm a backend software engineer based in the UK, focused on
        designing scalable and fault tolerant solutions.</p>
-      <button>Reach out pdf</button>
-      <button>Resume</button>
+      <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
+      <Button variant="outlined">My Resume</Button>
     </section>
   }
 

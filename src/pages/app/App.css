@@ -1,7 +1,8 @@
-/* .App {
-  text-align: center;
+.App {
+  width: 100%;
+  /* text-align: center; */
 }
-
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -39,14 +40,12 @@
 
 .padded-section {
   /* 50 vertically 25 horizontally */
-  /* width: 100%; */
   padding: 50px 25px;
 }
 
 .hello-there {
+  /* margin-block-start: 10rem; */
   margin-block-start: 3.5rem;
-  /* margin-block-start: 1rem; */
-  /* margin-block-end: 1.5rem; */
   margin-block-end: 0.5rem;
   font-size: 1rem;
   color: var(--dark-blue);
@@ -66,7 +65,12 @@
   /* margin-block-end: 4rem; */
   font-family: var(--kongtext);
   font-size: 1rem;
-  color: var(--grayish);
+  /* color: var(--grayish); */
+  color: var(--dark-blue);
+  /* overflow: hidden;
+  white-space: nowrap;
+  border-right: 10px solid var(--grayish);
+  animation: type 5s steps(50, end), caret-blink .8s; */
 
 }
 
@@ -83,3 +87,18 @@ h3 {
 b {
   color: var(--dark-blue);
 }
+
+.MuiButton-outlined {
+  color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+}
+/* 
+@keyframes type {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+} */
