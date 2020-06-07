@@ -32,10 +32,12 @@ const NavBar = () => {
                 <div>
                     {getSvg()}
                 </div>
+                <div id="nav-icon4">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            {/* <div className="nav-flex">
-                <img src="spas-logo.svg" alt="spas-logo" className="svg-container" />
-            </div> */}
         </nav>
     );
 }
