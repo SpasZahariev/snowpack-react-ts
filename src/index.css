@@ -6,10 +6,14 @@
 
 :root {
   --open-sans: "Open Sans", sans-serif;
-  --dark-blue: #28518a;
-  --grayish: #414b58;
+  /* --dark-blue: #28518a; */
+  /* --grayish: #414b58; */
   --kongtext: 'Kongtext Regular', arial, sans-serif;
   /* --joystix: 'Joystix', arial, sans-serif; */
+  --whiteish: #f9f7f7;
+  --light-blue: #dbe2ef;
+  --very-blue: #3f72af;
+  --dark-blue: #112d4e;
 }
 
 body {
@@ -20,6 +24,7 @@ body {
   font-size: 1.1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--whiteish);
 }
 
 code {

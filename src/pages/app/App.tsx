@@ -4,6 +4,7 @@ import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import { useState } from 'react';
 import Button from '@material-ui/core/Button';
+import NqmeProject from '../../components/NqmeProject/NqmeProject';
 
 const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
@@ -58,19 +59,11 @@ const App: React.FunctionComponent = () => {
     </section>
   }
 
-  const getProjects = () => {
-    return <section>
-      <h1>Featured Projects</h1>
-      <div>
-        <div style={{ paddingTop: "1000px" }}>
-          the empty space place
-        </div>
-        {projectInfo()}
-        {projectInfo()}
-        {projectInfo()}
-      </div>
-    </section>
-  }
+  const getNqme = () => (
+    <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
+      <NqmeProject></NqmeProject>
+    </FadeInSection>
+  )
 
   const projectInfo = () => (
     <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
@@ -81,6 +74,20 @@ const App: React.FunctionComponent = () => {
       </div>
     </FadeInSection>
   )
+
+  const getProjects = () => {
+    return <section>
+      <h1>Featured Projects</h1>
+      <div>
+        <div style={{ paddingTop: "1000px" }}>
+          the empty space place
+        </div>
+        {getNqme()}
+        {projectInfo()}
+        {projectInfo()}
+      </div>
+    </section>
+  }
 
   const handleVisualiseNqmePermenently = (isIntersecting: boolean) => {
     isIntersecting ? setIsNqmeVisible(true) : "do nothing";
