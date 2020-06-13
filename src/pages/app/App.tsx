@@ -3,7 +3,6 @@ import "./App.css";
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import { useState } from 'react';
-import Button from '@material-ui/core/Button';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
 
 const App: React.FunctionComponent = () => {
@@ -22,8 +21,8 @@ const App: React.FunctionComponent = () => {
       <h2 className="under-my-name">I like creating things and solving problems.</h2>
       <p className="intro-paragraph">I'm a backend software engineer based in the UK, focused on
        designing scalable and fault tolerant solutions.</p>
-      <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
-      <Button variant="outlined">My Resume</Button>
+      {/* <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
+      <Button variant="outlined">My Resume</Button> */}
     </section>
   }
 
@@ -60,9 +59,11 @@ const App: React.FunctionComponent = () => {
   }
 
   const getNqme = () => (
-    <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
-      <NqmeProject></NqmeProject>
-    </FadeInSection>
+    <section>
+      <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
+        <NqmeProject></NqmeProject>
+      </FadeInSection>
+    </section>
   )
 
   const projectInfo = () => (

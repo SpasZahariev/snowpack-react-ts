@@ -1,24 +1,45 @@
 import * as React from 'react'
-// import "./NqmeProject.css"
+import Carousel from 'react-bootstrap/Carousel';
+import "./NqmeProject.css"
 
 type Props = {
 }
 const NqmeProject: React.FC<Props> = (props) => {
 
-    const getProjectTitle = () => (
-        <h1>Nqme</h1>
+    const getProjectHeader = () => (
+        <section className="horizontal-padding">
+            <div>
+                <h4>Nqme website</h4>
+                <h2>Shared Music Player</h2>
+            </div>
+        </section>
     )
 
     const getCarousel = () => (
-        <div>carousel</div>
+        <Carousel>
+            <Carousel.Item>
+                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+            </Carousel.Item>
+        </Carousel>
     )
     const getUtilisedTools = () => (
-        <div>utilisedTools</div>
+        <section className="horizontal-padding">
+            <h2>Utilised Tools</h2>
+        </section>
     )
 
     return (
         <div>
-            {getProjectTitle()}
+            {getProjectHeader()}
             {getCarousel()}
             {getUtilisedTools()}
         </div>

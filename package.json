@@ -20,6 +20,6 @@
     "typescript": "^3.8.0"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.1"
+    "react-bootstrap": "^1.0.1"
   }
 }

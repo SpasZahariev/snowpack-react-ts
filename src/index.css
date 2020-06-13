@@ -14,6 +14,7 @@
   --light-blue: #dbe2ef;
   --very-blue: #3f72af;
   --dark-blue: #112d4e;
+  --global-padding: 50px 25px;
 }
 
 body {
