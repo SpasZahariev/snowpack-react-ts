@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Carousel from 'react-bootstrap/Carousel';
+// import Carousel from 'react-bootstrap/Carousel';
 import "./NqmeProject.css"
 
 type Props = {
@@ -16,20 +16,22 @@ const NqmeProject: React.FC<Props> = (props) => {
     )
 
     const getCarousel = () => (
-        <Carousel>
-            <Carousel.Item>
-                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
-            </Carousel.Item>
-        </Carousel>
+        <>
+        </>
+        // <Carousel>
+        //     <Carousel.Item>
+        //         <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+        //     </Carousel.Item>
+        //     <Carousel.Item>
+        //         <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+        //     </Carousel.Item>
+        //     <Carousel.Item>
+        //         <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+        //     </Carousel.Item>
+        //     <Carousel.Item>
+        //         <img src="images/nqme/nqme-homepage.png" alt="nqme homepage" />
+        //     </Carousel.Item>
+        // </Carousel>
     )
     const getUtilisedTools = () => (
         <section className="horizontal-padding">
