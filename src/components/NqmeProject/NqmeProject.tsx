@@ -46,12 +46,12 @@ const NqmeProject: React.FC<Props> = (props) => {
             {/* <div className="utilised-tools"> */}
             <span>
 
-                <h2 className="utilised-tools-text">Utilised Tools:</h2>
-                <Chip variant="outlined" size="small" label="Flask" />
-                <Chip variant="outlined" size="small" label="React" />
-                <Chip variant="outlined" size="small" label="Redux" />
-                <Chip variant="outlined" size="small" label="Docker" />
+                <h2 className="utilised-tools-text">Utilised Tools: </h2>
+                <Chip variant="outlined" size="small" label="Python Flask" />
                 <Chip variant="outlined" size="small" label="GraphQL" />
+                <Chip variant="outlined" size="small" label="Docker" />
+                <Chip variant="outlined" size="small" label="React Typescript" />
+                <Chip variant="outlined" size="small" label="Redux" />
                 <Chip variant="outlined" size="small" label="SocketIO" />
                 <Chip variant="outlined" size="small" label="Heroku" />
                 <Chip variant="outlined" size="small" label="AWS S3" />

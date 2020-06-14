@@ -60,7 +60,7 @@ const App: React.FunctionComponent = () => {
   }
 
   const getNqme = () => (
-    <section>
+    <section className="vertical-whitespace">
       <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
         <NqmeProject></NqmeProject>
       </FadeInSection>
@@ -79,7 +79,7 @@ const App: React.FunctionComponent = () => {
 
   const getProjects = () => {
     return <section>
-      <h1>Featured Projects</h1>
+      <h3 className="featured-projects-title">Featured Projects</h3>
       <div>
         {/* <div style={{ paddingTop: "1000px" }}>
           the empty space place

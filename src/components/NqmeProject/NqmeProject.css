@@ -1,5 +1,6 @@
 .horizontal-padding {
-    padding: 0 5px;
+    /* padding: 0 5px; */
+    padding: var(--horizontal-padding);
   }
 
 img {
@@ -48,6 +49,7 @@ a > svg {
 }
 .launch-icon {
     margin-left: 0.5rem;
+    margin-right: 0.5rem;
     /* margin-right: 5px; */
 }
 
@@ -74,7 +76,7 @@ a > svg {
 }
 
 .utilised-tools-text {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--almost-black);
     margin-block-start: 0.01rem;
     margin-block-end: 0.5rem;

@@ -43,6 +43,10 @@
   padding: var(--global-padding);
 }
 
+.vertical-whitespace {
+  padding: var(--vertical-padding);
+}
+
 .hello-there {
   /* margin-block-start: 10rem; */
   margin-block-start: 3.5rem;
@@ -102,6 +106,11 @@ b {
 }
 .MuiButton-label {
   color: var(--very-blue);
+}
+
+.featured-projects-title {
+  padding: var(--horizontal-padding);
+  margin-bottom: 0px;
 }
 /* 
 @keyframes type {
