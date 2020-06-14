@@ -60,7 +60,7 @@ const App: React.FunctionComponent = () => {
   }
 
   const getNqme = () => (
-    <section className="vertical-whitespace">
+    <section className="just-bottom-whitespace">
       <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
         <NqmeProject></NqmeProject>
       </FadeInSection>

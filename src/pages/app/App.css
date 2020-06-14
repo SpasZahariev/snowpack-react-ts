@@ -47,6 +47,10 @@
   padding: var(--vertical-padding);
 }
 
+.just-bottom-whitespace {
+  padding-bottom: 50px;
+}
+
 .hello-there {
   /* margin-block-start: 10rem; */
   margin-block-start: 3.5rem;
@@ -110,7 +114,7 @@ b {
 
 .featured-projects-title {
   padding: var(--horizontal-padding);
-  margin-bottom: 0px;
+  /* margin-bottom: 0px; */
 }
 /* 
 @keyframes type {
