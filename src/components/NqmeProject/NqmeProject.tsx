@@ -16,7 +16,7 @@ const NqmeProject: React.FC<Props> = (props) => {
         <section className="horizontal-padding">
             <h4>Nqme website</h4>
             <div className="flex-header">
-                <h3>Shared Music Player</h3>
+                <h3 className="big-title">Shared Music Player</h3>
                 <div className="icon-container">
                     <a href="https://github.com/SpasZahariev/nqme-react" target="_blank" className="github">
                         <GitHubIcon></GitHubIcon>
@@ -43,15 +43,21 @@ const NqmeProject: React.FC<Props> = (props) => {
     }
     const getUtilisedTools = () => (
         <section className="horizontal-padding">
-            <div className="utilised-tools">
-                <h2>Utilised Tools:</h2>
+            {/* <div className="utilised-tools"> */}
+            <span>
+
+                <h2 className="utilised-tools-text">Utilised Tools:</h2>
                 <Chip variant="outlined" size="small" label="Flask" />
-                <Chip variant="outlined" size="small" label="GraphQL" />
                 <Chip variant="outlined" size="small" label="React" />
+                <Chip variant="outlined" size="small" label="Redux" />
                 <Chip variant="outlined" size="small" label="Docker" />
+                <Chip variant="outlined" size="small" label="GraphQL" />
+                <Chip variant="outlined" size="small" label="SocketIO" />
                 <Chip variant="outlined" size="small" label="Heroku" />
-                <Chip variant="outlined" size="small" label="AWS Cloudfare" />
-            </div>
+                <Chip variant="outlined" size="small" label="AWS S3" />
+                <Chip variant="outlined" size="small" label="AWS CloudFront" />
+            </span>
+            {/* </div> */}
         </section>
     )
 

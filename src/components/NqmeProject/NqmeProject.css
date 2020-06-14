@@ -13,7 +13,7 @@ h4 {
     font-weight: 100;
 }
 
-h3 {
+.big-title {
     font-size: 1.6rem;
     color: var(--almost-black);
     font-weight: 500;
@@ -73,16 +73,19 @@ a > svg {
     justify-content: space-between;
 }
 
-.utilised-tools h2{
+.utilised-tools-text {
     font-size: 1.5rem;
     color: var(--almost-black);
     margin-block-start: 0.01rem;
     margin-block-end: 0.5rem;
     font-weight: 500;
+    display: inline;
 }
 
 .MuiChip-outlined {
     border: 1px solid var(--very-blue);
+    margin-inline-start: 0.2rem;
+    margin-inline-end: 0.2rem;
 }
 
 .MuiChip-labelSmall {
