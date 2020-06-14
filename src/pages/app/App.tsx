@@ -79,9 +79,9 @@ const App: React.FunctionComponent = () => {
     return <section>
       <h1>Featured Projects</h1>
       <div>
-        <div style={{ paddingTop: "1000px" }}>
+        {/* <div style={{ paddingTop: "1000px" }}>
           the empty space place
-        </div>
+        </div> */}
         {getNqme()}
         {projectInfo()}
         {projectInfo()}

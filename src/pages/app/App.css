@@ -40,7 +40,7 @@
 
 .padded-section {
   /* 50 vertically 25 horizontally */
-  padding: 50px 25px;
+  padding: var(--global-padding);
 }
 
 .hello-there {
@@ -98,8 +98,10 @@ b {
 
 .MuiButton-outlined {
   /* color: var(--dark-blue); */
+  border: 1px solid var(--very-blue) !important;
+}
+.MuiButton-label {
   color: var(--very-blue);
-  /* border: 1px solid var(--dark-blue); */
 }
 /* 
 @keyframes type {
