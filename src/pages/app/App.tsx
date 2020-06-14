@@ -3,8 +3,8 @@ import "./App.css";
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import { useState } from 'react';
-import Button from '@material-ui/core/Button';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
+import Button from '@material-ui/core/Button'
 
 const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
@@ -60,9 +60,11 @@ const App: React.FunctionComponent = () => {
   }
 
   const getNqme = () => (
-    <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
-      <NqmeProject></NqmeProject>
-    </FadeInSection>
+    <section>
+      <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
+        <NqmeProject></NqmeProject>
+      </FadeInSection>
+    </section>
   )
 
   const projectInfo = () => (
