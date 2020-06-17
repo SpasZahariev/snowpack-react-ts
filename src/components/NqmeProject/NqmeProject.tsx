@@ -42,8 +42,7 @@ const NqmeProject: React.FC<Props> = (props) => {
 
     }
     const getUtilisedTools = () => (
-        <section className="horizontal-padding">
-            {/* <div className="utilised-tools"> */}
+        <section className="horizontal-padding utilised-tools-margin">
             <span>
 
                 <h2 className="utilised-tools-text">Utilised Tools: </h2>
@@ -57,7 +56,6 @@ const NqmeProject: React.FC<Props> = (props) => {
                 <Chip variant="outlined" size="small" label="AWS S3" />
                 <Chip variant="outlined" size="small" label="AWS CloudFront" />
             </span>
-            {/* </div> */}
         </section>
     )
 
@@ -69,18 +67,5 @@ const NqmeProject: React.FC<Props> = (props) => {
         </div>
     );
 }
-
-// function Item(props: any) {
-//     return (
-//         <div>
-//             <h2>{props.item.name}</h2>
-//             <p>{props.item.description}</p>
-
-//             {/* <Button className="CheckButton">
-//                 Check it out!
-//             </Button> */}
-//         </div>
-//     )
-// }
 
 export default NqmeProject;

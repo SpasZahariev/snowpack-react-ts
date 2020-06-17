@@ -25,6 +25,7 @@ h4 {
 .flex-header {
     display: flex;
     justify-content: space-between;
+    margin-block-end: 0.7rem;
 }
 
 .icon-container {
@@ -73,6 +74,10 @@ a > svg {
 .utilised-tools {
     display: flex;
     justify-content: space-between;
+}
+
+.utilised-tools-margin {
+    margin-block-start: 1rem;
 }
 
 .utilised-tools-text {

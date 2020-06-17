@@ -25,6 +25,7 @@ h4 {
 .flex-header {
     display: flex;
     justify-content: space-between;
+    margin-block-end: 0.7rem;
 }
 
 .icon-container {
@@ -68,6 +69,10 @@ a > svg {
 /* to make the three dots in go up */
 .Carousel-indicators-2 {
     /* margin-top: 0px !important; */
+}
+
+.utilised-tools-margin {
+    margin-block-start: 1rem;
 }
 
 .utilised-tools {

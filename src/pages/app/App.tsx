@@ -5,9 +5,11 @@ import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import { useState } from 'react';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
 import Button from '@material-ui/core/Button'
+import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
 
 const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
+  const [isProjectManagementVisible, setIsProjectManagementVisible] = useState<boolean>(false);
 
   const navigationMenu = () => {
     return <div></div>
@@ -67,6 +69,15 @@ const App: React.FunctionComponent = () => {
     </section>
   )
 
+
+  const getProjectManagement = () => (
+    <section className="vertical-whitespace">
+      <FadeInSection isVisible={isProjectManagementVisible} handleVisualise={handleVisualiseProjectManagementPermenantly} >
+        <ProjectManagement />
+      </FadeInSection>
+    </section>
+  )
+
   const projectInfo = () => (
     <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
       <div>
@@ -85,7 +96,7 @@ const App: React.FunctionComponent = () => {
           the empty space place
         </div> */}
         {getNqme()}
-        {projectInfo()}
+        {getProjectManagement()}
         {projectInfo()}
       </div>
     </section>
@@ -93,6 +104,10 @@ const App: React.FunctionComponent = () => {
 
   const handleVisualiseNqmePermenently = (isIntersecting: boolean) => {
     isIntersecting ? setIsNqmeVisible(true) : "do nothing";
+  }
+
+  const handleVisualiseProjectManagementPermenantly = (isIntersecting: boolean) => {
+    isIntersecting ? setIsProjectManagementVisible(true) : "do nothing";
   }
 
   const getContactInfo = () => {
