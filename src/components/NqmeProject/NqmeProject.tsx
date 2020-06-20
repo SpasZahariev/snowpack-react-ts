@@ -14,7 +14,7 @@ const NqmeProject: React.FC<Props> = (props) => {
 
     const getProjectHeader = () => (
         <section className="horizontal-padding">
-            <h4>Nqme website</h4>
+            <h4 className="project-name">Nqme website</h4>
             <div className="flex-header">
                 <h3 className="big-title">Shared Music Player</h3>
                 <div className="icon-container">
@@ -49,7 +49,8 @@ const NqmeProject: React.FC<Props> = (props) => {
                 <Chip variant="outlined" size="small" label="Python Flask" />
                 <Chip variant="outlined" size="small" label="GraphQL" />
                 <Chip variant="outlined" size="small" label="Docker" />
-                <Chip variant="outlined" size="small" label="React Typescript" />
+                <Chip variant="outlined" size="small" label="React" />
+                <Chip variant="outlined" size="small" label="Typescript" />
                 <Chip variant="outlined" size="small" label="Redux" />
                 <Chip variant="outlined" size="small" label="SocketIO" />
                 <Chip variant="outlined" size="small" label="Heroku" />

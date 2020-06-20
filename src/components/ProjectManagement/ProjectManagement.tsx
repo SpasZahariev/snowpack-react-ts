@@ -1,7 +1,6 @@
 import * as React from 'react'
 import "./ProjectManagement.css"
 import Carousel from 'react-material-ui-carousel'
-import { useState } from 'react'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LaunchIcon from '@material-ui/icons/Launch';
 import Chip from '@material-ui/core/Chip';
@@ -13,7 +12,7 @@ const ProjectManagement: React.FC<Props> = (props) => {
 
     const getProjectHeader = () => (
         <section className="horizontal-padding">
-            <h4>Project Tracking Website</h4>
+            <h4 className="project-name">Project Tracking Website</h4>
             <div className="flex-header">
                 <h3 className="big-title">Assign tasks to users</h3>
                 <div className="icon-container">

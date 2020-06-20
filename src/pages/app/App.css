@@ -54,7 +54,7 @@
 .hello-there {
   /* margin-block-start: 10rem; */
   margin-block-start: 3.5rem;
-  margin-block-end: 0.5rem;
+  margin-block-end: 0.8rem;
   font-size: 1rem;
   /* color: var(--dark-blue); */
   color: var(--very-blue);
@@ -71,7 +71,7 @@
 }
 .under-my-name {
   /* margin-block-start: 1rem; */
-  margin-block-start: 0.5rem;
+  margin-block-start: 1.4rem;
   /* margin-left: 10px; */
   /* margin-block-end: 1.5rem; */
   margin-block-end: 2.5rem;
@@ -98,6 +98,8 @@ h3 {
   /* color: var(--dark-blue); */
   color: var(--very-blue);
   font-size: 1.7rem;
+  margin-block-start: 1.4rem; 
+  margin-block-end: 1.4rem;
 }
 b {
   /* color: var(--dark-blue); */

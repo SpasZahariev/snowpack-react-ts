@@ -16,9 +16,9 @@
   --dark-blue: #112d4e;
   --grayish: #707070;
   --almost-black: #242424;
-  --global-padding: 50px 25px;
+  --global-padding: 50px 17px;
   --vertical-padding: 50px 0px;
-  --horizontal-padding: 0px 25px;
+  --horizontal-padding: 0px 17px;
 }
 
 body {
