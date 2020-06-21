@@ -11,6 +11,8 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import { Link } from '@material-ui/core';
+
 
 const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
@@ -241,11 +243,17 @@ const App: React.FunctionComponent = () => {
       <span className="built-with-container">
         Built with <FavoriteBorderIcon /> by Spas Zahariev
       </span>
-      <p>Feel free to reach out via: spas.zah@gmail.com</p>
+      <p>Feel free to reach out via: <b className="dark-text">spas.zah@gmail.com</b></p>
       <div className="social-media-container">
-        <GitHubIcon />
-        <LinkedInIcon />
-        <InstagramIcon />
+        <Link variant="inherit" href="https://github.com/SpasZahariev" target="_blank">
+          <GitHubIcon />
+        </Link>
+        <Link variant="inherit" href="https://www.linkedin.com/in/spaszahariev/" target="_blank">
+          <LinkedInIcon />
+        </Link>
+        <Link variant="inherit" href="https://www.instagram.com/spas_zah/" target="_blank">
+          <InstagramIcon />
+        </Link>
       </div>
     </section>
   }

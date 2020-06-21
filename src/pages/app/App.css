@@ -252,5 +252,16 @@ li {
 
 .social-media-container svg {
   font-size: 2rem;
+}
+.dark-text {
+  color: var(--dark-blue);
+}
+.MuiTypography-colorPrimary {
+  color: var(--very-blue);
   margin: 0 25px;
+}
+
+.MuiTypography-colorPrimary:hover {
+  color: var(--dark-blue);
+  cursor: pointer;
 }
