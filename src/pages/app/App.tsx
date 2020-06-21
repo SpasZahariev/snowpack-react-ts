@@ -109,6 +109,30 @@ const App: React.FunctionComponent = () => {
           </Button>
         </div>
       </div>
+
+      <div className="job-container">
+        <div className="certificate-details">
+          <span>Microsoft Azure AZ-900</span>
+        </div>
+        <div className="cert-year">
+          <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
+            <span>Jul 2020</span>
+            <InfoOutlinedIcon></InfoOutlinedIcon>
+          </Button>
+        </div>
+      </div>
+
+      <div className="final-job-container">
+        <div className="certificate-details">
+          <span>Unity GameDev Course</span>
+        </div>
+        <div className="cert-year">
+          <Button variant="outlined" href="https://softuni.bg/certificates/details/9171/c5d27b52" target="_blank" className="info-icon-date-container" >
+            <span>Feb 2016</span>
+            <InfoOutlinedIcon></InfoOutlinedIcon>
+          </Button>
+        </div>
+      </div>
     </section>
   }
 
