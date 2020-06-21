@@ -237,8 +237,8 @@ const App: React.FunctionComponent = () => {
   }
 
   const getContactInfo = () => {
-    return <section className="padded-section">
-      <span>
+    return <section className="padded-section center-text">
+      <span className="built-with-container">
         Built with <FavoriteBorderIcon /> by Spas Zahariev
       </span>
       <p>Feel free to reach out via: spas.zah@gmail.com</p>
