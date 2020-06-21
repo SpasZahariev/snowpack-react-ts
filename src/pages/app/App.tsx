@@ -51,6 +51,7 @@ const App: React.FunctionComponent = () => {
   const getExperienceParagraph = () => {
     return <section className="padded-section">
       <h3>Experience</h3>
+
       <div className="job-container">
         <div className="job-details">
           <span>JPMorgan Chase</span>
@@ -58,6 +59,36 @@ const App: React.FunctionComponent = () => {
         </div>
         <div className="job-years">
           <span>Sep 2019 - Present</span>
+        </div>
+      </div>
+
+      <div className="job-container">
+        <div className="job-details">
+          <span>JPMorgan Chase</span>
+          <span>Technical Analyst Intern</span>
+        </div>
+        <div className="job-years">
+          <span>June - Sep 2018</span>
+        </div>
+      </div>
+
+      <div className="job-container">
+        <div className="job-details">
+          <span>University of Southampton</span>
+          <span>BEng Software Engineering</span>
+        </div>
+        <div className="job-years">
+          <span>Sep 2016 - May 2019</span>
+        </div>
+      </div>
+
+      <div className="final-job-container">
+        <div className="job-details">
+          <span>Sofia High School of Mathematics</span>
+          <span>Student</span>
+        </div>
+        <div className="job-years">
+          <span>Sep 2011 - May 2016</span>
         </div>
       </div>
     </section>

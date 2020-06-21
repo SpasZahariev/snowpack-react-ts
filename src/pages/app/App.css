@@ -121,8 +121,12 @@ b {
 .job-container {
   display: flex;
   justify-content: space-between;
-  margin-block-end: 22px;
+  margin-block-end: 34px;
+}
 
+.final-job-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .job-details {
@@ -131,7 +135,7 @@ b {
 .job-details :first-child {
   color: var(--dark-blue);
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 .job-details :last-child {
   margin-block-start: 3px;
@@ -143,4 +147,6 @@ b {
 .job-years {
   font-size: 1rem;
   color: var(--almost-black);
+  text-align: right;
+  min-width: 145px;
 }
