@@ -11,7 +11,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    transition: top 0.6s;
+    transition: top 0.6s ease-in-out;
     z-index: 99;
     /* background: var(--dark-blue); */
     /* background: transparent; */

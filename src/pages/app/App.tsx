@@ -6,6 +6,7 @@ import { useState } from 'react';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
 import Button from '@material-ui/core/Button'
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
@@ -101,8 +102,11 @@ const App: React.FunctionComponent = () => {
         <div className="certificate-details">
           <span>Associate Oracle Cloud Infrastructure Architect</span>
         </div>
-        <div className="job-years">
-          <span>Apr 2020</span>
+        <div className="cert-year">
+          <Button variant="outlined" className="info-icon-date-container">
+            <span>Apr 2020</span>
+            <InfoOutlinedIcon></InfoOutlinedIcon>
+          </Button>
         </div>
       </div>
     </section>

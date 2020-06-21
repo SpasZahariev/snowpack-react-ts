@@ -105,14 +105,21 @@ b {
   /* color: var(--dark-blue); */
   color: var(--very-blue);
 }
-
-.MuiButton-outlined {
-  /* color: var(--dark-blue); */
-  border: 1px solid var(--very-blue) !important;
-}
 .MuiButton-label {
   color: var(--very-blue);
 }
+
+.MuiButton-outlined {
+  border: 1px solid var(--very-blue) !important;
+}
+
+.MuiButton-outlined:hover {
+  border: 1px solid var(--dark-blue) !important;
+}
+.MuiButton-outlined:hover .MuiButton-label{
+  color: var(--dark-blue);
+}
+
 
 .featured-projects-title {
   padding: var(--horizontal-padding);
@@ -155,4 +162,36 @@ b {
   color: var(--almost-black);
   text-align: right;
   min-width: 145px;
+}
+
+.cert-year {
+  font-size: 1rem;
+  /* color: var(--almost-black); */
+  text-align: right;
+  min-width: 145px;
+}
+
+.info-icon-date-container {
+  display: flex;
+  color: var(--very-blue);
+}
+
+.info-icon-date-container:hover {
+  color: var(--dark-blue);
+}
+
+.info-icon-date-container:hover svg{
+  color: var(--dark-blue);
+}
+
+.info-icon-date-container svg{
+  margin-left: 5px;
+  margin-bottom: 1px;
+  color: var(--very-blue);
+  font-size: 1.4rem;
+}
+
+.info-icon-date-container svg:hover{
+  /* color: var(--dark-blue); */
+  /* font-size: 1.5rem; */
 }
