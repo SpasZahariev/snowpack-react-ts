@@ -174,7 +174,7 @@ b {
 .info-icon-date-container {
   display: flex;
   color: var(--very-blue);
-  width: 120px;
+  width: 130px;
 }
 
 .info-icon-date-container:hover {
