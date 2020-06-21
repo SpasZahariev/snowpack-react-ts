@@ -49,15 +49,38 @@ const App: React.FunctionComponent = () => {
   }
 
   const getExperienceParagraph = () => {
-    return <section>
-      <h1>experience timeline</h1>
+    return <section className="padded-section">
+      <h3>Experience</h3>
+      <div className="job-container">
+        <div className="job-details">
+          <span>JPMorgan Chase</span>
+          <span>Software Engineer</span>
+        </div>
+        <div className="job-years">
+          <span>Sep 2019 - Present</span>
+        </div>
+      </div>
+    </section>
+  }
+
+  const getCertificationsParagraph = () => {
+    return <section className="padded-section">
+      <h3>Certifications</h3>
+      {/* <div>
+        <div className="job-details">
+          <span>JPMorgan Chase</span>
+          <span>Software Engineer</span>
+        </div>
+        <div className="job-years">
+          <span>2019 - Present</span>
+        </div>
+      </div> */}
     </section>
   }
 
   const getSkillsTable = () => {
     return <section>
-      <h1>Skills</h1>
-      <h1>Look at some skills</h1>
+      <h1>Look at some skills table</h1>
     </section>
   }
 
@@ -123,6 +146,7 @@ const App: React.FunctionComponent = () => {
       {getIntroduction()}
       {getBackgroundParagraph()}
       {getExperienceParagraph()}
+      {getCertificationsParagraph()}
       {getSkillsTable()}
       {getProjects()}
       {getContactInfo()}

@@ -118,13 +118,29 @@ b {
   padding: var(--horizontal-padding);
   /* margin-bottom: 0px; */
 }
-/* 
-@keyframes type {
-  0% {
-    width: 0;
-  }
+.job-container {
+  display: flex;
+  justify-content: space-between;
+  margin-block-end: 22px;
 
-  100% {
-    width: 100%;
-  }
-} */
+}
+
+.job-details {
+  display: inline-grid;
+}
+.job-details :first-child {
+  color: var(--dark-blue);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.job-details :last-child {
+  margin-block-start: 3px;
+  color: var(--almost-black);
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+.job-years {
+  font-size: 1rem;
+  color: var(--almost-black);
+}
