@@ -103,7 +103,7 @@ const App: React.FunctionComponent = () => {
           <span>Associate Oracle Cloud Infrastructure Architect</span>
         </div>
         <div className="cert-year">
-          <Button variant="outlined" className="info-icon-date-container">
+          <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
             <span>Apr 2020</span>
             <InfoOutlinedIcon></InfoOutlinedIcon>
           </Button>
