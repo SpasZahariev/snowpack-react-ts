@@ -214,7 +214,7 @@ const App: React.FunctionComponent = () => {
   )
 
   const getProjects = () => {
-    return <section>
+    return <section className="vertical-padding-container">
       <h3 className="featured-projects-title">Featured Projects</h3>
       <div>
         {/* <div style={{ paddingTop: "1000px" }}>

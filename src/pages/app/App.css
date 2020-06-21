@@ -120,7 +120,9 @@ b {
   color: var(--dark-blue);
 }
 
-
+.vertical-padding-container {
+  padding: var(--vertical-padding);
+}
 .featured-projects-title {
   padding: var(--horizontal-padding);
   /* margin-bottom: 0px; */
