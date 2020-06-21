@@ -137,8 +137,8 @@ const App: React.FunctionComponent = () => {
   }
 
   const getSkillsTable = () => {
-    return <section>
-      <h1>Look at some skills table</h1>
+    return <section className="padded-section">
+      <h3>Skills &#38; Technologies</h3>
     </section>
   }
 
