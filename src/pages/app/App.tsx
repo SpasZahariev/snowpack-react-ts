@@ -97,15 +97,14 @@ const App: React.FunctionComponent = () => {
   const getCertificationsParagraph = () => {
     return <section className="padded-section">
       <h3>Certifications</h3>
-      {/* <div>
-        <div className="job-details">
-          <span>JPMorgan Chase</span>
-          <span>Software Engineer</span>
+      <div className="job-container">
+        <div className="certificate-details">
+          <span>Associate Oracle Cloud Infrastructure Architect</span>
         </div>
         <div className="job-years">
-          <span>2019 - Present</span>
+          <span>Apr 2020</span>
         </div>
-      </div> */}
+      </div>
     </section>
   }
 

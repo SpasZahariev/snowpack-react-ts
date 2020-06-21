@@ -144,6 +144,12 @@ b {
   font-weight: 100;
 }
 
+.certificate-details {
+  color: var(--dark-blue);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
 .job-years {
   font-size: 1rem;
   color: var(--almost-black);

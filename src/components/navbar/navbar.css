@@ -26,9 +26,8 @@
   }
 
   .nav-flex {
+    padding: var(--horizontal-padding);
     padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
     padding-bottom: 4px;
     display: flex;
     justify-content: space-between;
