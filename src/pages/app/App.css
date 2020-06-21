@@ -154,7 +154,7 @@ b {
 .certificate-details {
   color: var(--dark-blue);
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .job-years {
@@ -192,7 +192,29 @@ b {
   font-size: 1.4rem;
 }
 
-.info-icon-date-container svg:hover{
-  /* color: var(--dark-blue); */
-  /* font-size: 1.5rem; */
+.skill-grid-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 0.5fr));
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+  color: var(--almost-black);
+  font-size: 1rem;
+  margin-block-start: 0.4rem;
+  margin-block-end: 0px;
+}
+
+li {
+  margin: 3px 0;
+}
+
+.list-header {
+  font-size: 1.3rem;
+  color: var(--dark-blue);
+  font-weight: 600;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
 }
