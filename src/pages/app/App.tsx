@@ -7,6 +7,10 @@ import NqmeProject from '../../components/NqmeProject/NqmeProject';
 import Button from '@material-ui/core/Button'
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
@@ -98,7 +102,7 @@ const App: React.FunctionComponent = () => {
   const getCertificationsParagraph = () => {
     return <section className="padded-section">
       <h3>Certifications</h3>
-      <div className="job-container">
+      <div className="certificate-container">
         <div className="certificate-details">
           <span>Associate Oracle Cloud Infrastructure Architect</span>
         </div>
@@ -110,7 +114,7 @@ const App: React.FunctionComponent = () => {
         </div>
       </div>
 
-      <div className="job-container">
+      <div className="certificate-container">
         <div className="certificate-details">
           <span>Microsoft Azure AZ-900</span>
         </div>
@@ -122,7 +126,7 @@ const App: React.FunctionComponent = () => {
         </div>
       </div>
 
-      <div className="final-job-container">
+      <div className="final-certificate-container">
         <div className="certificate-details">
           <span>Unity GameDev Course</span>
         </div>
@@ -217,9 +221,6 @@ const App: React.FunctionComponent = () => {
     return <section className="vertical-padding-container">
       <h3 className="featured-projects-title">Featured Projects</h3>
       <div>
-        {/* <div style={{ paddingTop: "1000px" }}>
-          the empty space place
-        </div> */}
         {getNqme()}
         {getProjectManagement()}
         {projectInfo()}
@@ -236,8 +237,16 @@ const App: React.FunctionComponent = () => {
   }
 
   const getContactInfo = () => {
-    return <section>
-      <h1>Contact Info</h1>
+    return <section className="padded-section">
+      <span>
+        Built with <FavoriteBorderIcon /> by Spas Zahariev
+      </span>
+      <p>Feel free to reach out via: spas.zah@gmail.com</p>
+      <div className="social-media-container">
+        <GitHubIcon />
+        <LinkedInIcon />
+        <InstagramIcon />
+      </div>
     </section>
   }
 
