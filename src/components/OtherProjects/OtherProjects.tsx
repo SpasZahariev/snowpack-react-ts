@@ -12,16 +12,14 @@ const OtherProjects: React.FC<Props> = (props) => {
 
     const getProjectHeader = () => (
         <section className="horizontal-padding">
+            <h4 className="project-name">Github Projects</h4>
             <div className="flex-header">
                 <h3 className="big-title">Check out more</h3>
-                {/* <div className="icon-container">
-                    <a href="https://github.com/SpasZahariev/CAD-SpasZahariev" target="_blank" className="github">
+                <div className="icon-container">
+                    <a href="https://github.com/SpasZahariev/" target="_blank" className="github">
                         <GitHubIcon></GitHubIcon>
                     </a>
-                    <a href="http://spas-zahariev.cad.s3-website.eu-west-1.amazonaws.com/" target="_blank" className="launch-icon">
-                        <LaunchIcon></LaunchIcon>
-                    </a>
-                </div> */}
+                </div>
             </div>
         </section>
     )
@@ -41,14 +39,6 @@ const OtherProjects: React.FC<Props> = (props) => {
     const getUtilisedTools = () => (
         <section className="horizontal-padding utilised-tools-margin">
             <span>
-                <h2 className="utilised-tools-text">Utilised Tools: </h2>
-                <Chip variant="outlined" size="small" label="AWS DynamoDB" />
-                <Chip variant="outlined" size="small" label="AWS S3" />
-                <Chip variant="outlined" size="small" label="AWS Lambda" />
-                <Chip variant="outlined" size="small" label="AWS Cognito" />
-                <Chip variant="outlined" size="small" label="Angular" />
-                <Chip variant="outlined" size="small" label="SendGrid" />
-                <Chip variant="outlined" size="small" label="Typescript" />
             </span>
         </section>
     )

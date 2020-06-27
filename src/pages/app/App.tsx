@@ -266,6 +266,7 @@ const App: React.FunctionComponent = () => {
         {getNqme()}
         {getProjectManagement()}
         {getDoily()}
+        {getOtherProjects()}
         {/* {projectInfo()} */}
       </div>
     </section>
