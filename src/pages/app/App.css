@@ -258,7 +258,7 @@ li {
 }
 .MuiTypography-colorPrimary {
   color: var(--very-blue) !important;
-  margin: 0 25px;
+  margin: 0 20px !important;
 }
 
 .MuiTypography-colorPrimary:hover {

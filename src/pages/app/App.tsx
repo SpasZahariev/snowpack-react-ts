@@ -12,11 +12,17 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import { Link } from '@material-ui/core';
+import Doily from '../../components/Doily/Doily';
 
 
 const App: React.FunctionComponent = () => {
+  const [isAboutVisible, setIsAboutVisible] = useState<boolean>(false);
+  const [isExperienceVisible, setIsExperienceVisible] = useState<boolean>(false);
+  const [isCertsVisible, setIsCertsVisible] = useState<boolean>(false);
+  const [isSkillsVisible, setIsSkillsVisible] = useState<boolean>(false);
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
   const [isProjectManagementVisible, setIsProjectManagementVisible] = useState<boolean>(false);
+  const [isDoilyVisible, setIsDoilyVisible] = useState<boolean>(false);
 
   const navigationMenu = () => {
     return <div></div>
@@ -38,171 +44,180 @@ const App: React.FunctionComponent = () => {
 
   const getBackgroundParagraph = () => {
     return <section className="padded-section">
-      <h3>About Me</h3>
-      <p className="styled-paragraph">
-        I recently graduated from the <b>University of Southampton</b> and started my career as a Java developer.
+      <FadeInSection isVisible={isAboutVisible} handleVisualise={handleVisualiseAboutPermenently} >
+        <h3>About Me</h3>
+        <p className="styled-paragraph">
+          I recently graduated from the <b>University of Southampton</b> and started my career as a Java developer.
         At the moment I am a software engineer at <b>JPM Chase</b> where I've helped my departemnt take ownership of new applications
         and expand our existing ones.
         {/* (insert sentance about how much work my SPF saves compared to the previous PPR)
         Automated a system where users needed to send messages throught the day. The average manual user interactions per day were reduced from 1200 to 100
         since a user just needs to activate it. */}
-      </p>
+        </p>
 
-      <p className="styled-paragraph">
-        I like building cool things in my free time and coding gives me the freedom to do that without limits.
-        My goals are to always provide clean, efficient code and never stop searching for ways to improve.
+        <p className="styled-paragraph">
+          I like building cool things in my free time and coding gives me the freedom to do that without limits.
+          My goals are to always provide clean, efficient code and never stop searching for ways to improve.
       </p>
+      </FadeInSection>
     </section>
   }
 
   const getExperienceParagraph = () => {
     return <section className="padded-section">
-      <h3>Experience</h3>
+      <FadeInSection isVisible={isExperienceVisible} handleVisualise={handleVisualiseExperiencePermenently} >
+        <h3>Experience</h3>
 
-      <div className="job-container">
-        <div className="job-details">
-          <span>JPMorgan Chase</span>
-          <span>Software Engineer</span>
+        <div className="job-container">
+          <div className="job-details">
+            <span>JPMorgan Chase</span>
+            <span>Software Engineer</span>
+          </div>
+          <div className="job-years">
+            <span>Sep 2019 - Present</span>
+          </div>
         </div>
-        <div className="job-years">
-          <span>Sep 2019 - Present</span>
-        </div>
-      </div>
 
-      <div className="job-container">
-        <div className="job-details">
-          <span>JPMorgan Chase</span>
-          <span>Technical Analyst Intern</span>
+        <div className="job-container">
+          <div className="job-details">
+            <span>JPMorgan Chase</span>
+            <span>Technical Analyst Intern</span>
+          </div>
+          <div className="job-years">
+            <span>June - Sep 2018</span>
+          </div>
         </div>
-        <div className="job-years">
-          <span>June - Sep 2018</span>
-        </div>
-      </div>
 
-      <div className="job-container">
-        <div className="job-details">
-          <span>University of Southampton</span>
-          <span>BEng Software Engineering</span>
+        <div className="job-container">
+          <div className="job-details">
+            <span>University of Southampton</span>
+            <span>BEng Software Engineering</span>
+          </div>
+          <div className="job-years">
+            <span>Sep 2016 - May 2019</span>
+          </div>
         </div>
-        <div className="job-years">
-          <span>Sep 2016 - May 2019</span>
-        </div>
-      </div>
 
-      <div className="final-job-container">
-        <div className="job-details">
-          <span>Sofia High School of Mathematics</span>
-          <span>Student</span>
+        <div className="final-job-container">
+          <div className="job-details">
+            <span>Sofia High School of Mathematics</span>
+            <span>Student</span>
+          </div>
+          <div className="job-years">
+            <span>Sep 2011 - May 2016</span>
+          </div>
         </div>
-        <div className="job-years">
-          <span>Sep 2011 - May 2016</span>
-        </div>
-      </div>
+      </FadeInSection>
     </section>
   }
 
   const getCertificationsParagraph = () => {
     return <section className="padded-section">
-      <h3>Certifications</h3>
-      <div className="certificate-container">
-        <div className="certificate-details">
-          <span>Associate Oracle Cloud Infrastructure Architect</span>
+      <FadeInSection isVisible={isCertsVisible} handleVisualise={handleVisualiseCertsPermenently} >
+        <h3>Certifications</h3>
+        <div className="certificate-container">
+          <div className="certificate-details">
+            <span>Associate Oracle Cloud Infrastructure Architect</span>
+          </div>
+          <div className="cert-year">
+            <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
+              <span>Apr 2020</span>
+              <InfoOutlinedIcon></InfoOutlinedIcon>
+            </Button>
+          </div>
         </div>
-        <div className="cert-year">
-          <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
-            <span>Apr 2020</span>
-            <InfoOutlinedIcon></InfoOutlinedIcon>
-          </Button>
-        </div>
-      </div>
 
-      <div className="certificate-container">
-        <div className="certificate-details">
-          <span>Microsoft Azure AZ-900</span>
+        <div className="certificate-container">
+          <div className="certificate-details">
+            <span>Microsoft Azure AZ-900</span>
+          </div>
+          <div className="cert-year">
+            <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
+              <span>Jul 2020</span>
+              <InfoOutlinedIcon></InfoOutlinedIcon>
+            </Button>
+          </div>
         </div>
-        <div className="cert-year">
-          <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
-            <span>Jul 2020</span>
-            <InfoOutlinedIcon></InfoOutlinedIcon>
-          </Button>
-        </div>
-      </div>
 
-      <div className="final-certificate-container">
-        <div className="certificate-details">
-          <span>Unity GameDev Course</span>
+        <div className="final-certificate-container">
+          <div className="certificate-details">
+            <span>Unity GameDev Course</span>
+          </div>
+          <div className="cert-year">
+            <Button variant="outlined" href="https://softuni.bg/certificates/details/9171/c5d27b52" target="_blank" className="info-icon-date-container" >
+              <span>Feb 2016</span>
+              <InfoOutlinedIcon></InfoOutlinedIcon>
+            </Button>
+          </div>
         </div>
-        <div className="cert-year">
-          <Button variant="outlined" href="https://softuni.bg/certificates/details/9171/c5d27b52" target="_blank" className="info-icon-date-container" >
-            <span>Feb 2016</span>
-            <InfoOutlinedIcon></InfoOutlinedIcon>
-          </Button>
-        </div>
-      </div>
+      </FadeInSection>
     </section>
   }
 
   const getSkillsTable = () => {
     return <section className="padded-section">
-      <h3>Relevant Skills</h3>
-      <div className="skill-grid-container">
-        <div>
-          <p className="list-header">Languages</p>
-          <ul>
-            <li>Java</li>
-            <li>Python</li>
-            <li>Haskell</li>
-            <li>SQL</li>
-            <li>Bash</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Css/Scss</li>
-          </ul>
-        </div>
+      <FadeInSection isVisible={isSkillsVisible} handleVisualise={handleVisualiseSkillsPermenently} >
+        <h3>Relevant Skills</h3>
+        <div className="skill-grid-container">
+          <div>
+            <p className="list-header">Languages</p>
+            <ul>
+              <li>Java</li>
+              <li>Python</li>
+              <li>Haskell</li>
+              <li>SQL</li>
+              <li>Bash</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>Css/Scss</li>
+            </ul>
+          </div>
 
-        <div>
-          <p className="list-header">Technologies</p>
-          <ul>
-            <li>Spring Boot</li>
-            <li>Kafka</li>
-            <li>Protobuf</li>
-            <li>Docker</li>
-            <li>Kubernetes</li>
-            <li>React</li>
-            <li>Angular</li>
-            <li>GraphQL</li>
-          </ul>
-        </div>
+          <div>
+            <p className="list-header">Technologies</p>
+            <ul>
+              <li>Spring Boot</li>
+              <li>Kafka</li>
+              <li>Protobuf</li>
+              <li>Docker</li>
+              <li>Kubernetes</li>
+              <li>React</li>
+              <li>Angular</li>
+              <li>GraphQL</li>
+            </ul>
+          </div>
 
-        <div>
-          <p className="list-header">Platforms</p>
-          <ul>
-            <li>Amzon Web Services</li>
-            <li>Google Cloud Engine</li>
-            <li>Heroku</li>
-            <li>DynamoDB</li>
-            <li>MongoDB</li>
-            <li>Oracle SQL Developer</li>
-          </ul>
-        </div>
+          <div>
+            <p className="list-header">Platforms</p>
+            <ul>
+              <li>Amzon Web Services</li>
+              <li>Google Cloud Engine</li>
+              <li>Heroku</li>
+              <li>DynamoDB</li>
+              <li>MongoDB</li>
+              <li>Oracle SQL Developer</li>
+            </ul>
+          </div>
 
-        <div>
-          <p className="list-header">Non-work Experience</p>
-          <ul>
-            <li>Web Penetration Testing</li>
-            <li>Data wrangling</li>
-            <li>General Machine Learning</li>
-            <li>Mobile Game Development</li>
-          </ul>
-        </div>
+          <div>
+            <p className="list-header">Non-work Experience</p>
+            <ul>
+              <li>Web Penetration Testing</li>
+              <li>Data wrangling</li>
+              <li>General Machine Learning</li>
+              <li>Mobile Game Development</li>
+            </ul>
+          </div>
 
-      </div>
+        </div>
+      </FadeInSection>
     </section>
   }
 
   const getNqme = () => (
     <section className="just-bottom-whitespace">
       <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
+        <h3 className="featured-projects-title">Featured Projects</h3>
         <NqmeProject></NqmeProject>
       </FadeInSection>
     </section>
@@ -213,6 +228,14 @@ const App: React.FunctionComponent = () => {
     <section className="vertical-whitespace">
       <FadeInSection isVisible={isProjectManagementVisible} handleVisualise={handleVisualiseProjectManagementPermenantly} >
         <ProjectManagement />
+      </FadeInSection>
+    </section>
+  )
+
+  const getDoily = () => (
+    <section className="vertical-whitespace">
+      <FadeInSection isVisible={isDoilyVisible} handleVisualise={handleVisualiseDoilyPermenantly} >
+        <Doily />
       </FadeInSection>
     </section>
   )
@@ -229,21 +252,37 @@ const App: React.FunctionComponent = () => {
 
   const getProjects = () => {
     return <section className="vertical-padding-container">
-      <h3 className="featured-projects-title">Featured Projects</h3>
       <div>
         {getNqme()}
         {getProjectManagement()}
+        {getDoily()}
         {/* {projectInfo()} */}
       </div>
     </section>
   }
 
+  const handleVisualiseAboutPermenently = (isIntersecting: boolean) => {
+    isIntersecting ? setIsAboutVisible(true) : "do nothing";
+  }
+  const handleVisualiseExperiencePermenently = (isIntersecting: boolean) => {
+    isIntersecting ? setIsExperienceVisible(true) : "do nothing";
+  }
+  const handleVisualiseCertsPermenently = (isIntersecting: boolean) => {
+    isIntersecting ? setIsCertsVisible(true) : "do nothing";
+  }
+  const handleVisualiseSkillsPermenently = (isIntersecting: boolean) => {
+    isIntersecting ? setIsSkillsVisible(true) : "do nothing";
+  }
   const handleVisualiseNqmePermenently = (isIntersecting: boolean) => {
     isIntersecting ? setIsNqmeVisible(true) : "do nothing";
   }
 
   const handleVisualiseProjectManagementPermenantly = (isIntersecting: boolean) => {
     isIntersecting ? setIsProjectManagementVisible(true) : "do nothing";
+  }
+
+  const handleVisualiseDoilyPermenantly = (isIntersecting: boolean) => {
+    isIntersecting ? setIsDoilyVisible(true) : "do nothing";
   }
 
   const getContactInfo = () => {

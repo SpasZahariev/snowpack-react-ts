@@ -1,0 +1,101 @@
+.horizontal-padding {
+    /* padding: 0 5px; */
+    padding: var(--horizontal-padding);
+  }
+
+img {
+    max-width: 100%;
+}
+
+.project-name {
+    font-size: 1rem;
+    margin-block-end: 0;
+    color: var(--very-blue);
+    font-weight: 100;
+}
+
+.big-title {
+    font-size: 1.6rem;
+    color: var(--almost-black);
+    font-weight: 500;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    margin-block-end: 1.4rem;
+}
+
+.icon-container {
+    text-align: center;
+    /* this is baaad way to center, sorry dear viewer */
+    margin-block-start: 0.3rem;
+}
+
+a > svg {
+    /* text-align: center; */
+    /* align-items: center; */
+    vertical-align: middle;
+}
+
+.github svg{
+    color: var(--very-blue);
+    font-size: 1.5rem;
+}
+.github svg:hover{
+    color: var(--dark-blue);
+    /* font-size: 1.5rem; */
+}
+.launch-icon {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    /* margin-right: 5px; */
+}
+
+.launch-icon svg {
+    margin-top: 1px;
+    color: var(--very-blue);
+    font-size: 1.8rem;
+}
+
+.launch-icon svg:hover {
+    /* margin-top: 1px; */
+    color: var(--dark-blue);
+    /* font-size: 1.8rem; */
+}
+
+/* to make the three dots in go up */
+.Carousel-indicators-2 {
+    /* margin-top: 0px !important; */
+}
+
+.utilised-tools-margin {
+    margin-block-start: 0.8rem;
+}
+
+.utilised-tools {
+    display: flex;
+    justify-content: space-between;
+}
+
+.utilised-tools-text {
+    font-size: 1.2rem;
+    color: var(--almost-black);
+    margin-block-start: 0.01rem;
+    margin-block-end: 0.5rem;
+    font-weight: 500;
+    display: inline;
+}
+
+.MuiChip-outlined {
+    border: 1px solid var(--very-blue);
+    margin-inline-start: 0.1rem;
+    margin-inline-end: 0.1rem;
+    margin-block-end: 2px;
+}
+
+.MuiChip-labelSmall {
+    color: var(--very-blue);
+}
