@@ -257,7 +257,7 @@ li {
   color: var(--dark-blue);
 }
 .MuiTypography-colorPrimary {
-  color: var(--very-blue);
+  color: var(--very-blue) !important;
   margin: 0 25px;
 }
 

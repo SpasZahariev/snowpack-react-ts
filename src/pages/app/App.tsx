@@ -225,7 +225,7 @@ const App: React.FunctionComponent = () => {
       <div>
         {getNqme()}
         {getProjectManagement()}
-        {projectInfo()}
+        {/* {projectInfo()} */}
       </div>
     </section>
   }
