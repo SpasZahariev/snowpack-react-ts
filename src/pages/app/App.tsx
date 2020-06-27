@@ -194,6 +194,7 @@ const App: React.FunctionComponent = () => {
             <li>Web Penetration Testing</li>
             <li>Data wrangling</li>
             <li>General Machine Learning</li>
+            <li>Mobile Game Development</li>
           </ul>
         </div>
 
