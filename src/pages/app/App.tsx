@@ -163,9 +163,7 @@ const App: React.FunctionComponent = () => {
         <div>
           <p className="list-header">Technologies</p>
           <ul>
-            <li>Spring</li>
             <li>Spring Boot</li>
-            <li>Spring JPA</li>
             <li>Kafka</li>
             <li>Protobuf</li>
             <li>Docker</li>
@@ -184,7 +182,7 @@ const App: React.FunctionComponent = () => {
             <li>Heroku</li>
             <li>DynamoDB</li>
             <li>MongoDB</li>
-            <li>SQL Developer</li>
+            <li>Oracle SQL Developer</li>
           </ul>
         </div>
 
