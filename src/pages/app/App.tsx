@@ -13,6 +13,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import { Link } from '@material-ui/core';
 import Doily from '../../components/Doily/Doily';
+import OtherProjects from '../../components/OtherProjects/OtherProjects';
 
 
 const App: React.FunctionComponent = () => {
@@ -23,6 +24,7 @@ const App: React.FunctionComponent = () => {
   const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
   const [isProjectManagementVisible, setIsProjectManagementVisible] = useState<boolean>(false);
   const [isDoilyVisible, setIsDoilyVisible] = useState<boolean>(false);
+  const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState<boolean>(false);
 
   const navigationMenu = () => {
     return <div></div>
@@ -240,6 +242,14 @@ const App: React.FunctionComponent = () => {
     </section>
   )
 
+  const getOtherProjects = () => (
+    <section className="vertical-whitespace">
+      <FadeInSection isVisible={isOtherProjectsSectionVisible} handleVisualise={handleVisualiseOtherProjectsSectionPermenantly} >
+        <OtherProjects />
+      </FadeInSection>
+    </section>
+  )
+
   const projectInfo = () => (
     <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
       <div>
@@ -273,6 +283,7 @@ const App: React.FunctionComponent = () => {
   const handleVisualiseSkillsPermenently = (isIntersecting: boolean) => {
     isIntersecting ? setIsSkillsVisible(true) : "do nothing";
   }
+
   const handleVisualiseNqmePermenently = (isIntersecting: boolean) => {
     isIntersecting ? setIsNqmeVisible(true) : "do nothing";
   }
@@ -283,6 +294,10 @@ const App: React.FunctionComponent = () => {
 
   const handleVisualiseDoilyPermenantly = (isIntersecting: boolean) => {
     isIntersecting ? setIsDoilyVisible(true) : "do nothing";
+  }
+
+  const handleVisualiseOtherProjectsSectionPermenantly = (isIntersecting: boolean) => {
+    isIntersecting ? setIsOtherProjectsSectionVisible(true) : "do nothing";
   }
 
   const getContactInfo = () => {
