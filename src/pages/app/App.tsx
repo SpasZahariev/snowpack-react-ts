@@ -14,6 +14,8 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import { Link } from '@material-ui/core';
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
+import Particles from 'react-tsparticles';
+import particlesConfig from "../../assets/particlesjs-config.json";
 
 
 const App: React.FunctionComponent = () => {
@@ -324,7 +326,8 @@ const App: React.FunctionComponent = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <div className="website-container">
+      {/* <Particles id="tsparticles" params={particlesConfig} /> */}
+      <div id="website-container-id" className="website-container" >
         {navigationMenu()}
         {getIntroduction()}
         {getBackgroundParagraph()}
@@ -334,7 +337,6 @@ const App: React.FunctionComponent = () => {
         {getProjects()}
         {getContactInfo()}
       </div>
-
     </div>
 
   );
