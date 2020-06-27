@@ -188,6 +188,15 @@ const App: React.FunctionComponent = () => {
           </ul>
         </div>
 
+        <div>
+          <p className="list-header">Non-work Experience</p>
+          <ul>
+            <li>Web Penetration Testing</li>
+            <li>Data wrangling</li>
+            <li>General Machine Learning</li>
+          </ul>
+        </div>
+
       </div>
     </section>
   }
