@@ -324,14 +324,17 @@ const App: React.FunctionComponent = () => {
   return (
     <div>
       <NavBar></NavBar>
-      {navigationMenu()}
-      {getIntroduction()}
-      {getBackgroundParagraph()}
-      {getExperienceParagraph()}
-      {getCertificationsParagraph()}
-      {getSkillsTable()}
-      {getProjects()}
-      {getContactInfo()}
+      <div className="website-container">
+        {navigationMenu()}
+        {getIntroduction()}
+        {getBackgroundParagraph()}
+        {getExperienceParagraph()}
+        {getCertificationsParagraph()}
+        {getSkillsTable()}
+        {getProjects()}
+        {getContactInfo()}
+      </div>
+
     </div>
 
   );

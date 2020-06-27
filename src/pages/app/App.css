@@ -208,6 +208,8 @@ b {
 .skill-grid-container {
   display: grid;
   gap: 1rem;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+
   grid-template-columns: repeat(auto-fit, minmax(120px, 0.5fr));
 }
 
@@ -264,4 +266,51 @@ li {
 .MuiTypography-colorPrimary:hover {
   color: var(--dark-blue);
   cursor: pointer;
+}
+
+ .website-container {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   margin: 0px auto;
+}
+
+@media (min-width: 30em) {
+  .website-container {
+      padding: 0 8px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0px auto;
+  }
+}
+
+@media (min-width: 48em) {
+  .website-container {
+      padding: 0 133px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0px auto;
+  }
+}
+
+@media (min-width: 62.5em) {
+  .website-container {
+      padding: 0 183px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0px auto;
+  }
+}
+
+@media (min-width: 70em) {
+  .website-container {
+      padding: 0 233px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0px auto;
+  }
 }
