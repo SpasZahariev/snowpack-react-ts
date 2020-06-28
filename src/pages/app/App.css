@@ -268,6 +268,20 @@ li {
   cursor: pointer;
 }
 
+.whiteish-background-container {
+  background: var(--whiteish);
+  z-index: 0;
+}
+
+.tsparticles-canvas {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  left: 0;
+  z-index: -2;
+}
+
  .website-container {
    display: flex;
    justify-content: center;
@@ -283,6 +297,9 @@ li {
       flex-direction: column;
       margin: 0px auto;
   }
+  .tsparticles {
+    display: none;
+  }
 }
 
 @media (min-width: 48em) {
@@ -292,6 +309,10 @@ li {
       justify-content: center;
       flex-direction: column;
       margin: 0px auto;
+  }
+
+  .tsparticles {
+    display: block;
   }
 }
 
@@ -303,6 +324,10 @@ li {
       flex-direction: column;
       margin: 0px auto;
   }
+
+  .tsparticles {
+    display: block;
+  }
 }
 
 @media (min-width: 70em) {
@@ -312,5 +337,9 @@ li {
       justify-content: center;
       flex-direction: column;
       margin: 0px auto;
+  }
+
+  .tsparticles {
+    display: block;
   }
 }

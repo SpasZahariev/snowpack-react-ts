@@ -326,16 +326,98 @@ const App: React.FunctionComponent = () => {
   return (
     <div>
       <NavBar></NavBar>
-      {/* <Particles id="tsparticles" params={particlesConfig} /> */}
+      <Particles className="tsparticles" canvasClassName="tsparticles-canvas" width="100%" height="100%" params={
+        {
+          background: {
+            color: {
+              value: "#f9f7f7"
+            }
+          },
+          fpsLimit: 60,
+          interactivity: {
+            // detectsOn: "canvas",
+            events: {
+              onClick: {
+                enable: true,
+                mode: "push"
+              },
+              onHover: {
+                enable: true,
+                mode: "grab"
+              },
+              resize: true
+            },
+            modes: {
+              bubble: {
+                distance: 400,
+                duration: 2,
+                opacity: 0.8,
+                size: 40,
+              },
+              push: {
+                quantity: 4
+              },
+              repulse: {
+                distance: 200,
+                duration: 0.4
+              }
+            }
+          },
+          particles: {
+            color: {
+              value: "#112d4e"
+            },
+            links: {
+              color: "#112d4e",
+              distance: 150,
+              enable: true,
+              opacity: 0.5,
+              width: 1
+            },
+            collisions: {
+              enable: true
+            },
+            move: {
+              // ignore this lint error - it is ok
+              direction: "bottom-left",
+              enable: true,
+              random: false,
+              speed: 1,
+              straight: false
+            },
+            number: {
+              density: {
+                enable: true,
+                value_area: 800
+              },
+              value: 80
+            },
+            opacity: {
+              value: 0.5
+            },
+            shape: {
+              type: "circle"
+            },
+            size: {
+              random: true,
+              value: 4
+            }
+          },
+          detectRetina: true
+        }
+
+      } />
       <div id="website-container-id" className="website-container" >
-        {navigationMenu()}
-        {getIntroduction()}
-        {getBackgroundParagraph()}
-        {getExperienceParagraph()}
-        {getCertificationsParagraph()}
-        {getSkillsTable()}
-        {getProjects()}
-        {getContactInfo()}
+        <div className="whiteish-background-container">
+          {navigationMenu()}
+          {getIntroduction()}
+          {getBackgroundParagraph()}
+          {getExperienceParagraph()}
+          {getCertificationsParagraph()}
+          {getSkillsTable()}
+          {getProjects()}
+          {getContactInfo()}
+        </div>
       </div>
     </div>
 
