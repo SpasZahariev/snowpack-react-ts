@@ -99,3 +99,8 @@ a > svg {
 .MuiChip-labelSmall {
     color: var(--very-blue);
 }
+
+.centered-image {
+    min-width: 100%;
+    margin: 0 auto;
+}
