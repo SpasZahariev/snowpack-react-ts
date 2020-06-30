@@ -162,56 +162,64 @@ const App: React.FunctionComponent = () => {
     return <section className="padded-section">
       <FadeInSection isVisible={isSkillsVisible} handleVisualise={handleVisualiseSkillsPermenently} >
         <h3>Relevant Skills</h3>
-        <div className="skill-grid-container">
-          <div>
-            <p className="list-header">Languages</p>
-            <ul>
-              <li>Java</li>
-              <li>Python</li>
-              <li>Haskell</li>
-              <li>SQL</li>
-              <li>Bash</li>
-              <li>JavaScript</li>
-              <li>TypeScript</li>
-              <li>Css/Scss</li>
-            </ul>
+        <div className="skill-grid-container-wrapper">
+
+          <div className="skill-grid-container">
+            <div>
+              <p className="list-header">Languages</p>
+              <ul>
+                <li>Java</li>
+                <li>Python</li>
+                <li>Haskell</li>
+                <li>SQL</li>
+                <li>Bash</li>
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>Css/Scss</li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="list-header">Technologies</p>
+              <ul>
+                <li>Spring Boot</li>
+                <li>Kafka</li>
+                <li>Protobuf</li>
+                <li>Docker</li>
+                <li>Kubernetes</li>
+                <li>React</li>
+                <li>Angular</li>
+                <li>GraphQL</li>
+              </ul>
+            </div>
           </div>
 
-          <div>
-            <p className="list-header">Technologies</p>
-            <ul>
-              <li>Spring Boot</li>
-              <li>Kafka</li>
-              <li>Protobuf</li>
-              <li>Docker</li>
-              <li>Kubernetes</li>
-              <li>React</li>
-              <li>Angular</li>
-              <li>GraphQL</li>
-            </ul>
+          <div className="skill-grid-container">
+            <div>
+              <p className="list-header">Platforms</p>
+              <ul>
+                <li>Amzon Web Services</li>
+                <li>Google Cloud Engine</li>
+                <li>Heroku</li>
+                <li>DynamoDB</li>
+                <li>MongoDB</li>
+                <li>Oracle SQL Developer</li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="list-header">Non-work Experience</p>
+              <ul>
+                <li>Web Penetration Testing</li>
+                <li>Data wrangling</li>
+                <li>General Machine Learning</li>
+                <li>Mobile Game Development</li>
+              </ul>
+            </div>
           </div>
 
-          <div>
-            <p className="list-header">Platforms</p>
-            <ul>
-              <li>Amzon Web Services</li>
-              <li>Google Cloud Engine</li>
-              <li>Heroku</li>
-              <li>DynamoDB</li>
-              <li>MongoDB</li>
-              <li>Oracle SQL Developer</li>
-            </ul>
-          </div>
 
-          <div>
-            <p className="list-header">Non-work Experience</p>
-            <ul>
-              <li>Web Penetration Testing</li>
-              <li>Data wrangling</li>
-              <li>General Machine Learning</li>
-              <li>Mobile Game Development</li>
-            </ul>
-          </div>
+
 
         </div>
       </FadeInSection>

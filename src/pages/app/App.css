@@ -205,12 +205,21 @@ b {
   font-size: 1.4rem;
 }
 
+.skill-grid-container-wrapper {
+  display: grid;
+  gap: 1.5rem;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-auto-rows: 260px;
+}
 .skill-grid-container {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
 
   grid-template-columns: repeat(auto-fit, minmax(120px, 0.5fr));
+  grid-auto-rows: 260px;
 }
 
 ul {
