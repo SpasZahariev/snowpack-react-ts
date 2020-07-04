@@ -106,7 +106,7 @@ b {
   color: var(--very-blue);
 }
 .MuiButton-label {
-  color: var(--very-blue);
+  color: var(--very-blue) !important;
 }
 
 .MuiButton-outlined {
@@ -117,7 +117,7 @@ b {
   border: 1px solid var(--dark-blue) !important;
 }
 .MuiButton-outlined:hover .MuiButton-label{
-  color: var(--dark-blue);
+  color: var(--dark-blue) !important;
 }
 
 .vertical-padding-container {
@@ -273,8 +273,8 @@ li {
 }
 
 .MuiTypography-colorPrimary:hover {
-  color: var(--dark-blue);
-  cursor: pointer;
+  color: var(--dark-blue) !important;
+  cursor: pointer !important;
 }
 
 .whiteish-background-container {
