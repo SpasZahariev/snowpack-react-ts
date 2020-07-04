@@ -58,29 +58,33 @@
 /* --------------------------------- */
 /* the hamburger anumations */
 /* --------------------------------- */
-
 .section-names {
-  height: 42px;
-  display:table;
-  border-spacing: 15px 0;
-}
-.section-names span { 
-  display:table-cell;
-  vertical-align: middle;
-  color: var(--dark-blue);
-}
-
-.section-names span:hover {
-  background-color: rgba(170, 170, 170, 0.1);
-  border-radius: 6px; 
-  cursor: pointer;
-}
-
-.hamburger {
   display: none;
-  /* stuff */
 }
 
+@media (min-width: 48em) {
+  .section-names {
+    height: 42px;
+    display:table;
+    border-spacing: 15px 0;
+  }
+  .section-names span { 
+    display:table-cell;
+    vertical-align: middle;
+    color: var(--dark-blue);
+  }
+  
+  .section-names span:hover {
+    background-color: rgba(170, 170, 170, 0.1);
+    border-radius: 6px; 
+    cursor: pointer;
+  }
+  
+  .hamburger {
+    display: none;
+  /* stuff */
+  }
+}
 
 #nav-icon4 {
   margin-top: 2px;
