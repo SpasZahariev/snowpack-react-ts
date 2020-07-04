@@ -27,7 +27,7 @@
 
   .nav-flex {
     padding: var(--horizontal-padding);
-    padding-top: 10px;
+    padding-top: 5px;
     padding-bottom: 4px;
     display: flex;
     justify-content: space-between;
@@ -58,6 +58,27 @@
 /* --------------------------------- */
 /* the hamburger anumations */
 /* --------------------------------- */
+
+.section-names {
+  height: 42px;
+  display:table;
+  border-spacing: 15px 0;
+}
+.section-names span { 
+  display:table-cell;
+  vertical-align: middle;
+  color: var(--dark-blue);
+}
+
+.section-names span:hover {
+  background-color: rgba(170, 170, 170, 0.1);
+  border-radius: 6px; 
+}
+.hamburger {
+  display: none;
+  /* stuff */
+}
+
 
 #nav-icon4 {
   margin-top: 2px;

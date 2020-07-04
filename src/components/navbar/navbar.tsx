@@ -28,11 +28,14 @@ const NavBar = () => {
     return (
         <nav className={visible ? "navbar" : "navbar navbar-hidden"}>
             <div className="nav-flex">
-
-                <div>
-                    {getSvg()}
+                {getSvg()}
+                <div className="section-names">
+                    <span>About</span>
+                    <span>Experience</span>
+                    <span>Projects</span>
+                    <span>Contact</span>
                 </div>
-                <div id="nav-icon4">
+                <div className="hamburger" id="nav-icon4">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -44,12 +47,12 @@ const NavBar = () => {
 
 const getSvg = () => (
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- preserveAspectRatio="xMidYMid meet"
- viewBox="0 0 900.000000 900.000000" className="svg-container">
-<g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
-fill="#28518a" stroke="none">
-<path id="svg-border" 
-d="M2145 8935 c-5 -3 -44 -9 -85 -14 -143 -20 -360 -73 -412 -101 -10
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 900.000000 900.000000" className="svg-container">
+        <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+            fill="#28518a" stroke="none">
+            <path id="svg-border"
+                d="M2145 8935 c-5 -3 -44 -9 -85 -14 -143 -20 -360 -73 -412 -101 -10
 -6 -26 -10 -36 -10 -9 0 -26 -6 -37 -14 -11 -7 -37 -19 -58 -26 -66 -21 -298
 -142 -391 -204 -351 -231 -618 -522 -815 -885 -28 -52 -51 -97 -51 -100 0 -3
 -10 -28 -24 -56 -48 -100 -66 -146 -66 -165 0 -10 -4 -21 -9 -24 -5 -3 -12
@@ -87,7 +90,7 @@ d="M2145 8935 c-5 -3 -44 -9 -85 -14 -143 -20 -360 -73 -412 -101 -10
 66 21 16 57 46 79 67 23 21 73 61 111 90 39 28 75 55 80 60 34 27 228 139 283
 164 37 17 85 38 107 48 130 58 330 113 479 131 44 6 87 14 95 19 26 15 4521 6
 4601 -9z"/>
-<path d="M4125 7104 c-209 -15 -447 -54 -510 -84 -11 -5 -55 -20 -97 -34 -338
+            <path d="M4125 7104 c-209 -15 -447 -54 -510 -84 -11 -5 -55 -20 -97 -34 -338
 -110 -666 -379 -813 -668 -41 -79 -105 -265 -105 -302 0 -14 -5 -37 -11 -52
 -5 -16 -10 -105 -10 -204 0 -176 9 -242 54 -395 26 -90 99 -231 152 -294 89
 -106 130 -147 195 -198 41 -32 77 -61 78 -65 2 -5 9 -8 15 -8 7 0 32 -14 57
@@ -114,8 +117,8 @@ d="M2145 8935 c-5 -3 -44 -9 -85 -14 -143 -20 -360 -73 -412 -101 -10
 -455 l6 -47 307 2 307 3 3 54 c4 77 -42 326 -78 416 -101 258 -233 440 -430
 596 -216 170 -543 310 -840 358 -127 21 -217 30 -335 36 -66 3 -140 7 -165 9
 -25 2 -126 -2 -225 -10z"/>
-</g>
-</svg>
+        </g>
+    </svg>
 );
 
 
