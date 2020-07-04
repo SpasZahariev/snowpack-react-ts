@@ -3,6 +3,7 @@ import "./navbar.css"
 // import * as Logo from "../../assets/spas-logo.svg";
 
 type Props = {
+    handleHome: () => void;
     handleAbout: () => void;
     handleExperience: () => void;
     handleProjects: () => void;
@@ -34,7 +35,7 @@ const NavBar: React.FunctionComponent<Props> = (props) => {
     return (
         <nav className={visible ? "navbar" : "navbar navbar-hidden"}>
             <div className="nav-flex">
-                {getSvg()}
+                <span onClick={() => props.handleHome()}>{getSvg()}</span>
                 <div className="section-names">
                     <span onClick={() => props.handleAbout()}>About</span>
                     <span onClick={() => props.handleExperience()}>Experience</span>

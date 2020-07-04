@@ -28,6 +28,7 @@ const App: React.FunctionComponent = () => {
   const [isDoilyVisible, setIsDoilyVisible] = useState<boolean>(false);
   const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState<boolean>(false);
 
+  const homeRef: React.RefObject<HTMLElement> = React.useRef(null);
   const aboutRef: React.RefObject<HTMLElement> = React.useRef(null);
   const experienceRef: React.RefObject<HTMLElement> = React.useRef(null);
   const projectsRef: React.RefObject<HTMLElement> = React.useRef(null);
@@ -39,7 +40,7 @@ const App: React.FunctionComponent = () => {
 
 
   const getIntroduction = () => {
-    return <section className="padded-section">
+    return <section ref={homeRef} className="padded-section">
       <h4 className="hello-there">Hello there, I'm</h4>
       <h2 className="my-name">Spas Zahariev</h2>
       {/* <h2 className="under-my-name">&gt;I like creating things and solving problems</h2> */}
@@ -316,6 +317,12 @@ const App: React.FunctionComponent = () => {
     isIntersecting ? setIsOtherProjectsSectionVisible(true) : "do nothing";
   }
 
+  const handleScrollToHome = () => {
+    homeRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
   const handleScrollToAbout = () => {
     aboutRef.current?.scrollIntoView({
       behavior: 'smooth',
@@ -367,7 +374,8 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div>
-      <NavBar handleAbout={handleScrollToAbout}
+      <NavBar handleHome={handleScrollToHome}
+        handleAbout={handleScrollToAbout}
         handleExperience={handleScrollToExperience}
         handleProjects={handleScrollToProjects}
         handleContact={handleScrollToContact}></NavBar>
