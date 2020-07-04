@@ -350,6 +350,7 @@ const App: React.FunctionComponent = () => {
         Built with <FavoriteBorderIcon /> by Spas Zahariev
       </span>
       <p>Feel free to reach out via: <b className="dark-text">spas.zah@gmail.com</b></p>
+      <p>UK mobile: <b className="dark-text">07784239930</b></p>
       <div className="social-media-container">
         <Link variant="inherit" href="https://github.com/SpasZahariev" target="_blank">
           <GitHubIcon />
