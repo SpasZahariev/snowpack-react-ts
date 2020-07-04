@@ -28,6 +28,11 @@ const App: React.FunctionComponent = () => {
   const [isDoilyVisible, setIsDoilyVisible] = useState<boolean>(false);
   const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState<boolean>(false);
 
+  const aboutRef: React.RefObject<HTMLElement> = React.useRef(null);
+  const experienceRef: React.RefObject<HTMLElement> = React.useRef(null);
+  const projectsRef: React.RefObject<HTMLElement> = React.useRef(null);
+  const contactRef: React.RefObject<HTMLElement> = React.useRef(null);
+
   const navigationMenu = () => {
     return <div></div>
   }
@@ -47,7 +52,7 @@ const App: React.FunctionComponent = () => {
   }
 
   const getBackgroundParagraph = () => {
-    return <section className="padded-section">
+    return <section ref={aboutRef} className="padded-section">
       <FadeInSection isVisible={isAboutVisible} handleVisualise={handleVisualiseAboutPermenently} >
         <h3>About Me</h3>
         <p className="styled-paragraph">
@@ -116,7 +121,7 @@ const App: React.FunctionComponent = () => {
   }
 
   const getCertificationsParagraph = () => {
-    return <section className="padded-section">
+    return <section ref={experienceRef} className="padded-section">
       <FadeInSection isVisible={isCertsVisible} handleVisualise={handleVisualiseCertsPermenently} >
         <h3>Certifications</h3>
         <div className="certificate-container">
@@ -227,7 +232,7 @@ const App: React.FunctionComponent = () => {
   }
 
   const getNqme = () => (
-    <section className="just-bottom-whitespace">
+    <section ref={projectsRef} className="just-bottom-whitespace">
       <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
         <h3 className="featured-projects-title">Featured Projects</h3>
         <NqmeProject></NqmeProject>
@@ -311,8 +316,36 @@ const App: React.FunctionComponent = () => {
     isIntersecting ? setIsOtherProjectsSectionVisible(true) : "do nothing";
   }
 
+  const handleScrollToAbout = () => {
+    aboutRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+
+  const handleScrollToExperience = () => {
+    experienceRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+
+  const handleScrollToProjects = () => {
+    projectsRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+
+  const handleScrollToContact = () => {
+    contactRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+
   const getContactInfo = () => {
-    return <section className="padded-section center-text">
+    return <section ref={contactRef} className="padded-section center-text">
       <span className="built-with-container">
         Built with <FavoriteBorderIcon /> by Spas Zahariev
       </span>
@@ -333,7 +366,10 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar handleAbout={handleScrollToAbout}
+        handleExperience={handleScrollToExperience}
+        handleProjects={handleScrollToProjects}
+        handleContact={handleScrollToContact}></NavBar>
       <Particles className="tsparticles" canvasClassName="tsparticles-canvas" width="100%" height="100%" params={
         {
           background: {

@@ -2,8 +2,14 @@ import * as React from 'react'
 import "./navbar.css"
 // import * as Logo from "../../assets/spas-logo.svg";
 
+type Props = {
+    handleAbout: () => void;
+    handleExperience: () => void;
+    handleProjects: () => void;
+    handleContact: () => void;
+}
 
-const NavBar = () => {
+const NavBar: React.FunctionComponent<Props> = (props) => {
 
     const [visible, setVisible] = React.useState(true);
     const [prevScrollPos, setPrevScrollPos] = React.useState(window.pageYOffset);
@@ -30,10 +36,10 @@ const NavBar = () => {
             <div className="nav-flex">
                 {getSvg()}
                 <div className="section-names">
-                    <span>About</span>
-                    <span>Experience</span>
-                    <span>Projects</span>
-                    <span>Contact</span>
+                    <span onClick={() => props.handleAbout()}>About</span>
+                    <span onClick={() => props.handleExperience()}>Experience</span>
+                    <span onClick={() => props.handleProjects()}>Projects</span>
+                    <span onClick={() => props.handleContact()}>Contact</span>
                 </div>
                 <div className="hamburger" id="nav-icon4">
                     <span></span>
