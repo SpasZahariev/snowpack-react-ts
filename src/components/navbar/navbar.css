@@ -73,7 +73,9 @@
 .section-names span:hover {
   background-color: rgba(170, 170, 170, 0.1);
   border-radius: 6px; 
+  cursor: pointer;
 }
+
 .hamburger {
   display: none;
   /* stuff */
