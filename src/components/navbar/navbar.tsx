@@ -1,5 +1,6 @@
-import * as React from 'react'
-import "./navbar.css"
+import * as React from 'react';
+import SwipeableBottomDrawer from '../common/SwipeableBottomDrawer/SwipeableBottomDrawer';
+import "./navbar.css";
 // import * as Logo from "../../assets/spas-logo.svg";
 
 type Props = {
@@ -47,6 +48,7 @@ const NavBar: React.FunctionComponent<Props> = (props) => {
                     <span></span>
                     <span></span>
                 </div>
+                <SwipeableBottomDrawer></SwipeableBottomDrawer>
             </div>
         </nav>
     );
