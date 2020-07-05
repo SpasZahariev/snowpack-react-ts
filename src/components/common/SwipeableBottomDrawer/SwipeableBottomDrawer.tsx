@@ -2,7 +2,7 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import React from 'react';
+import * as React from 'react';
 import './SwipeableBottomDrawer.css';
 
 type Props = {

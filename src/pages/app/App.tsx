@@ -15,7 +15,6 @@ import { Link } from '@material-ui/core';
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import Particles from 'react-tsparticles';
-import particlesConfig from "../../assets/particlesjs-config.json";
 
 
 const App: React.FunctionComponent = () => {
@@ -432,7 +431,7 @@ const App: React.FunctionComponent = () => {
             },
             move: {
               // ignore this lint error - it is ok
-              direction: "bottom-left",
+              // direction: 'bottom-left',
               enable: true,
               random: false,
               speed: 1,

@@ -16,10 +16,30 @@
     "paths": {
       "*": [
         "web_modules/.types/*"
-      ]
+      ],
     },
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
     // Feel free to add/edit new config options below:
     // ...
-  }
+    // "sourceMap": true,
+    "outDir": "./build/",
+    "noImplicitAny": false,
+    "module": "es2015",
+    "target": "esnext",
+    "lib": [
+      "es2015",
+      "dom",
+      "DOM.Iterable",
+      "es5",
+      "es6",
+      "esnext"
+    ],
+    "strict": false,
+    //do not emit files - let babel handle
+    "noEmit": false,
+    // "removeComments": true,
+    // "allowSyntheticDefaultImports": false,
+    // "jsx": "react",
+    // "allowJs": true,
+  },
 }
