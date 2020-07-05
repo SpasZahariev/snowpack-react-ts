@@ -43,12 +43,17 @@ const NavBar: React.FunctionComponent<Props> = (props) => {
                     <span onClick={() => props.handleProjects()}>Projects</span>
                     <span onClick={() => props.handleContact()}>Contact</span>
                 </div>
-                <div className="hamburger" id="nav-icon4">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <SwipeableBottomDrawer></SwipeableBottomDrawer>
+                <SwipeableBottomDrawer handleAbout={props.handleAbout}
+                    handleExperience={props.handleExperience}
+                    handleProjects={props.handleProjects}
+                    handleContact={props.handleContact}>
+                    <div className="hamburger" id="nav-icon4">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </SwipeableBottomDrawer>
             </div>
         </nav>
     );

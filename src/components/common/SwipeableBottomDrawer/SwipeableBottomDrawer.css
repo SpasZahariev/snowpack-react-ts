@@ -1,0 +1,9 @@
+
+.MuiDrawer-paper {
+    border-radius: 9px 9px 0 0 !important;
+}
+.MuiTypography-displayBlock{
+    /* text-align: center !important; */
+    font-size: 1.1rem !important;
+    color: var(--very-blue) !important;
+}
