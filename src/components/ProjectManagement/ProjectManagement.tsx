@@ -31,10 +31,10 @@ const ProjectManagement: React.FC<Props> = (props) => {
         return (
             <div>
                 <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
-                    <img src="images/cloud-app-dev/user-info.png" alt="user-info" />
-                    <img src="images/cloud-app-dev/project-dashboard.png" alt="project-dashboard" />
-                    <img src="images/cloud-app-dev/compose-email.png" alt="compose-email" />
-                    <img src="images/cloud-app-dev/login-screen.png" alt="login-screen" />
+                    <img src="images/cloud-app-dev/user-info.jpg" alt="user-info" />
+                    <img src="images/cloud-app-dev/project-dashboard.jpg" alt="project-dashboard" />
+                    <img src="images/cloud-app-dev/compose-email.jpg" alt="compose-email" />
+                    <img src="images/cloud-app-dev/login-screen.jpg" alt="login-screen" />
                 </Carousel>
             </div>
         );

@@ -33,9 +33,9 @@ const NqmeProject: React.FC<Props> = (props) => {
         return (
             <div>
                 <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
-                    <img src="images/nqme/nqme-homepage.png" alt="nqme-homepage" />
-                    <img src="images/nqme/room-with-songs.png" alt="room-with-songs" />
-                    <img src="images/nqme/many-users.png" alt="many-users" />
+                    <img src="images/nqme/nqme-homepage.jpg" alt="nqme-homepage" />
+                    <img src="images/nqme/room-with-songs.jpg" alt="room-with-songs" />
+                    <img src="images/nqme/many-users.jpg" alt="many-users" />
                 </Carousel>
             </div>
         );
