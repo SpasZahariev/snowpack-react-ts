@@ -15,7 +15,6 @@ import { Link } from '@material-ui/core';
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import Particles from 'react-tsparticles';
-import particlesConfig from "../../assets/particlesjs-config.json";
 
 
 const App: React.FunctionComponent = () => {

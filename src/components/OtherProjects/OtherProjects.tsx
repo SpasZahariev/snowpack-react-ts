@@ -28,7 +28,7 @@ const OtherProjects: React.FC<Props> = (props) => {
         return (
             <div>
                 <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
-                    <img src="images/other/new-york.png" alt="new-york" />
+                    <img src="images/other/new-york.jpg" alt="new-york" />
                     <img src="images/other/board-with-obstacles.png" alt="board-with-obstacles" />
                     <img src="images/other/score-0.png" alt="tetris" className="centered-image" />
                 </Carousel>
