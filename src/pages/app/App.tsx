@@ -432,7 +432,7 @@ const App: React.FunctionComponent = () => {
             },
             move: {
               // ignore this lint error - it is ok
-              direction: "bottom-left",
+              // direction: "bottom-left",
               enable: true,
               random: false,
               speed: 1,
