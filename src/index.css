@@ -2,13 +2,17 @@
 /* @import url("https://allfont.net/allfont.css?fonts=joystix");
 @import url("https://allfont.net/allfont.css?fonts=digitek");
 @import url("https://allfont.net/allfont.css?fonts=arcadeclassic"); */
-@import url("https://allfont.net/allfont.css?fonts=kongtext-regular");
+/* @import url("https://allfont.net/allfont.css?fonts=kongtext-regular"); */
+@font-face {
+  src: url(/kongtext.ttf);
+  font-family: kongtext;
+}
 
 :root {
   --open-sans: "Open Sans", sans-serif;
   /* --dark-blue: #28518a; */
   /* --grayish: #414b58; */
-  --kongtext: 'Kongtext Regular', arial, sans-serif;
+  --kongtext: kongtext, "Open Sans", sans-serif;
   /* --joystix: 'Joystix', arial, sans-serif; */
   --whiteish: #f9f7f7;
   --light-blue: #dbe2ef;
@@ -28,9 +32,41 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   font-size: 1.1rem;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--whiteish);
+}
+
+html {
+  /* font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300))); */
+  /* line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300))); */
+  font-size: 15px;
+}
+
+
+@media (min-width: 30em) {
+}
+
+@media (min-width: 48em) {
+  /* html {
+    font-size: 18px;
+  } */
+}
+@media (min-width: 62.5em) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (min-width: 2200px) {
+  html {
+    font-size: 21px;
+  }
+}
+@media (min-width: 3000px) {
+  html {
+    font-size: 24px;
+  }
 }
 
 code {
