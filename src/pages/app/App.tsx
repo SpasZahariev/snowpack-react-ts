@@ -131,7 +131,7 @@ const App: React.FunctionComponent = () => {
           </div>
           <div className="cert-year">
             <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
-              <span>Apr 2020</span>
+              <span className="cert-date-text">Apr 2020</span>
               <InfoOutlinedIcon></InfoOutlinedIcon>
             </Button>
           </div>
@@ -143,7 +143,7 @@ const App: React.FunctionComponent = () => {
           </div>
           <div className="cert-year">
             <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
-              <span>Jul 2020</span>
+              <span className="cert-date-text">Jul 2020</span>
               <InfoOutlinedIcon></InfoOutlinedIcon>
             </Button>
           </div>
@@ -155,7 +155,7 @@ const App: React.FunctionComponent = () => {
           </div>
           <div className="cert-year">
             <Button variant="outlined" href="https://softuni.bg/certificates/details/9171/c5d27b52" target="_blank" className="info-icon-date-container" >
-              <span>Feb 2016</span>
+              <span className="cert-date-text">Feb 2016</span>
               <InfoOutlinedIcon></InfoOutlinedIcon>
             </Button>
           </div>
