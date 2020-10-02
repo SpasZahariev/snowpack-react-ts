@@ -57,8 +57,8 @@ const App: React.FunctionComponent = () => {
         <h3>About Me</h3>
         <p className="styled-paragraph">
           I recently graduated from the <b>University of Southampton</b> and started my career as a Java developer.
-        At the moment I am a software engineer at <b>JPM Chase</b> where I've helped my department take ownership of new applications
-        and expand our existing ones.
+        At the moment I am a software engineer at <b>JPM Chase</b> where I've helped my departemnt take ownership of new applications
+              and expand our existing ones.
         {/* (insert sentance about how much work my SPF saves compared to the previous PPR)
         Automated a system where users needed to send messages throught the day. The average manual user interactions per day were reduced from 1200 to 100
         since a user just needs to activate it. */}
@@ -124,13 +124,14 @@ const App: React.FunctionComponent = () => {
     return <section ref={experienceRef} className="padded-section">
       <FadeInSection isVisible={isCertsVisible} handleVisualise={handleVisualiseCertsPermenently} >
         <h3>Certifications</h3>
+
         <div className="certificate-container">
           <div className="certificate-details">
-            <span>Associate Oracle Cloud Infrastructure Architect</span>
+            <span>Microsoft Azure AZ-900</span>
           </div>
           <div className="cert-year">
-            <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
-              <span className="cert-date-text">Apr 2020</span>
+            <Button variant="outlined" href="https://www.youracclaim.com/badges/ea3e55cb-5f9d-4c1c-8ef7-d28c8281f5eb?source=linked_in_profile" target="_blank" className="info-icon-date-container" >
+              <span>Sep 2020</span>
               <InfoOutlinedIcon></InfoOutlinedIcon>
             </Button>
           </div>
@@ -138,11 +139,11 @@ const App: React.FunctionComponent = () => {
 
         <div className="certificate-container">
           <div className="certificate-details">
-            <span>Microsoft Azure AZ-900</span>
+            <span>Associate Oracle Cloud Infrastructure Architect</span>
           </div>
           <div className="cert-year">
             <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
-              <span className="cert-date-text">Jul 2020</span>
+              <span>Apr 2020</span>
               <InfoOutlinedIcon></InfoOutlinedIcon>
             </Button>
           </div>
@@ -203,7 +204,7 @@ const App: React.FunctionComponent = () => {
             <div>
               <p className="list-header">Platforms</p>
               <ul>
-                <li>Amzon Web Services</li>
+                <li>Amazon Web Services</li>
                 <li>Google Cloud Engine</li>
                 <li>Heroku</li>
                 <li>DynamoDB</li>
@@ -213,7 +214,7 @@ const App: React.FunctionComponent = () => {
             </div>
 
             <div>
-              <p className="list-header">Non-work Experience</p>
+              <p className="list-header">Familiar with</p>
               <ul>
                 <li>Web Penetration Testing</li>
                 <li>Data wrangling</li>
