@@ -62,7 +62,7 @@ const App: React.FunctionComponent = () => {
         <h3>About Me</h3>
         <p className="styled-paragraph">
           I recently graduated from the <b>University of Southampton</b> and started my career as a Java developer.
-        At the moment I am a software engineer at <b>JPM Chase</b> where I've helped my departemnt take ownership of new applications
+        At the moment I am a fullstack software engineer at <b>JPM Chase</b> where I've helped my departemnt take ownership of new applications
               and expand our existing ones.
         {/* (insert sentance about how much work my SPF saves compared to the previous PPR)
         Automated a system where users needed to send messages throught the day. The average manual user interactions per day were reduced from 1200 to 100
@@ -105,7 +105,7 @@ const App: React.FunctionComponent = () => {
         <div className="job-container">
           <div className="job-details">
             <span>University of Southampton</span>
-            <span>BEng Software Engineering</span>
+            <span>Bachelor of Software Engineering</span>
           </div>
           <div className="job-years">
             <span>Sep 2016 - May 2019</span>
