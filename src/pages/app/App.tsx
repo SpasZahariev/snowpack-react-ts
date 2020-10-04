@@ -50,7 +50,9 @@ const App: React.FunctionComponent = () => {
       <a href="mailto:spas.zah@gmail.com" className="anchor-override">
         <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
       </a>
-      <Button variant="outlined">My Resume</Button>
+      <a href="CV-2020-3-with-links.pdf" target="_blank" className="anchor-override">
+        <Button variant="outlined">My Resume</Button>
+      </a>
     </section>
   }
 
