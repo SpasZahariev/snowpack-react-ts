@@ -3,16 +3,17 @@
 @import url("https://allfont.net/allfont.css?fonts=digitek");
 @import url("https://allfont.net/allfont.css?fonts=arcadeclassic"); */
 /* @import url("https://allfont.net/allfont.css?fonts=kongtext-regular"); */
-@font-face {
-  src: url(kongtext.ttf);
-  font-family: kongtext;
-}
+
+/* @font-face {
+  src: url(/public/cozette_bitmap.ttf);
+  font-family: cozette;
+} */
 
 :root {
   --open-sans: "Open Sans", sans-serif;
   /* --dark-blue: #28518a; */
   /* --grayish: #414b58; */
-  --kongtext: kongtext, "Open Sans", sans-serif;
+  --cozette: "Open Sans", arial, sans-serif;
   /* --joystix: 'Joystix', arial, sans-serif; */
   --whiteish: #f9f7f7;
   --light-blue: #dbe2ef;

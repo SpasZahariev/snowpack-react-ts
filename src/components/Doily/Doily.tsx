@@ -13,7 +13,7 @@ const Doily: React.FC<Props> = (props) => {
         <section className="horizontal-padding">
             <h4 className="project-name">Java Painting Application</h4>
             <div className="flex-header">
-                <h3 className="big-title">Create and Save pictures</h3>
+                <h3 className="big-title">Mirrors your drawing in symmetrical sectors </h3>
                 <div className="icon-container">
                     <a href="https://github.com/SpasZahariev/Digital-Doily" target="_blank" className="github">
                         <GitHubIcon></GitHubIcon>
