@@ -46,7 +46,10 @@ const App: React.FunctionComponent = () => {
       <h2 className="under-my-name">I like creating things and solving problems.</h2>
       <p className="intro-paragraph">I'm a backend software engineer based in the UK, focused on
        designing scalable and fault tolerant solutions.</p>
-      <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
+
+      <a href="mailto:spas.zah@gmail.com" className="anchor-override">
+        <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
+      </a>
       <Button variant="outlined">My Resume</Button>
     </section>
   }
@@ -356,7 +359,8 @@ const App: React.FunctionComponent = () => {
       <span className="built-with-container">
         Built with <FavoriteBorderIcon /> by Spas Zahariev
       </span>
-      <p>Feel free to reach out via: <b className="dark-text">spas.zah@gmail.com</b></p>
+      <p>Feel free to reach out via: <b>
+        <a href="mailto:spas.zah@gmail.com" className="anchor-override">spas.zah@gmail.com</a></b></p>
       <p>UK mobile: <b className="dark-text">07784239930</b></p>
       <div className="social-media-container">
         <Link variant="inherit" href="https://github.com/SpasZahariev" target="_blank">
