@@ -27,9 +27,9 @@ const Doily: React.FC<Props> = (props) => {
         return (
             <div>
                 <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
-                    <img src="images/doily/circle.png" alt="circle" />
-                    <img src="images/doily/many-zones.png" alt="many-zones" />
-                    <img src="images/doily/reflection.png" alt="reflection" />
+                    <img src="images/doily/circle.jpg" alt="circle" />
+                    <img src="images/doily/many-zones.jpg" alt="many-zones" />
+                    <img src="images/doily/reflection.jpg" alt="reflection" />
                 </Carousel>
             </div>
         );

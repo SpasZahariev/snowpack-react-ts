@@ -160,7 +160,7 @@ const App: React.FunctionComponent = () => {
           </div>
           <div className="cert-year">
             <Button variant="outlined" href="https://softuni.bg/certificates/details/9171/c5d27b52" target="_blank" className="info-icon-date-container" >
-              <span>Feb 2016</span>
+              <span className="cert-date-text">Feb 2016</span>
               <InfoOutlinedIcon></InfoOutlinedIcon>
             </Button>
           </div>
@@ -438,7 +438,7 @@ const App: React.FunctionComponent = () => {
             },
             move: {
               // ignore this lint error - it is ok
-              // direction: 'bottom-left',
+              // direction: "bottom-left",
               enable: true,
               random: false,
               speed: 1,

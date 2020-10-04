@@ -4,6 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 process.env.NODE_ENV = 'production';
 
@@ -14,7 +15,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
+    publicPath: './',
     filename: 'bundle.js',
   },
   plugins: [
@@ -48,6 +49,15 @@ module.exports = {
       },
     }),
   ],
+
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       include: /\.min\.js$/,
+  //     }),
+  //   ],
+  // },
 
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.

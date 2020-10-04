@@ -183,11 +183,15 @@ b {
   text-align: right;
   min-width: 145px;
 }
+.cert-date-test {
+  display: inline;
+  min-width: 20vw;
+}
 
 .info-icon-date-container {
   display: flex;
   color: var(--very-blue);
-  width: 130px;
+  /* width: 130px; */
 }
 
 .anchor-override {
@@ -217,10 +221,11 @@ b {
 .skill-grid-container-wrapper {
   display: grid;
   gap: 1.5rem;
+  grid-row-gap: 1.5rem;
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
 
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  grid-auto-rows: 260px;
+  grid-auto-rows: auto;
 }
 .skill-grid-container {
   display: grid;
@@ -228,7 +233,7 @@ b {
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
 
   grid-template-columns: repeat(auto-fit, minmax(120px, 0.5fr));
-  grid-auto-rows: 260px;
+  grid-auto-rows: auto;
 }
 
 ul {
