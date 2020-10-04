@@ -190,6 +190,15 @@ b {
   width: 130px;
 }
 
+.anchor-override {
+  color: var(--very-blue);
+  text-decoration: none;
+}
+.anchor-override:hover {
+  color: var(--dark-blue);
+  text-decoration: none;
+}
+
 .info-icon-date-container:hover {
   color: var(--dark-blue);
 }
