@@ -80,6 +80,14 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|ttf|svg)$/,
+        use: [
+          {
+            loader: 'url-loader?limit=100000',
+          },
+        ],
+      },
       //postcss-loader sendsto cssnano which uglifies the css
       //css-loader extracts css to another file
       //REMEMBER: loaders run from bottom up so postcss-loader is 1st and css-loader is 2nd

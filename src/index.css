@@ -3,16 +3,19 @@
 @import url("https://allfont.net/allfont.css?fonts=digitek");
 @import url("https://allfont.net/allfont.css?fonts=arcadeclassic"); */
 /* @import url("https://allfont.net/allfont.css?fonts=kongtext-regular"); */
-@font-face {
-  src: url(kongtext.ttf);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* @font-face {
+  src: url(../public/CozetteVector.ttf);
   font-family: kongtext;
-}
+} */
 
 :root {
   --open-sans: "Open Sans", sans-serif;
+  --roboto: 'Roboto', sans-serif; 
   /* --dark-blue: #28518a; */
   /* --grayish: #414b58; */
-  --kongtext: kongtext, "Open Sans", sans-serif;
+  /* --kongtext: kongtext, "Open Sans", sans-serif; */
   /* --joystix: 'Joystix', arial, sans-serif; */
   --whiteish: #f9f7f7;
   --light-blue: #dbe2ef;

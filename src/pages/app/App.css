@@ -54,7 +54,7 @@
 .hello-there {
   /* margin-block-start: 10rem; */
   margin-block-start: 3.5rem;
-  margin-block-end: 0.8rem;
+  margin-block-end: 0rem;
   font-size: 1rem;
   /* color: var(--dark-blue); */
   color: var(--very-blue);
@@ -62,12 +62,13 @@
 
 .my-name {
   /* margin-left: 0.4rem; */
-  font-family: var(--kongtext);
+  font-family: var(--roboto);
   color: var(--dark-blue);
   font-size: 2.5rem;
-  margin-block-start: 0.5rem;
+  margin-block-start: 0.4rem;
   /* margin-block-end: 1rem; */
   margin-block-end: 0.5rem;
+  font-weight: 1000;
 }
 .under-my-name {
   margin-block-start: 0.53rem;
