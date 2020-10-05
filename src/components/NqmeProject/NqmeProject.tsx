@@ -21,7 +21,7 @@ const NqmeProject: React.FC<Props> = (props) => {
                     <a href="https://github.com/SpasZahariev/nqme-react" target="_blank" className="github">
                         <GitHubIcon></GitHubIcon>
                     </a>
-                    <a href="http://nqme.co.uk" target="_blank" className="launch-icon">
+                    <a href="https://nqme.co.uk" target="_blank" className="launch-icon">
                         <LaunchIcon></LaunchIcon>
                     </a>
                 </div>
