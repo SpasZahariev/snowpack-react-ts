@@ -233,7 +233,7 @@ const App: React.FunctionComponent = () => {
                 <li>Hyperledger Fabric Blockchain</li>
                 <li>Oracle Cloud Services</li>
                 <li>Microsoft Azure Cloud</li>
-                <li>Google Clud Engine</li>
+                <li>Google Cloud Engine</li>
               </ul>
             </div>
           </div>
