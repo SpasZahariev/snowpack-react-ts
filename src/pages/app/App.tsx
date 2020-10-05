@@ -186,7 +186,8 @@ const App: React.FunctionComponent = () => {
                 <li>Bash</li>
                 <li>JavaScript</li>
                 <li>TypeScript</li>
-                <li>Css/Scss</li>
+                <li>CSS3/Scss</li>
+                <li>HTML5</li>
               </ul>
             </div>
 
@@ -194,13 +195,15 @@ const App: React.FunctionComponent = () => {
               <p className="list-header">Technologies</p>
               <ul>
                 <li>Spring Boot</li>
-                <li>Kafka</li>
-                <li>Protobuf</li>
                 <li>Docker</li>
                 <li>Kubernetes</li>
+                <li>Kafka</li>
                 <li>React</li>
                 <li>Angular</li>
                 <li>GraphQL</li>
+                <li>Protobuf</li>
+                <li>Socket IO</li>
+                <li>Flask</li>
               </ul>
             </div>
           </div>
@@ -209,10 +212,12 @@ const App: React.FunctionComponent = () => {
             <div>
               <p className="list-header">Platforms</p>
               <ul>
-                <li>Amazon Web Services</li>
-                <li>Google Cloud Engine</li>
+                <li>AWS Cognito</li>
+                <li>AWS DynamoDB</li>
+                <li>AWS Cognito</li>
+                <li>AWS Lambda FAAS</li>
+                <li>AWS Cloudfront</li>
                 <li>Heroku</li>
-                <li>DynamoDB</li>
                 <li>MongoDB</li>
                 <li>Oracle SQL Developer</li>
               </ul>
@@ -223,8 +228,12 @@ const App: React.FunctionComponent = () => {
               <ul>
                 <li>Web Penetration Testing</li>
                 <li>Data wrangling</li>
-                <li>General Machine Learning</li>
+                <li>Machine Learning</li>
                 <li>Mobile Game Development</li>
+                <li>Hyperledger Fabric Blockchain</li>
+                <li>Oracle Cloud Services</li>
+                <li>Microsoft Azure Cloud</li>
+                <li>Google Clud Engine</li>
               </ul>
             </div>
           </div>
