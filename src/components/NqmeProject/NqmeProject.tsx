@@ -3,7 +3,6 @@ import "./NqmeProject.css"
 // import Carousel from 'react-material-ui-carousel'
 import { useState } from 'react'
 import GitHubIcon from '@material-ui/icons/GitHub';
-// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LaunchIcon from '@material-ui/icons/Launch';
 import Chip from '@material-ui/core/Chip';
 import { Carousel } from 'react-responsive-carousel';
