@@ -44,13 +44,13 @@ const App: React.FunctionComponent = () => {
       <h2 className="my-name">Spas Zahariev</h2>
       {/* <h2 className="under-my-name">&gt;I like creating things and solving problems</h2> */}
       <h2 className="under-my-name">I like creating things and solving problems.</h2>
-      <p className="intro-paragraph">I'm a backend software engineer based in the UK, focused on
-       designing scalable and fault tolerant solutions.</p>
+      <p className="intro-paragraph">I'm a fullstack software engineer based in the UK, focused on
+       developing scalable and fault tolerant solutions.</p>
 
       <a href="mailto:spas.zah@gmail.com" className="anchor-override">
         <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
       </a>
-      <a href="CV-2020-3-with-links.pdf" target="_blank" className="anchor-override">
+      <a href="Spas-Zahariev-CV-with-links.pdf" target="_blank" className="anchor-override">
         <Button variant="outlined">My Resume</Button>
       </a>
     </section>
@@ -61,9 +61,8 @@ const App: React.FunctionComponent = () => {
       <FadeInSection isVisible={isAboutVisible} handleVisualise={handleVisualiseAboutPermenently} >
         <h3>About Me</h3>
         <p className="styled-paragraph">
-          I recently graduated from the <b>University of Southampton</b> and started my career as a Java developer.
-        At the moment I am a fullstack software engineer at <b>JPM Chase</b> where I've helped my departemnt take ownership of new applications
-              and expand our existing ones.
+          I'm an engineering graduate from the <b>University of Southampton</b> and my main strength is writing Java backend.
+        At the moment I am a fullstack software engineer at <b>JPMorgan Chase</b> where I've help my team build and maintain applications for tracking account liquidity.
         {/* (insert sentance about how much work my SPF saves compared to the previous PPR)
         Automated a system where users needed to send messages throught the day. The average manual user interactions per day were reduced from 1200 to 100
         since a user just needs to activate it. */}
@@ -71,7 +70,7 @@ const App: React.FunctionComponent = () => {
 
         <p className="styled-paragraph">
           I like building cool things in my free time and coding gives me the freedom to do that without limits.
-          My goals are to always provide clean, efficient code and never stop searching for ways to improve.
+          I always strive to write clean, efficient code and constantly search for ways to improve my craft.
       </p>
       </FadeInSection>
     </section>
@@ -95,17 +94,17 @@ const App: React.FunctionComponent = () => {
         <div className="job-container">
           <div className="job-details">
             <span>JPMorgan Chase</span>
-            <span>Technical Analyst Intern</span>
+            <span>Summer Software Intern</span>
           </div>
           <div className="job-years">
-            <span>June - Sep 2018</span>
+            <span>Jun 2018 - Sep 2018</span>
           </div>
         </div>
 
         <div className="job-container">
           <div className="job-details">
             <span>University of Southampton</span>
-            <span>Bachelor of Software Engineering</span>
+            <span>First Class Honours BEng</span>
           </div>
           <div className="job-years">
             <span>Sep 2016 - May 2019</span>
@@ -115,7 +114,7 @@ const App: React.FunctionComponent = () => {
         <div className="final-job-container">
           <div className="job-details">
             <span>Sofia High School of Mathematics</span>
-            <span>Student</span>
+            <span>Student in an IT focused class</span>
           </div>
           <div className="job-years">
             <span>Sep 2011 - May 2016</span>
@@ -144,7 +143,7 @@ const App: React.FunctionComponent = () => {
 
         <div className="certificate-container">
           <div className="certificate-details">
-            <span>Associate Oracle Cloud Infrastructure Architect</span>
+            <span>Associate OCI Architect</span>
           </div>
           <div className="cert-year">
             <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
@@ -182,6 +181,9 @@ const App: React.FunctionComponent = () => {
                 <li>Java</li>
                 <li>Python</li>
                 <li>Haskell</li>
+                <li>C#</li>
+                <li>C++</li>
+                <li>Rust</li>
                 <li>SQL</li>
                 <li>Bash</li>
                 <li>JavaScript</li>
@@ -201,30 +203,37 @@ const App: React.FunctionComponent = () => {
                 <li>React</li>
                 <li>Angular</li>
                 <li>GraphQL</li>
+                <li>Flask</li>
+                <li>Flutter</li>
+                <li>Git</li>
               </ul>
             </div>
           </div>
 
           <div className="skill-grid-container">
             <div>
-              <p className="list-header">Platforms</p>
+              <p className="list-header">Services</p>
               <ul>
                 <li>Amazon Web Services</li>
                 <li>Google Cloud Engine</li>
                 <li>Heroku</li>
                 <li>DynamoDB</li>
-                <li>MongoDB</li>
+                <li>PostgresSQL</li>
                 <li>Oracle SQL Developer</li>
+                <li>Jenkins CI/CD</li>
+                <li>IBM Websphere MQ</li>
               </ul>
             </div>
 
             <div>
-              <p className="list-header">Familiar with</p>
+              <p className="list-header">Other</p>
               <ul>
                 <li>Web Penetration Testing</li>
                 <li>Data wrangling</li>
                 <li>General Machine Learning</li>
                 <li>Mobile Game Development</li>
+                <li>Agile Methodologies</li>
+                <li>Scrum Master</li>
               </ul>
             </div>
           </div>
@@ -471,8 +480,10 @@ const App: React.FunctionComponent = () => {
           {navigationMenu()}
           {getIntroduction()}
           {getBackgroundParagraph()}
-          {getExperienceParagraph()}
-          {getCertificationsParagraph()}
+          <div className="experience-grid-container-wrapper">
+            {getExperienceParagraph()}
+            {getCertificationsParagraph()}
+          </div>
           {getSkillsTable()}
           {getProjects()}
           {getContactInfo()}

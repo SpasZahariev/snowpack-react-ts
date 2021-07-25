@@ -102,8 +102,8 @@ h3 {
   margin-block-end: 1.4rem;
 }
 b {
-  /* color: var(--dark-blue); */
-  color: var(--very-blue);
+  color: var(--dark-blue);
+  /* color: var(--very-blue); */
 }
 .MuiButton-label {
   color: var(--very-blue) !important;
@@ -157,11 +157,13 @@ b {
   display: flex;
   justify-content: space-between;
   margin-block-end: 21px;
+  align-items: center;
 }
 
 .final-certificate-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .certificate-details {
@@ -364,5 +366,20 @@ li {
 
   .tsparticles {
     display: block;
+  }
+}
+
+@media (min-width: 85em) {
+  
+
+  /* on very big screens make education and certifications into two columns*/
+  .experience-grid-container-wrapper {
+    display: grid;
+    gap: 7.5rem;
+    /* grid-row-gap: 1.5rem; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    /* grid-auto-rows: auto; */
   }
 }
