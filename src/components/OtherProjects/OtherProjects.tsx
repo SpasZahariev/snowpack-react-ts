@@ -15,6 +15,7 @@ const OtherProjects: React.FC<Props> = (props) => {
             <h4 className="project-name">Github Projects</h4>
             <div className="flex-header">
                 <h3 className="big-title">Check out more</h3>
+                <span className="small-empty-span"/>
                 <div className="icon-container">
                     <a href="https://github.com/SpasZahariev/" target="_blank" className="github">
                         <GitHubIcon></GitHubIcon>

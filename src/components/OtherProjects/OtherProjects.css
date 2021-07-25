@@ -24,8 +24,13 @@ img {
 
 .flex-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: flex-start;
     margin-block-end: 1.4rem;
+}
+
+.small-empty-span {
+    width: 15px;
 }
 
 .icon-container {

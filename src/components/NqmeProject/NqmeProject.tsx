@@ -17,11 +17,13 @@ const NqmeProject: React.FC<Props> = (props) => {
             <h4 className="project-name">Nqme website</h4>
             <div className="flex-header">
                 <h3 className="big-title">Shared Music Player</h3>
+                <span className="small-empty-span"/>
                 <div className="icon-container">
                     <a href="https://github.com/SpasZahariev/nqme-react" target="_blank" className="github">
                         <GitHubIcon></GitHubIcon>
                     </a>
-                    <a href="https://nqme.co.uk" target="_blank" className="launch-icon">
+                    <a href="http://nqme.co.uk.s3-website.eu-west-2.amazonaws.com" target="_blank" className="launch-icon">
+                    {/* <a href="https://nqme.co.uk" target="_blank" className="launch-icon"> */}
                         <LaunchIcon></LaunchIcon>
                     </a>
                 </div>

@@ -15,6 +15,7 @@ const ProjectManagement: React.FC<Props> = (props) => {
             <h4 className="project-name">Project Tracking Website</h4>
             <div className="flex-header">
                 <h3 className="big-title">Assign tasks to users</h3>
+                <span className="small-empty-span"/>
                 <div className="icon-container">
                     <a href="https://github.com/SpasZahariev/CAD-SpasZahariev" target="_blank" className="github">
                         <GitHubIcon></GitHubIcon>
