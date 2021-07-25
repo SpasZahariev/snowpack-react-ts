@@ -1,10 +1,10 @@
 import * as React from 'react'
 import "./ProjectManagement.css"
-import Carousel from 'react-material-ui-carousel'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LaunchIcon from '@material-ui/icons/Launch';
 import Chip from '@material-ui/core/Chip';
-
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 type Props = {
 }
@@ -31,7 +31,7 @@ const ProjectManagement: React.FC<Props> = (props) => {
     const getCarousel = () => {
         return (
             <div>
-                <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
+                <Carousel autoPlay={false}>
                     <img src="images/cloud-app-dev/user-info.jpg" alt="user-info" />
                     <img src="images/cloud-app-dev/project-dashboard.jpg" alt="project-dashboard" />
                     <img src="images/cloud-app-dev/compose-email.jpg" alt="compose-email" />

@@ -1,9 +1,8 @@
-import * as React from 'react'
-import "./OtherProjects.css"
-import Carousel from 'react-material-ui-carousel'
 import GitHubIcon from '@material-ui/icons/GitHub';
-import LaunchIcon from '@material-ui/icons/Launch';
-import Chip from '@material-ui/core/Chip';
+import * as React from 'react';
+import "./OtherProjects.css";
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 
 type Props = {
@@ -28,7 +27,7 @@ const OtherProjects: React.FC<Props> = (props) => {
     const getCarousel = () => {
         return (
             <div>
-                <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
+                <Carousel autoPlay={false}>
                     <img src="images/other/new-york.jpg" alt="new-york" />
                     <img src="images/other/board-with-obstacles.png" alt="board-with-obstacles" />
                     <img src="images/other/score-0.png" alt="tetris" className="centered-image" />

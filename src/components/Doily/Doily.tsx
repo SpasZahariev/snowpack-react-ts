@@ -1,8 +1,10 @@
 import * as React from 'react'
 import "./Doily.css"
-import Carousel from 'react-material-ui-carousel'
+// import Carousel from 'react-material-ui-carousel'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Chip from '@material-ui/core/Chip';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 
 type Props = {
@@ -27,7 +29,7 @@ const Doily: React.FC<Props> = (props) => {
     const getCarousel = () => {
         return (
             <div>
-                <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
+                <Carousel autoPlay={false}>
                     <img src="images/doily/circle.jpg" alt="circle" />
                     <img src="images/doily/many-zones.jpg" alt="many-zones" />
                     <img src="images/doily/reflection.jpg" alt="reflection" />

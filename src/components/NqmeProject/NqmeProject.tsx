@@ -1,11 +1,14 @@
 import * as React from 'react'
 import "./NqmeProject.css"
-import Carousel from 'react-material-ui-carousel'
+// import Carousel from 'react-material-ui-carousel'
 import { useState } from 'react'
 import GitHubIcon from '@material-ui/icons/GitHub';
 // import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LaunchIcon from '@material-ui/icons/Launch';
 import Chip from '@material-ui/core/Chip';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
 
 
 type Props = {
@@ -34,7 +37,7 @@ const NqmeProject: React.FC<Props> = (props) => {
     const getCarousel = () => {
         return (
             <div>
-                <Carousel autoPlay={false} indicators={true} navButtonsAlwaysVisible={true}>
+                <Carousel autoPlay={false} >
                     <img src="images/nqme/nqme-homepage.jpg" alt="nqme-homepage" />
                     <img src="images/nqme/room-with-songs.jpg" alt="room-with-songs" />
                     <img src="images/nqme/many-users.jpg" alt="many-users" />
