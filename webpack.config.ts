@@ -1,8 +1,14 @@
 import path from 'path';
 import webpack from 'webpack';
+import { Configuration as WebpackConfiguration } from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+
+interface MyHackyMergedConfiguration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const config: webpack.Configuration = {
+const config: MyHackyMergedConfiguration = {
   entry: './src/index.tsx',
   module: {
     rules: [
