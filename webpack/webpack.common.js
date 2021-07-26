@@ -50,7 +50,10 @@ module.exports = {
              from: path.resolve(__dirname, '..', './optimised-images/lossful/images'),
               to: path.resolve(__dirname, '..', './build/images') 
         },
-        // { from: "other", to: "public" },
+        {
+             from: path.resolve(__dirname, '..', './public/Spas-Zahariev-CV.pdf'),
+              to: path.resolve(__dirname, '..', './build') 
+        },
       ],
     }),
   ],
