@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// for copying my images directory to dist 
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -42,6 +43,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './public/index.html'),
       favicon: path.resolve(__dirname, '..', './public/spas-logo.svg'),
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+             from: path.resolve(__dirname, '..', './optimised-images/lossful/images'),
+              to: path.resolve(__dirname, '..', './build/images') 
+        },
+        // { from: "other", to: "public" },
+      ],
     }),
   ],
   stats: 'errors-only',
