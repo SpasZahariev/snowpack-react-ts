@@ -46,6 +46,6 @@
     "postcss-loader": "^6.1.1",
     "react-responsive-carousel": "^3.2.20",
     "react-tsparticles": "^1.32.0",
-    "style-loader": "^3.2.1"
+    "style-loader": "^3.3.1"
   }
 }
