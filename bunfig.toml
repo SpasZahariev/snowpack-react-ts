@@ -1,0 +1,14 @@
+# Bun configuration file
+
+[install]
+# Auto-install peer dependencies
+auto = true
+
+# Use exact versions from package.json
+exact = false
+
+[test]
+# Test configuration
+timeout = 30000
+# Preload test setup file
+preload = ["./test/setup.ts"]
