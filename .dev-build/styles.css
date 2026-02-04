@@ -713,9 +713,6 @@
   .border-collapse {
     border-collapse: collapse;
   }
-  .origin-center {
-    transform-origin: center;
-  }
   .origin-left {
     transform-origin: 0;
   }
@@ -1054,13 +1051,6 @@
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         rotate: 45deg;
-      }
-    }
-  }
-  .group-hover\:animate-spin {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        animation: var(--animate-spin);
       }
     }
   }

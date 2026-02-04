@@ -6,7 +6,7 @@ import ProjectManagement from '../../components/ProjectManagement/ProjectManagem
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import { Button, IconLink } from '../../components/ui';
-import { Info, Heart, Github, Linkedin, Instagram } from 'lucide-react';
+import { Info, Heart, Github, Linkedin, Instagram, Briefcase, Award, Wrench, Star } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -150,7 +150,10 @@ function App() {
             {/* Experience */}
             <section className="py-12 px-4">
               <FadeInSection isVisible={isExperienceVisible} handleVisualise={handleVisualizeExperiencePermanently}>
-                <h3 className="text-pink text-2xl font-semibold mb-5">Experience</h3>
+              <h3 className="text-pink text-2xl font-semibold mb-5 flex items-center gap-2">
+                <Briefcase size={22} />
+                Experience
+              </h3>
 
                 {[
                   { company: 'JPMorgan Chase', role: 'Software Engineer', period: 'Sep 2019 - Present' },
@@ -174,7 +177,10 @@ function App() {
             {/* Certifications */}
             <section ref={experienceRef} className="py-12 px-4">
               <FadeInSection isVisible={isCertsVisible} handleVisualise={handleVisualizeCertsPermanently}>
-                <h3 className="text-pink text-2xl font-semibold mb-5">Certifications</h3>
+              <h3 className="text-pink text-2xl font-semibold mb-5 flex items-center gap-2">
+                <Award size={22} />
+                Certifications
+              </h3>
 
                 {[
                   { name: 'Microsoft Azure AZ-900', date: 'Sep 2020', url: 'https://www.youracclaim.com/badges/ea3e55cb-5f9d-4c1c-8ef7-d28c8281f5eb?source=linked_in_profile' },
@@ -198,7 +204,10 @@ function App() {
           {/* Skills */}
           <section className="py-12 px-4">
             <FadeInSection isVisible={isSkillsVisible} handleVisualise={handleVisualizeSkillsPermanently}>
-              <h3 className="text-pink text-2xl font-semibold mb-5">Relevant Skills</h3>
+              <h3 className="text-pink text-2xl font-semibold mb-5 flex items-center gap-2">
+                <Wrench size={22} />
+                Relevant Skills
+              </h3>
               <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(270px,1fr))]">
                 <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(120px,0.5fr))]">
                   <div>
@@ -245,7 +254,10 @@ function App() {
             {/* Nqme Project */}
             <section ref={projectsRef} className="pb-12">
               <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualizeNqmePermanently}>
-                <h3 className="text-pink text-2xl font-semibold mb-5 px-4">Featured Projects</h3>
+                <h3 className="text-pink text-2xl font-semibold mb-5 px-4 flex items-center gap-2">
+                  <Star size={22} />
+                  Featured Projects
+                </h3>
                 <NqmeProject />
               </FadeInSection>
             </section>
