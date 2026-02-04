@@ -2,7 +2,6 @@ import { useState, ReactNode, useCallback } from 'react';
 import { Drawer } from '../../ui';
 
 interface Props {
-  handleAbout: () => void;
   handleExperience: () => void;
   handleProjects: () => void;
   handleContact: () => void;
@@ -10,7 +9,6 @@ interface Props {
 }
 
 function SwipeableBottomDrawer({
-  handleAbout,
   handleExperience,
   handleProjects,
   handleContact,
@@ -25,7 +23,6 @@ function SwipeableBottomDrawer({
   }, []);
 
   const menuItems = [
-    { label: 'About Me', action: handleAbout },
     { label: 'Experience', action: handleExperience },
     { label: 'Featured Projects', action: handleProjects },
     { label: 'Contact Information', action: handleContact },

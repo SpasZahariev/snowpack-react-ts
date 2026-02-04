@@ -14,7 +14,7 @@ function ProjectManagement() {
       <section className="px-4">
         <h4 className="text-pink text-sm font-semibold mb-1">Project Tracking Website</h4>
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-xl md:text-2xl font-bold text-flamingo">Assign tasks to users</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-mauve">Assign tasks to users</h3>
           <div className="flex items-center gap-4">
             <IconLink href="https://github.com/SpasZahariev/CAD-SpasZahariev" target="_blank">
               <Github size={22} />
@@ -36,7 +36,7 @@ function ProjectManagement() {
       </div>
 
       <section className="px-4 mt-4">
-        <h2 className="text-sm font-semibold text-flamingo mb-2">Utilised Tools:</h2>
+        <h2 className="text-sm font-semibold text-mauve mb-2">Utilised Tools:</h2>
         <div className="flex flex-wrap">
           {technologies.map((tech) => (
             <Chip key={tech} label={tech} />

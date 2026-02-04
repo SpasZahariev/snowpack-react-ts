@@ -3,7 +3,6 @@ import SwipeableBottomDrawer from '../common/SwipeableBottomDrawer/SwipeableBott
 
 interface Props {
   handleHome: () => void;
-  handleAbout: () => void;
   handleExperience: () => void;
   handleProjects: () => void;
   handleContact: () => void;
@@ -11,7 +10,6 @@ interface Props {
 
 function NavBar({
   handleHome,
-  handleAbout,
   handleExperience,
   handleProjects,
   handleContact
@@ -32,7 +30,6 @@ function NavBar({
   }, [handleScroll]);
 
   const navItems = [
-    { label: 'About', action: handleAbout },
     { label: 'Experience', action: handleExperience },
     { label: 'Projects', action: handleProjects },
     { label: 'Contact', action: handleContact },
@@ -148,7 +145,6 @@ function NavBar({
         {/* Mobile Hamburger */}
         <div className="md:hidden">
           <SwipeableBottomDrawer
-            handleAbout={handleAbout}
             handleExperience={handleExperience}
             handleProjects={handleProjects}
             handleContact={handleContact}

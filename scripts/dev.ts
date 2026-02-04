@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 import { serve, build } from "bun";
-import { readFileSync, existsSync, watchFile, mkdirSync, rmSync } from "fs";
+import { readFileSync, existsSync, watch, mkdirSync, rmSync } from "fs";
 import { join } from "path";
 
 const PORT = 3000;
@@ -80,6 +80,7 @@ const sseClients: Set<ReadableStreamDefaultController> = new Set();
 
 // Function to notify all connected clients to reload
 function notifyReload() {
+  console.log(`📡 Notifying ${sseClients.size} connected client(s) to reload...`);
   const message = `data: reload\n\n`;
   sseClients.forEach((controller) => {
     try {
@@ -91,32 +92,41 @@ function notifyReload() {
   });
 }
 
-// Watch for changes and rebuild
-watchFile(join(process.cwd(), "src"), { recursive: true }, async () => {
-  console.log("File changed, rebuilding...");
-  await buildDev();
-  // Notify clients to reload after rebuild completes
-  notifyReload();
-});
+// Debounce helper to prevent multiple rapid rebuilds
+let rebuildTimeout: Timer | null = null;
+function debounceRebuild(callback: () => Promise<void>, delay = 100) {
+  if (rebuildTimeout) clearTimeout(rebuildTimeout);
+  rebuildTimeout = setTimeout(callback, delay);
+}
 
-// Watch for CSS changes
-watchFile(CSS_INPUT, { recursive: false }, async () => {
-  console.log("CSS file changed, rebuilding...");
-  await buildCSS();
-  // Notify clients to reload after CSS rebuild completes
-  notifyReload();
+// Watch for changes and rebuild using fs.watch (native OS events, much more reliable)
+watch(join(process.cwd(), "src"), { recursive: true }, (eventType, filename) => {
+  if (filename && !filename.includes('.dev-build')) {
+    console.log(`File changed: ${filename}`);
+    debounceRebuild(async () => {
+      // Rebuild both JS and CSS since Tailwind scans JS files for classes
+      await Promise.all([buildDev(), buildCSS()]);
+      notifyReload();
+      console.log("✅ Rebuild complete, browser notified");
+    });
+  }
 });
 
 // Watch for public directory changes (images, PDFs, etc.)
-watchFile(PUBLIC_DIR, { recursive: true }, async () => {
-  console.log("Public files changed, reloading...");
-  // Just reload, no rebuild needed for static files
-  notifyReload();
+watch(PUBLIC_DIR, { recursive: true }, (eventType, filename) => {
+  if (filename) {
+    console.log(`Public file changed: ${filename}`);
+    debounceRebuild(async () => {
+      notifyReload();
+      console.log("✅ Browser notified of public file change");
+    });
+  }
 });
 
 // Create dev server
 const server = serve({
   port: PORT,
+  idleTimeout: 255, // Max value (255 seconds) to prevent SSE connection timeouts
   async fetch(req) {
     const url = new URL(req.url);
 
@@ -157,12 +167,14 @@ const server = serve({
       const stream = new ReadableStream({
         start(controller) {
           sseClients.add(controller);
+          console.log(`🔌 Hot reload client connected (${sseClients.size} total)`);
           // Send initial connection message
           controller.enqueue(new TextEncoder().encode("data: connected\n\n"));
           
           // Clean up on client disconnect
           req.signal.addEventListener("abort", () => {
             sseClients.delete(controller);
+            console.log(`🔌 Hot reload client disconnected (${sseClients.size} remaining)`);
             controller.close();
           });
         },
