@@ -2,32 +2,32 @@
 
 ## Overview
 
-This is a **React + TypeScript portfolio website** for Spas Zahariev, a fullstack software engineer. The website showcases personal information, professional experience, certifications, skills, and featured projects. Despite the repository name mentioning "snowpack", the project actually uses **Webpack** for bundling and development.
+This is a **React 19 + TypeScript portfolio website** for Spas Zahariev, a fullstack software engineer. The website showcases personal information, professional experience, certifications, skills, and featured projects. It uses **Bun** for bundling and **Tailwind CSS v4** for styling.
 
 ## Tech Stack
 
 ### Core Technologies
-- **React 17.0.2** - UI library
-- **TypeScript 4.3.5** - Type-safe JavaScript
-- **Webpack 5.46.0** - Module bundler and build tool
-- **Babel** - JavaScript transpiler (handles TypeScript via `@babel/preset-typescript`)
+- **React 19** - UI library (using createRoot API)
+- **TypeScript 5** - Type-safe JavaScript
+- **Bun** - Runtime, package manager, and bundler
+- **Tailwind CSS v4** - Utility-first CSS framework
 
-### UI Libraries & Components
-- **Material-UI (v4)** - Component library (`@material-ui/core`, `@material-ui/icons`)
-- **react-tsparticles** - Interactive particle background animation
-- **react-responsive-carousel** - Image carousel component for project showcases
+### UI & Styling
+- **Tailwind CSS v4** - All styling via utility classes
+- **Lucide React** - Icon library (replaced Material-UI icons)
+- **@tsparticles/react** - Interactive particle background
+- **react-responsive-carousel** - Image carousel for project showcases
 
 ### Development Tools
-- **Webpack Dev Server** - Development server with hot reloading
-- **Jest** - Testing framework
+- **Bun Dev Server** - Development server with hot reloading
+- **Bun test** - Testing framework
 - **@testing-library/react** - React testing utilities
 - **Prettier** - Code formatting
 
 ### Build Configuration
-- **Webpack** handles bundling (not Snowpack, despite the repo name)
-- Separate webpack configs for dev and production (`webpack.dev.js`, `webpack.prod.js`)
-- CSS is processed with `css-loader` and `style-loader`
-- Images and fonts are handled as assets
+- **Bun** handles TypeScript/JSX bundling natively
+- **@tailwindcss/cli** - Tailwind CSS compilation
+- Separate scripts for dev and production builds
 
 ## Project Structure
 
@@ -35,198 +35,169 @@ This is a **React + TypeScript portfolio website** for Spas Zahariev, a fullstac
 snowpack-react-ts/
 ├── src/
 │   ├── components/          # React components
+│   │   ├── ui/              # Shared UI components
+│   │   │   ├── Button.tsx   # Custom button (replaces MUI Button)
+│   │   │   ├── Chip.tsx     # Technology badge (replaces MUI Chip)
+│   │   │   ├── Drawer.tsx   # Mobile drawer (replaces MUI Drawer)
+│   │   │   └── IconLink.tsx # Icon link wrapper
 │   │   ├── common/          # Reusable components
 │   │   │   ├── FadeInSection/        # Scroll-triggered fade-in animation
 │   │   │   └── SwipeableBottomDrawer/ # Mobile navigation drawer
 │   │   ├── navbar/          # Top navigation bar
-│   │   ├── NqmeProject/      # Featured project: Nqme music player
+│   │   ├── NqmeProject/     # Featured project: Nqme music player
 │   │   ├── ProjectManagement/ # Featured project: Project tracking app
 │   │   ├── Doily/           # Featured project: Java painting app
 │   │   └── OtherProjects/   # Other GitHub projects showcase
 │   ├── pages/
 │   │   └── app/
 │   │       └── App.tsx      # Main application component
-│   ├── assets/              # Static assets (particles config)
-│   ├── index.tsx            # Application entry point
-│   └── index.css            # Global styles
+│   ├── styles/
+│   │   └── globals.css      # Tailwind CSS entry with theme config
+│   └── index.tsx            # Application entry point (React 19 createRoot)
 ├── public/                  # Static public files
-│   ├── images/              # Optimized project images
+│   ├── images/              # Project images
 │   ├── index.html           # HTML template
 │   ├── Spas-Zahariev-CV.pdf # Resume PDF
 │   └── *.woff2, *.ttf       # Custom fonts
-├── webpack/                 # Webpack configuration files
-│   ├── webpack.config.js    # Main config (merges common + env)
-│   ├── webpack.common.js    # Shared webpack config
-│   ├── webpack.dev.js       # Development config
-│   └── webpack.prod.js      # Production config
-├── optimised-images/        # Optimized image assets (lossful/lossless)
-├── original-images/         # Original source images
-├── types/                   # TypeScript type definitions
-└── jest.config.js           # Jest testing configuration
+├── scripts/                 # Build scripts
+│   ├── build.ts             # Production build (Bun + Tailwind)
+│   └── dev.ts               # Development server
+├── optimised-images/        # Optimized image assets
+├── test/                    # Test configuration
+│   └── setup.ts             # Test setup (jest-dom)
+├── tailwind.config.ts       # Tailwind configuration
+├── postcss.config.js        # PostCSS configuration
+└── bunfig.toml              # Bun configuration
 ```
 
 ## Key Components
 
 ### Main App Component (`src/pages/app/App.tsx`)
-The central component that orchestrates the entire portfolio. It includes:
+The central component that orchestrates the entire portfolio:
 
-- **Navigation**: Smooth scroll navigation to different sections
-- **Particle Background**: Interactive particle system using `react-tsparticles`
-- **Section Management**: Multiple sections with scroll-triggered visibility:
-  - Introduction/Home
-  - About Me
-  - Experience & Certifications
-  - Skills
-  - Featured Projects
-  - Contact Information
+- **React 19 Patterns**: Uses `createRoot`, `useCallback` for stable handlers
+- **Particle Background**: Interactive particle system using `@tsparticles/react`
+- **Section Management**: Multiple sections with scroll-triggered visibility via `FadeInSection`
+- **All Tailwind**: No CSS files, uses utility classes throughout
+
+### Shared UI Components (`src/components/ui/`)
+Custom components replacing Material-UI:
+
+- **Button**: Variants for primary, outline, ghost with href support
+- **Chip**: Technology badge with outlined variant
+- **Drawer**: Mobile-friendly bottom drawer with animations
+- **IconLink**: Consistent icon link styling
 
 ### Navigation Bar (`src/components/navbar/navbar.tsx`)
-- Fixed navigation bar that hides/shows on scroll
+- Fixed navigation that hides/shows on scroll
 - Desktop: Horizontal menu with section links
-- Mobile: Hamburger menu that opens a swipeable bottom drawer
-- Custom SVG logo
+- Mobile: Hamburger menu with animated drawer
+- Custom SVG logo with hover animation
 
 ### FadeInSection (`src/components/common/FadeInSection/fadeInSection.tsx`)
-- Reusable component for scroll-triggered animations
-- Uses Intersection Observer API to detect when elements enter viewport
-- Applies fade-in CSS animation when visible
-- Prevents re-triggering once animated (permanent visibility state)
-
-### Project Showcase Components
-Each featured project component follows a similar structure:
-- **NqmeProject**: Shared music player web app (React, Flask, GraphQL, SocketIO)
-- **ProjectManagement**: Task assignment web app (Angular, AWS services)
-- **Doily**: Java painting application with symmetrical drawing
-- **OtherProjects**: Carousel showcasing other GitHub projects
-
-All project components include:
-- Project header with title and links (GitHub, live demo)
-- Image carousel using `react-responsive-carousel`
-- Technology stack chips (Material-UI Chips)
+- Scroll-triggered animations using Intersection Observer
+- Tailwind classes for fade-in effect
+- One-time animation (permanent visibility)
 
 ## Features
 
 ### 1. Scroll-Based Animations
 - Sections fade in as user scrolls
 - Uses Intersection Observer for performance
-- One-time animations (don't re-trigger)
+- Tailwind transition classes for smooth effects
 
 ### 2. Responsive Design
-- Mobile-friendly navigation with swipeable drawer
-- Responsive typography (fluid font sizing)
-- Image carousels for project showcases
+- Mobile-first approach with Tailwind breakpoints
+- Responsive navigation with drawer on mobile
+- Grid layouts for skills and experience sections
 
 ### 3. Interactive Elements
-- Particle background with hover/click interactions
+- Particle background (hidden on mobile for performance)
 - Smooth scroll navigation between sections
-- Material-UI components for consistent styling
+- Hover states with Tailwind transitions
 
 ### 4. Professional Sections
 - **Introduction**: Name, tagline, contact buttons, resume link
-- **About**: Personal background and current role at JPMorgan Chase
+- **About**: Personal background and current role
 - **Experience**: Work history and education timeline
-- **Certifications**: Azure, OCI, Unity certificates with verification links
-- **Skills**: Organized grid of languages, technologies, services, and other skills
+- **Certifications**: Certificates with verification links
+- **Skills**: Organized grid of languages, technologies, services
 - **Projects**: Featured projects with images and tech stacks
-- **Contact**: Email, phone, social media links (GitHub, LinkedIn, Instagram)
+- **Contact**: Email, phone, social media links
 
 ## Build & Development
 
 ### Scripts (from `package.json`)
-- `npm start` - Start development server (webpack-dev-server on port 8080)
-- `npm run build` - Create production build in `build/` directory
-- `npm test` - Run Jest tests
-- `npm run format` - Format code with Prettier
-- `npm run lint` - Check code formatting
+- `bun run start` - Start development server (port 3000)
+- `bun run build` - Create production build in `build/`
+- `bun test` - Run tests with Bun test runner
+- `bun run format` - Format code with Prettier
+- `bun run lint` - Check code formatting
 
-### Webpack Configuration
-- **Entry**: `src/index.tsx`
-- **Output**: `build/myMegaBundle.js`
-- **Loaders**:
-  - Babel loader for TypeScript/JavaScript
-  - CSS loader for stylesheets
-  - Asset loaders for images and fonts
-- **Plugins**:
-  - `HtmlWebpackPlugin` - Injects bundle into HTML template
-  - `CopyPlugin` - Copies optimized images and PDF to build directory
+### Build Process
+1. **Tailwind CSS**: Compiled via `@tailwindcss/cli`
+2. **JavaScript**: Bundled by Bun's native bundler
+3. **Assets**: Images and fonts copied to build directory
+4. **HTML**: Template injected with CSS and JS links
 
-### Image Optimization
-- Original images stored in `original-images/`
-- Optimized versions in `optimised-images/` (lossful JPG and lossless PNG)
-- Webpack copies optimized images to build directory during build
+### Tailwind Configuration
+Theme configured in `src/styles/globals.css` using Tailwind v4's `@theme` directive:
 
-## Styling
-
-### CSS Architecture
-- Global styles in `src/index.css`
-- Component-specific CSS files (e.g., `App.css`, `navbar.css`)
-- CSS variables for theming (colors, padding, fonts)
-- Responsive design with media queries
-- Custom scrollbar styling
-
-### Design System
-- Color palette: Whiteish background, light blue, dark blue accents
-- Typography: Open Sans font family
-- Spacing: Consistent padding variables
-- Material-UI components for UI consistency
+```css
+@theme {
+  --color-whiteish: #f9f7f7;
+  --color-light-blue: #dbe2ef;
+  --color-very-blue: #3f72af;
+  --color-dark-blue: #112d4e;
+  --color-grayish: #707070;
+  --color-almost-black: #242424;
+}
+```
 
 ## Testing
 
-- **Jest** configured for unit testing
+- **Bun test** configured for unit testing
 - **@testing-library/react** for React component testing
-- Test setup file: `jest.setup.js`
-- Example test file: `src/pages/app/App.test.tsx`
+- Test setup file: `test/setup.ts`
 
 ## Assets
 
 ### Images
-- Project screenshots organized by project:
-  - `nqme/` - Nqme project images
-  - `cloud-app-dev/` - Project management app images
-  - `doily/` - Doily painting app images
-  - `other/` - Miscellaneous project images
+- Project screenshots organized by project in `optimised-images/lossful/images/`
+- Copied to `build/images/` during production build
 
 ### Fonts
-- Custom fonts: `Camcorder-Regular.woff2`, `cozette_bitmap.ttf`, `kongtext.ttf`
-- Google Fonts: Open Sans
+- Custom fonts: Camcorder, Cozette, Kongtext
+- Google Fonts: Open Sans (loaded via CSS import)
 
 ### Documents
 - Resume PDF: `Spas-Zahariev-CV.pdf`
 
 ## Important Notes
 
-1. **Repository Name vs. Reality**: Despite being named "snowpack-react-ts", this project uses **Webpack**, not Snowpack. The `snowpack.config.json` exists but is minimal and not actively used.
+1. **React 19**: Uses modern patterns like `createRoot`, no legacy APIs
 
-2. **TypeScript Configuration**: TypeScript is used for type checking only. Actual transpilation is handled by Babel (`@babel/preset-typescript`), which is why `tsconfig.json` has `"noEmit": true`.
+2. **Tailwind v4**: Theme configured in CSS file, not JavaScript config
 
-3. **Build Output**: Production builds go to the `build/` directory (not `dist/`), and the main bundle is named `myMegaBundle.js`.
+3. **No Material-UI**: Replaced with custom Tailwind components and Lucide icons
 
-4. **Image Workflow**: The project maintains both original and optimized images. During build, only optimized images are copied to the output.
+4. **No CSS Files**: All styling via Tailwind utility classes
 
-5. **Particle Configuration**: Particle background settings are hardcoded in `App.tsx`, but there's also a `particlesjs-config.json` file in assets (not currently used).
+5. **Build Output**: Production builds go to `build/` directory with:
+   - `myMegaBundle.js` - Minified JavaScript
+   - `styles.css` - Compiled Tailwind CSS
+   - `images/` - Optimized project images
 
 ## Development Workflow
 
-1. **Start Development**: `npm start` - Opens browser at `http://localhost:8080`
-2. **Make Changes**: Edit components in `src/`
-3. **Hot Reload**: Webpack dev server automatically reloads on file changes
-4. **Format Code**: Run `npm run format` before committing
-5. **Build for Production**: `npm run build` creates optimized bundle in `build/`
-
-## Deployment
-
-The build output (`build/` directory) contains:
-- `index.html` with injected bundle
-- `myMegaBundle.js` - All JavaScript code
-- `images/` - Optimized project images
-- `Spas-Zahariev-CV.pdf` - Resume
-- Static assets (fonts, etc.)
-
-This can be deployed to any static hosting service (AWS S3, Netlify, Vercel, etc.).
+1. **Start Development**: `bun run start` - Opens at `http://localhost:3000`
+2. **Make Changes**: Edit components in `src/`, use Tailwind classes
+3. **Hot Reload**: Dev server rebuilds CSS and JS on file changes
+4. **Format Code**: Run `bun run format` before committing
+5. **Build for Production**: `bun run build` creates optimized bundle
 
 ## Contact & Links
 
-The portfolio includes links to:
 - Email: spas.zah@gmail.com
 - GitHub: https://github.com/SpasZahariev
 - LinkedIn: https://www.linkedin.com/in/spaszahariev/
@@ -234,5 +205,5 @@ The portfolio includes links to:
 
 ---
 
-**Last Updated**: Based on current repository state
+**Last Updated**: February 2026  
 **Maintainer**: Spas Zahariev

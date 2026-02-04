@@ -4,16 +4,38 @@ import { serve, build } from "bun";
 import { readFileSync, existsSync, watchFile, mkdirSync, rmSync } from "fs";
 import { join } from "path";
 
-const PORT = 4000;
+const PORT = 3000;
 const PUBLIC_DIR = join(process.cwd(), "public");
 const HTML_TEMPLATE = join(PUBLIC_DIR, "index.html");
 const ENTRY_POINT = join(process.cwd(), "src", "index.tsx");
 const DEV_BUILD_DIR = join(process.cwd(), ".dev-build");
+const CSS_INPUT = join(process.cwd(), "src", "styles", "globals.css");
+const CSS_OUTPUT = join(DEV_BUILD_DIR, "styles.css");
 
 // Ensure dev build directory exists
 if (!existsSync(DEV_BUILD_DIR)) {
   mkdirSync(DEV_BUILD_DIR, { recursive: true });
 }
+
+// Build Tailwind CSS
+async function buildCSS() {
+  console.log("Building Tailwind CSS...");
+  const cssResult = Bun.spawnSync({
+    cmd: ["bun", "run", "tailwindcss", "-i", CSS_INPUT, "-o", CSS_OUTPUT],
+    stdout: "inherit",
+    stderr: "inherit",
+  });
+  
+  if (cssResult.exitCode !== 0) {
+    console.error("Tailwind CSS build failed");
+    return false;
+  }
+  console.log("Tailwind CSS built successfully");
+  return true;
+}
+
+// Initial CSS build
+await buildCSS();
 
 // Build function for dev mode (no minification)
 async function buildDev() {
@@ -56,7 +78,7 @@ await buildDev();
 // Watch for changes and rebuild
 watchFile(join(process.cwd(), "src"), { recursive: true }, async () => {
   console.log("File changed, rebuilding...");
-  await buildDev();
+  await Promise.all([buildDev(), buildCSS()]);
 });
 
 // Create dev server
@@ -65,14 +87,28 @@ const server = serve({
   async fetch(req) {
     const url = new URL(req.url);
 
-    // Serve the HTML with injected bundle script
+    // Serve the HTML with injected CSS and bundle script
     if (url.pathname === "/" || url.pathname === "/index.html") {
       let html = readFileSync(HTML_TEMPLATE, "utf-8");
+      // Inject CSS link
+      const cssLink = '  <link rel="stylesheet" href="/styles.css">\n</head>';
+      html = html.replace("</head>", cssLink);
+      // Inject bundle script
       const scriptTag = '  <script src="/myMegaBundle.js"></script>\n</body>';
       html = html.replace("</body>", scriptTag);
       return new Response(html, {
         headers: { "Content-Type": "text/html" },
       });
+    }
+
+    // Serve CSS
+    if (url.pathname === "/styles.css") {
+      if (existsSync(CSS_OUTPUT)) {
+        const file = Bun.file(CSS_OUTPUT);
+        return new Response(file, {
+          headers: { "Content-Type": "text/css" },
+        });
+      }
     }
 
     // Serve the bundle

@@ -1,17 +1,14 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import App from './pages/app/App';
-import './index.css';
+import './styles/globals.css';
 
-ReactDOM.render(
-  <React.StrictMode>
+const container = document.getElementById('root');
+if (!container) throw new Error('Root element not found');
+
+const root = createRoot(container);
+root.render(
+  <StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
+  </StrictMode>
 );
-
-// Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
-// Learn more: https://www.snowpack.dev/#hot-module-replacement
-// if (import.meta.hot) {
-// //   import.meta.hot.accept();
-// }

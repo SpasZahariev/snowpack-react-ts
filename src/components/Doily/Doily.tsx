@@ -1,60 +1,43 @@
-import * as React from 'react'
-import "./Doily.css"
-// import Carousel from 'react-material-ui-carousel'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import Chip from '@material-ui/core/Chip';
+import { Github } from 'lucide-react';
+import { Chip, IconLink } from '../ui';
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+function Doily() {
+  const technologies = ["Java", "Java Swing and AWT"];
 
-type Props = {
-}
-const Doily: React.FC<Props> = (props) => {
-
-    const getProjectHeader = () => (
-        <section className="horizontal-padding">
-            <h4 className="project-name">Java Painting Application</h4>
-            <div className="flex-header">
-                <h3 className="big-title">Mirrors your drawing in symmetrical sectors </h3>
-                <span className="small-empty-span"/>
-                <div className="icon-container">
-                    <a href="https://github.com/SpasZahariev/Digital-Doily" target="_blank" className="github">
-                        <GitHubIcon></GitHubIcon>
-                    </a>
-                </div>
-            </div>
-        </section>
-    )
-
-    const getCarousel = () => {
-        return (
-            <div>
-                <Carousel autoPlay={false}>
-                    <img src="images/doily/circle.jpg" alt="circle" />
-                    <img src="images/doily/many-zones.jpg" alt="many-zones" />
-                    <img src="images/doily/reflection.jpg" alt="reflection" />
-                </Carousel>
-            </div>
-        );
-
-    }
-    const getUtilisedTools = () => (
-        <section className="horizontal-padding utilised-tools-margin">
-            <span>
-                <h2 className="utilised-tools-text">Utilised Tools: </h2>
-                <Chip variant="outlined" size="small" label="Java" />
-                <Chip variant="outlined" size="small" label="Java Swing and AWT" />
-            </span>
-        </section>
-    )
-
-    return (
-        <div>
-            {getProjectHeader()}
-            {getCarousel()}
-            {getUtilisedTools()}
+  return (
+    <div>
+      <section className="px-4">
+        <h4 className="text-very-blue text-sm font-semibold mb-1">Java Painting Application</h4>
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h3 className="text-xl md:text-2xl font-bold text-dark-blue">Mirrors your drawing in symmetrical sectors</h3>
+          <div className="flex items-center gap-4">
+            <IconLink href="https://github.com/SpasZahariev/Digital-Doily" target="_blank">
+              <Github size={22} />
+            </IconLink>
+          </div>
         </div>
-    );
+      </section>
+
+      <div className="my-4">
+        <Carousel autoPlay={false} showThumbs={false}>
+          <img src="images/doily/circle.jpg" alt="circle" />
+          <img src="images/doily/many-zones.jpg" alt="many-zones" />
+          <img src="images/doily/reflection.jpg" alt="reflection" />
+        </Carousel>
+      </div>
+
+      <section className="px-4 mt-4">
+        <h2 className="text-sm font-semibold text-dark-blue mb-2">Utilised Tools:</h2>
+        <div className="flex flex-wrap">
+          {technologies.map((tech) => (
+            <Chip key={tech} label={tech} />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export default Doily;

@@ -8,19 +8,24 @@
   },
   "devDependencies": {
     "@babel/runtime": "^7.14.8",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@types/react": "^17.0.15",
-    "@types/react-dom": "^17.0.9",
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/forms": "^0.5.11",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.24",
+    "postcss": "^8.5.6",
     "prettier": "^2.3.2",
-    "typescript": "^4.3.5"
+    "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.2",
-    "@material-ui/icons": "^4.11.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "@tsparticles/react": "^3.0.0",
+    "lucide-react": "^0.563.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-responsive-carousel": "^3.2.20",
-    "react-tsparticles": "^1.32.0"
+    "tailwindcss": "^4.1.18",
+    "tsparticles": "^3.0.0"
   }
 }

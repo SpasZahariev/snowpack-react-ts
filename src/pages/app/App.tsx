@@ -1,496 +1,327 @@
-import * as React from 'react'
-import "./App.css";
+import { useState, useRef, useEffect, useCallback } from 'react';
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
-import { useState } from 'react';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
-import Button from '@material-ui/core/Button'
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import { Link } from '@material-ui/core';
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
-import Particles from 'react-tsparticles';
+import { Button, IconLink } from '../../components/ui';
+import { Info, Heart, Github, Linkedin, Instagram } from 'lucide-react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 
+function App() {
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+  const [isExperienceVisible, setIsExperienceVisible] = useState(false);
+  const [isCertsVisible, setIsCertsVisible] = useState(false);
+  const [isSkillsVisible, setIsSkillsVisible] = useState(false);
+  const [isNqmeVisible, setIsNqmeVisible] = useState(false);
+  const [isProjectManagementVisible, setIsProjectManagementVisible] = useState(false);
+  const [isDoilyVisible, setIsDoilyVisible] = useState(false);
+  const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState(false);
+  const [particlesInit, setParticlesInit] = useState(false);
 
-const App: React.FunctionComponent = () => {
-  const [isAboutVisible, setIsAboutVisible] = useState<boolean>(false);
-  const [isExperienceVisible, setIsExperienceVisible] = useState<boolean>(false);
-  const [isCertsVisible, setIsCertsVisible] = useState<boolean>(false);
-  const [isSkillsVisible, setIsSkillsVisible] = useState<boolean>(false);
-  const [isNqmeVisible, setIsNqmeVisible] = useState<boolean>(false);
-  const [isProjectManagementVisible, setIsProjectManagementVisible] = useState<boolean>(false);
-  const [isDoilyVisible, setIsDoilyVisible] = useState<boolean>(false);
-  const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState<boolean>(false);
+  const homeRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+  const experienceRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
 
-  const homeRef: React.RefObject<HTMLElement> = React.useRef(null);
-  const aboutRef: React.RefObject<HTMLElement> = React.useRef(null);
-  const experienceRef: React.RefObject<HTMLElement> = React.useRef(null);
-  const projectsRef: React.RefObject<HTMLElement> = React.useRef(null);
-  const contactRef: React.RefObject<HTMLElement> = React.useRef(null);
-
-  const navigationMenu = () => {
-    return <div></div>
-  }
-
-
-  const getIntroduction = () => {
-    return <section ref={homeRef} className="padded-section">
-      <h4 className="hello-there">Hello there, I'm</h4>
-      <h2 className="my-name">Spas Zahariev</h2>
-      {/* <h2 className="under-my-name">&gt;I like creating things and solving problems</h2> */}
-      <h2 className="under-my-name">I like creating things and solving problems.</h2>
-      <p className="intro-paragraph">I'm a fullstack software engineer based in the UK, focused on
-       developing scalable and fault tolerant solutions.</p>
-
-      <a href="mailto:spas.zah@gmail.com" className="anchor-override">
-        <Button variant="outlined" style={{ marginRight: "10px" }}>Reach Out</Button>
-      </a>
-      <a href="Spas-Zahariev-CV.pdf" target="_blank" className="anchor-override">
-        <Button variant="outlined">My Resume</Button>
-      </a>
-    </section>
-  }
-
-  const getBackgroundParagraph = () => {
-    return <section ref={aboutRef} className="padded-section">
-      <FadeInSection isVisible={isAboutVisible} handleVisualise={handleVisualiseAboutPermenently} >
-        <h3>About Me</h3>
-        <p className="styled-paragraph">
-          I'm an engineering graduate from the <b>University of Southampton</b> and my main strength is writing Java backend.
-        At the moment I am a fullstack software engineer at <b>JPMorgan Chase</b> where I've help my team build and maintain applications for tracking account liquidity.
-        {/* (insert sentance about how much work my SPF saves compared to the previous PPR)
-        Automated a system where users needed to send messages throught the day. The average manual user interactions per day were reduced from 1200 to 100
-        since a user just needs to activate it. */}
-        </p>
-
-        <p className="styled-paragraph">
-          I like building cool things in my free time and coding gives me the freedom to do that without limits.
-          I always strive to write clean, efficient code and constantly search for ways to improve my craft.
-      </p>
-      </FadeInSection>
-    </section>
-  }
-
-  const getExperienceParagraph = () => {
-    return <section className="padded-section">
-      <FadeInSection isVisible={isExperienceVisible} handleVisualise={handleVisualiseExperiencePermenently} >
-        <h3>Experience</h3>
-
-        <div className="job-container">
-          <div className="job-details">
-            <span>JPMorgan Chase</span>
-            <span>Software Engineer</span>
-          </div>
-          <div className="job-years">
-            <span>Sep 2019 - Present</span>
-          </div>
-        </div>
-
-        <div className="job-container">
-          <div className="job-details">
-            <span>JPMorgan Chase</span>
-            <span>Summer Software Intern</span>
-          </div>
-          <div className="job-years">
-            <span>Jun 2018 - Sep 2018</span>
-          </div>
-        </div>
-
-        <div className="job-container">
-          <div className="job-details">
-            <span>University of Southampton</span>
-            <span>First Class Honours BEng</span>
-          </div>
-          <div className="job-years">
-            <span>Sep 2016 - May 2019</span>
-          </div>
-        </div>
-
-        <div className="final-job-container">
-          <div className="job-details">
-            <span>Sofia High School of Mathematics</span>
-            <span>Student in an IT focused class</span>
-          </div>
-          <div className="job-years">
-            <span>Sep 2011 - May 2016</span>
-          </div>
-        </div>
-      </FadeInSection>
-    </section>
-  }
-
-  const getCertificationsParagraph = () => {
-    return <section ref={experienceRef} className="padded-section">
-      <FadeInSection isVisible={isCertsVisible} handleVisualise={handleVisualiseCertsPermenently} >
-        <h3>Certifications</h3>
-
-        <div className="certificate-container">
-          <div className="certificate-details">
-            <span>Microsoft Azure AZ-900</span>
-          </div>
-          <div className="cert-year">
-            <Button variant="outlined" href="https://www.youracclaim.com/badges/ea3e55cb-5f9d-4c1c-8ef7-d28c8281f5eb?source=linked_in_profile" target="_blank" className="info-icon-date-container" >
-              <span>Sep 2020</span>
-              <InfoOutlinedIcon></InfoOutlinedIcon>
-            </Button>
-          </div>
-        </div>
-
-        <div className="certificate-container">
-          <div className="certificate-details">
-            <span>Associate OCI Architect</span>
-          </div>
-          <div className="cert-year">
-            <Button variant="outlined" href="https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c" target="_blank" className="info-icon-date-container" >
-              <span>Apr 2020</span>
-              <InfoOutlinedIcon></InfoOutlinedIcon>
-            </Button>
-          </div>
-        </div>
-
-        <div className="final-certificate-container">
-          <div className="certificate-details">
-            <span>Unity GameDev Course</span>
-          </div>
-          <div className="cert-year">
-            <Button variant="outlined" href="https://softuni.bg/certificates/details/9171/c5d27b52" target="_blank" className="info-icon-date-container" >
-              <span className="cert-date-text">Feb 2016</span>
-              <InfoOutlinedIcon></InfoOutlinedIcon>
-            </Button>
-          </div>
-        </div>
-      </FadeInSection>
-    </section>
-  }
-
-  const getSkillsTable = () => {
-    return <section className="padded-section">
-      <FadeInSection isVisible={isSkillsVisible} handleVisualise={handleVisualiseSkillsPermenently} >
-        <h3>Relevant Skills</h3>
-        <div className="skill-grid-container-wrapper">
-
-          <div className="skill-grid-container">
-            <div>
-              <p className="list-header">Languages</p>
-              <ul>
-                <li>Java</li>
-                <li>Python</li>
-                <li>Haskell</li>
-                <li>C#</li>
-                <li>C++</li>
-                <li>Rust</li>
-                <li>SQL</li>
-                <li>Bash</li>
-                <li>JavaScript</li>
-                <li>TypeScript</li>
-                <li>Css/Scss</li>
-              </ul>
-            </div>
-
-            <div>
-              <p className="list-header">Technologies</p>
-              <ul>
-                <li>Spring Boot</li>
-                <li>Kafka</li>
-                <li>Protobuf</li>
-                <li>Docker</li>
-                <li>Kubernetes</li>
-                <li>React</li>
-                <li>Angular</li>
-                <li>GraphQL</li>
-                <li>Flask</li>
-                <li>Flutter</li>
-                <li>Git</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="skill-grid-container">
-            <div>
-              <p className="list-header">Services</p>
-              <ul>
-                <li>Amazon Web Services</li>
-                <li>Google Cloud Engine</li>
-                <li>Heroku</li>
-                <li>DynamoDB</li>
-                <li>PostgresSQL</li>
-                <li>Oracle SQL Developer</li>
-                <li>Jenkins CI/CD</li>
-                <li>IBM Websphere MQ</li>
-              </ul>
-            </div>
-
-            <div>
-              <p className="list-header">Other</p>
-              <ul>
-                <li>Web Penetration Testing</li>
-                <li>Data wrangling</li>
-                <li>General Machine Learning</li>
-                <li>Mobile Game Development</li>
-                <li>Agile Methodologies</li>
-                <li>Scrum Master</li>
-              </ul>
-            </div>
-          </div>
-
-
-
-
-        </div>
-      </FadeInSection>
-    </section>
-  }
-
-  const getNqme = () => (
-    <section ref={projectsRef} className="just-bottom-whitespace">
-      <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
-        <h3 className="featured-projects-title">Featured Projects</h3>
-        <NqmeProject></NqmeProject>
-      </FadeInSection>
-    </section>
-  )
-
-
-  const getProjectManagement = () => (
-    <section className="vertical-whitespace">
-      <FadeInSection isVisible={isProjectManagementVisible} handleVisualise={handleVisualiseProjectManagementPermenantly} >
-        <ProjectManagement />
-      </FadeInSection>
-    </section>
-  )
-
-  const getDoily = () => (
-    <section className="vertical-whitespace">
-      <FadeInSection isVisible={isDoilyVisible} handleVisualise={handleVisualiseDoilyPermenantly} >
-        <Doily />
-      </FadeInSection>
-    </section>
-  )
-
-  const getOtherProjects = () => (
-    <section className="vertical-whitespace">
-      <FadeInSection isVisible={isOtherProjectsSectionVisible} handleVisualise={handleVisualiseOtherProjectsSectionPermenantly} >
-        <OtherProjects />
-      </FadeInSection>
-    </section>
-  )
-
-  const projectInfo = () => (
-    <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualiseNqmePermenently} >
-      <div>
-        <img src="https://picsum.photos/500/800"></img>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing </p>
-      </div>
-    </FadeInSection>
-  )
-
-  const getProjects = () => {
-    return <section className="vertical-padding-container">
-      <div>
-        {getNqme()}
-        {getProjectManagement()}
-        {getDoily()}
-        {getOtherProjects()}
-        {/* {projectInfo()} */}
-      </div>
-    </section>
-  }
-
-  const handleVisualiseAboutPermenently = (isIntersecting: boolean) => {
-    isIntersecting ? setIsAboutVisible(true) : "do nothing";
-  }
-  const handleVisualiseExperiencePermenently = (isIntersecting: boolean) => {
-    isIntersecting ? setIsExperienceVisible(true) : "do nothing";
-  }
-  const handleVisualiseCertsPermenently = (isIntersecting: boolean) => {
-    isIntersecting ? setIsCertsVisible(true) : "do nothing";
-  }
-  const handleVisualiseSkillsPermenently = (isIntersecting: boolean) => {
-    isIntersecting ? setIsSkillsVisible(true) : "do nothing";
-  }
-
-  const handleVisualiseNqmePermenently = (isIntersecting: boolean) => {
-    isIntersecting ? setIsNqmeVisible(true) : "do nothing";
-  }
-
-  const handleVisualiseProjectManagementPermenantly = (isIntersecting: boolean) => {
-    isIntersecting ? setIsProjectManagementVisible(true) : "do nothing";
-  }
-
-  const handleVisualiseDoilyPermenantly = (isIntersecting: boolean) => {
-    isIntersecting ? setIsDoilyVisible(true) : "do nothing";
-  }
-
-  const handleVisualiseOtherProjectsSectionPermenantly = (isIntersecting: boolean) => {
-    isIntersecting ? setIsOtherProjectsSectionVisible(true) : "do nothing";
-  }
-
-  const handleScrollToHome = () => {
-    homeRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
+  // Initialize particles engine
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setParticlesInit(true);
     });
-  }
-  const handleScrollToAbout = () => {
-    aboutRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
+  }, []);
 
-  const handleScrollToExperience = () => {
-    experienceRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
+  // Visibility handlers
+  const handleVisualizeAboutPermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsAboutVisible(true);
+  }, []);
 
-  const handleScrollToProjects = () => {
-    projectsRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
+  const handleVisualizeExperiencePermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsExperienceVisible(true);
+  }, []);
 
-  const handleScrollToContact = () => {
-    contactRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
+  const handleVisualizeCertsPermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsCertsVisible(true);
+  }, []);
 
-  const getContactInfo = () => {
-    return <section ref={contactRef} className="padded-section center-text">
-      <span className="built-with-container">
-        Built with <FavoriteBorderIcon /> by Spas Zahariev
-      </span>
-      <p>Feel free to reach out via: <b>
-        <a href="mailto:spas.zah@gmail.com" className="anchor-override">spas.zah@gmail.com</a></b></p>
-      <p>UK mobile: <b className="dark-text">07784239930</b></p>
-      <div className="social-media-container">
-        <Link variant="inherit" href="https://github.com/SpasZahariev" target="_blank">
-          <GitHubIcon />
-        </Link>
-        <Link variant="inherit" href="https://www.linkedin.com/in/spaszahariev/" target="_blank">
-          <LinkedInIcon />
-        </Link>
-        <Link variant="inherit" href="https://www.instagram.com/spas_zah/" target="_blank">
-          <InstagramIcon />
-        </Link>
-      </div>
-    </section>
-  }
+  const handleVisualizeSkillsPermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsSkillsVisible(true);
+  }, []);
+
+  const handleVisualizeNqmePermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsNqmeVisible(true);
+  }, []);
+
+  const handleVisualizeProjectManagementPermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsProjectManagementVisible(true);
+  }, []);
+
+  const handleVisualizeDoilyPermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsDoilyVisible(true);
+  }, []);
+
+  const handleVisualizeOtherProjectsSectionPermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsOtherProjectsSectionVisible(true);
+  }, []);
+
+  // Scroll handlers
+  const handleScrollToHome = useCallback(() => {
+    homeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
+  const handleScrollToAbout = useCallback(() => {
+    aboutRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
+  const handleScrollToExperience = useCallback(() => {
+    experienceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
+  const handleScrollToProjects = useCallback(() => {
+    projectsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
+  const handleScrollToContact = useCallback(() => {
+    contactRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
+  const particlesOptions = {
+    background: { color: { value: "#f9f7f7" } },
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onClick: { enable: true, mode: "push" as const },
+        onHover: { enable: true, mode: "grab" as const }
+      },
+      modes: {
+        push: { quantity: 4 },
+        grab: { distance: 150 }
+      }
+    },
+    particles: {
+      color: { value: "#112d4e" },
+      links: { color: "#112d4e", distance: 150, enable: true, opacity: 0.5, width: 1 },
+      move: { enable: true, speed: 1 },
+      number: { density: { enable: true }, value: 80 },
+      opacity: { value: 0.5 },
+      shape: { type: "circle" as const },
+      size: { value: { min: 1, max: 4 } }
+    },
+    detectRetina: true
+  };
 
   return (
     <div>
-      <NavBar handleHome={handleScrollToHome}
+      <NavBar
+        handleHome={handleScrollToHome}
         handleAbout={handleScrollToAbout}
         handleExperience={handleScrollToExperience}
         handleProjects={handleScrollToProjects}
-        handleContact={handleScrollToContact}></NavBar>
-      <Particles className="tsparticles" canvasClassName="tsparticles-canvas" width="100%" height="100%" params={
-        {
-          background: {
-            color: {
-              value: "#f9f7f7"
-            }
-          },
-          fpsLimit: 60,
-          interactivity: {
-            // detectsOn: "canvas",
-            events: {
-              onClick: {
-                enable: true,
-                mode: "push"
-              },
-              onHover: {
-                enable: true,
-                mode: "grab"
-              },
-              resize: true
-            },
-            modes: {
-              bubble: {
-                distance: 400,
-                duration: 2,
-                opacity: 0.8,
-                size: 40,
-              },
-              push: {
-                quantity: 4
-              },
-              repulse: {
-                distance: 200,
-                duration: 0.4
-              }
-            }
-          },
-          particles: {
-            color: {
-              value: "#112d4e"
-            },
-            links: {
-              color: "#112d4e",
-              distance: 150,
-              enable: true,
-              opacity: 0.5,
-              width: 1
-            },
-            collisions: {
-              enable: true
-            },
-            move: {
-              // ignore this lint error - it is ok
-              // direction: "bottom-left",
-              enable: true,
-              random: false,
-              speed: 1,
-              straight: false
-            },
-            number: {
-              density: {
-                enable: true,
-                value_area: 800
-              },
-              value: 80
-            },
-            opacity: {
-              value: 0.5
-            },
-            shape: {
-              type: "circle"
-            },
-            size: {
-              random: true,
-              value: 4
-            }
-          },
-          detectRetina: true
-        }
+        handleContact={handleScrollToContact}
+      />
+      
+      {particlesInit && (
+        <Particles
+          id="tsparticles"
+          className="fixed inset-0 -z-10 hidden md:block"
+          options={particlesOptions}
+        />
+      )}
 
-      } />
-      <div id="website-container-id" className="website-container" >
-        <div className="whiteish-background-container">
-          {navigationMenu()}
-          {getIntroduction()}
-          {getBackgroundParagraph()}
-          <div className="experience-grid-container-wrapper">
-            {getExperienceParagraph()}
-            {getCertificationsParagraph()}
+      <div className="flex justify-center flex-col mx-auto px-2 md:px-32 lg:px-44 xl:px-56">
+        <div className="bg-whiteish z-0">
+          {/* Introduction */}
+          <section ref={homeRef} className="py-12 px-4">
+            <h4 className="mt-14 mb-2 text-base text-very-blue">Hello there, I'm</h4>
+            <h2 className="font-sans text-dark-blue text-4xl mt-2 mb-2 font-bold">Spas Zahariev</h2>
+            <h2 className="mt-2 mb-9 text-2xl text-very-blue">I like creating things and solving problems.</h2>
+            <p className="text-grayish mb-6">
+              I'm a fullstack software engineer based in the UK, focused on developing scalable and fault tolerant solutions.
+            </p>
+            <Button variant="outline" href="mailto:spas.zah@gmail.com" className="mr-2">
+              Reach Out
+            </Button>
+            <Button variant="outline" href="Spas-Zahariev-CV.pdf" target="_blank">
+              My Resume
+            </Button>
+          </section>
+
+          {/* About Me */}
+          <section ref={aboutRef} className="py-12 px-4">
+            <FadeInSection isVisible={isAboutVisible} handleVisualise={handleVisualizeAboutPermanently}>
+              <h3 className="text-very-blue text-2xl font-semibold mb-5">About Me</h3>
+              <p className="text-grayish leading-relaxed mb-4 max-w-2xl">
+                I'm an engineering graduate from the <b className="text-dark-blue">University of Southampton</b> and my main strength is writing Java backend.
+                At the moment I am a fullstack software engineer at <b className="text-dark-blue">JPMorgan Chase</b> where I've help my team build and maintain applications for tracking account liquidity.
+              </p>
+              <p className="text-grayish leading-relaxed mb-4 max-w-2xl">
+                I like building cool things in my free time and coding gives me the freedom to do that without limits.
+                I always strive to write clean, efficient code and constantly search for ways to improve my craft.
+              </p>
+            </FadeInSection>
+          </section>
+
+          {/* Experience & Certifications Grid */}
+          <div className="grid gap-8 xl:grid-cols-2 xl:gap-24">
+            {/* Experience */}
+            <section className="py-12 px-4">
+              <FadeInSection isVisible={isExperienceVisible} handleVisualise={handleVisualizeExperiencePermanently}>
+                <h3 className="text-very-blue text-2xl font-semibold mb-5">Experience</h3>
+                
+                {[
+                  { company: 'JPMorgan Chase', role: 'Software Engineer', period: 'Sep 2019 - Present' },
+                  { company: 'JPMorgan Chase', role: 'Summer Software Intern', period: 'Jun 2018 - Sep 2018' },
+                  { company: 'University of Southampton', role: 'First Class Honours BEng', period: 'Sep 2016 - May 2019' },
+                  { company: 'Sofia High School of Mathematics', role: 'Student in an IT focused class', period: 'Sep 2011 - May 2016' }
+                ].map((job, index, arr) => (
+                  <div key={job.company + job.role} className={`flex justify-between ${index !== arr.length - 1 ? 'mb-8' : ''}`}>
+                    <div className="grid">
+                      <span className="text-dark-blue font-semibold">{job.company}</span>
+                      <span className="mt-1 text-almost-black font-light">{job.role}</span>
+                    </div>
+                    <div className="text-right text-almost-black min-w-[145px]">
+                      <span>{job.period}</span>
+                    </div>
+                  </div>
+                ))}
+              </FadeInSection>
+            </section>
+
+            {/* Certifications */}
+            <section ref={experienceRef} className="py-12 px-4">
+              <FadeInSection isVisible={isCertsVisible} handleVisualise={handleVisualizeCertsPermanently}>
+                <h3 className="text-very-blue text-2xl font-semibold mb-5">Certifications</h3>
+                
+                {[
+                  { name: 'Microsoft Azure AZ-900', date: 'Sep 2020', url: 'https://www.youracclaim.com/badges/ea3e55cb-5f9d-4c1c-8ef7-d28c8281f5eb?source=linked_in_profile' },
+                  { name: 'Associate OCI Architect', date: 'Apr 2020', url: 'https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c' },
+                  { name: 'Unity GameDev Course', date: 'Feb 2016', url: 'https://softuni.bg/certificates/details/9171/c5d27b52' }
+                ].map((cert, index, arr) => (
+                  <div key={cert.name} className={`flex justify-between items-center ${index !== arr.length - 1 ? 'mb-5' : ''}`}>
+                    <div className="text-dark-blue font-semibold">{cert.name}</div>
+                    <div className="text-right min-w-[145px]">
+                      <Button variant="outline" href={cert.url} target="_blank" className="flex items-center gap-2">
+                        <span>{cert.date}</span>
+                        <Info size={16} />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </FadeInSection>
+            </section>
           </div>
-          {getSkillsTable()}
-          {getProjects()}
-          {getContactInfo()}
+
+          {/* Skills */}
+          <section className="py-12 px-4">
+            <FadeInSection isVisible={isSkillsVisible} handleVisualise={handleVisualizeSkillsPermanently}>
+              <h3 className="text-very-blue text-2xl font-semibold mb-5">Relevant Skills</h3>
+              <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(270px,1fr))]">
+                <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(120px,0.5fr))]">
+                  <div>
+                    <p className="text-xl text-dark-blue font-semibold mb-1">Languages</p>
+                    <ul className="list-none p-0 text-almost-black">
+                      {['Java', 'Python', 'Haskell', 'C#', 'C++', 'Rust', 'SQL', 'Bash', 'JavaScript', 'TypeScript', 'Css/Scss'].map(skill => (
+                        <li key={skill} className="my-2">{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xl text-dark-blue font-semibold mb-1">Technologies</p>
+                    <ul className="list-none p-0 text-almost-black">
+                      {['Spring Boot', 'Kafka', 'Protobuf', 'Docker', 'Kubernetes', 'React', 'Angular', 'GraphQL', 'Flask', 'Flutter', 'Git'].map(skill => (
+                        <li key={skill} className="my-2">{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(120px,0.5fr))]">
+                  <div>
+                    <p className="text-xl text-dark-blue font-semibold mb-1">Services</p>
+                    <ul className="list-none p-0 text-almost-black">
+                      {['Amazon Web Services', 'Google Cloud Engine', 'Heroku', 'DynamoDB', 'PostgresSQL', 'Oracle SQL Developer', 'Jenkins CI/CD', 'IBM Websphere MQ'].map(skill => (
+                        <li key={skill} className="my-2">{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xl text-dark-blue font-semibold mb-1">Other</p>
+                    <ul className="list-none p-0 text-almost-black">
+                      {['Web Penetration Testing', 'Data wrangling', 'General Machine Learning', 'Mobile Game Development', 'Agile Methodologies', 'Scrum Master'].map(skill => (
+                        <li key={skill} className="my-2">{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </FadeInSection>
+          </section>
+
+          {/* Projects */}
+          <section className="py-12">
+            {/* Nqme Project */}
+            <section ref={projectsRef} className="pb-12">
+              <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualizeNqmePermanently}>
+                <h3 className="text-very-blue text-2xl font-semibold mb-5 px-4">Featured Projects</h3>
+                <NqmeProject />
+              </FadeInSection>
+            </section>
+
+            {/* Project Management */}
+            <section className="py-12">
+              <FadeInSection isVisible={isProjectManagementVisible} handleVisualise={handleVisualizeProjectManagementPermanently}>
+                <ProjectManagement />
+              </FadeInSection>
+            </section>
+
+            {/* Doily */}
+            <section className="py-12">
+              <FadeInSection isVisible={isDoilyVisible} handleVisualise={handleVisualizeDoilyPermanently}>
+                <Doily />
+              </FadeInSection>
+            </section>
+
+            {/* Other Projects */}
+            <section className="py-12">
+              <FadeInSection isVisible={isOtherProjectsSectionVisible} handleVisualise={handleVisualizeOtherProjectsSectionPermanently}>
+                <OtherProjects />
+              </FadeInSection>
+            </section>
+          </section>
+
+          {/* Contact */}
+          <section ref={contactRef} className="py-12 px-4 text-center">
+            <span className="text-lg">
+              Built with <Heart size={18} className="inline mx-1 text-very-blue" /> by Spas Zahariev
+            </span>
+            <p className="mt-4">
+              Feel free to reach out via: <b className="text-dark-blue">
+                <a href="mailto:spas.zah@gmail.com" className="no-underline text-very-blue hover:text-dark-blue">
+                  spas.zah@gmail.com
+                </a>
+              </b>
+            </p>
+            <p>UK mobile: <b className="text-dark-blue">07784239930</b></p>
+            <div className="mt-8 flex justify-center gap-5">
+              <IconLink href="https://github.com/SpasZahariev" target="_blank">
+                <Github size={28} />
+              </IconLink>
+              <IconLink href="https://www.linkedin.com/in/spaszahariev/" target="_blank">
+                <Linkedin size={28} />
+              </IconLink>
+              <IconLink href="https://www.instagram.com/spas_zah/" target="_blank">
+                <Instagram size={28} />
+              </IconLink>
+            </div>
+          </section>
         </div>
       </div>
     </div>
-
   );
 }
+
 export default App;

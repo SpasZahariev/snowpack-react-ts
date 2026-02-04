@@ -1,97 +1,64 @@
-import { List, ListItem, ListItemText } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import * as React from 'react';
-import './SwipeableBottomDrawer.css';
+import { useState, ReactNode, useCallback } from 'react';
+import { Drawer } from '../../ui';
 
-type Props = {
-    handleAbout: () => void;
-    handleExperience: () => void;
-    handleProjects: () => void;
-    handleContact: () => void;
-    children: React.ReactNode;
+interface Props {
+  handleAbout: () => void;
+  handleExperience: () => void;
+  handleProjects: () => void;
+  handleContact: () => void;
+  children: ReactNode;
 }
 
-const SwipeableBottomDrawer: React.FunctionComponent<Props> = (props) => {
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
+function SwipeableBottomDrawer({
+  handleAbout,
+  handleExperience,
+  handleProjects,
+  handleContact,
+  children
+}: Props) {
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-    const handleAboutAndClose = async () => {
-        props.handleAbout();
-        //idk why it is not working without this hack. I suspect drawer close is async too
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setDrawerOpen(false);
-    }
-    const handleExperienceAndClose = async () => {
-        props.handleExperience();
-        //idk why it is not working without this hack. I suspect drawer close is async too
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setDrawerOpen(false);
-    }
-    const handleProjectsAndClose = async () => {
-        props.handleProjects();
-        //idk why it is not working without this hack. I suspect drawer close is async too
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setDrawerOpen(false);
-    }
-    const handleContactAndClose = async () => {
-        props.handleContact();
-        //idk why it is not working without this hack. I suspect drawer close is async too
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setDrawerOpen(false);
-    }
-    const navigationList = () => {
-        return (
-            <List>
-                <ListItem button onClick={() => handleAboutAndClose()}>
-                    <ListItemText primary={'About Me'} />
-                </ListItem>
+  const handleNavigate = useCallback((action: () => void) => {
+    action();
+    // Small delay to allow scroll to start before closing drawer
+    setTimeout(() => setDrawerOpen(false), 100);
+  }, []);
 
-                <ListItem button onClick={() => handleExperienceAndClose()}>
-                    <ListItemText primary={'Experience'} />
-                </ListItem>
+  const menuItems = [
+    { label: 'About Me', action: handleAbout },
+    { label: 'Experience', action: handleExperience },
+    { label: 'Featured Projects', action: handleProjects },
+    { label: 'Contact Information', action: handleContact },
+  ];
 
-                <ListItem button onClick={() => handleProjectsAndClose()}>
-                    <ListItemText primary={'Featured Projects'} />
-                </ListItem>
-
-                <ListItem button onClick={() => handleContactAndClose()}>
-                    <ListItemText primary={'Contact Information'} />
-                </ListItem>
-            </List >
-        );
-    }
-
-    const toggleDrawer = (opened: boolean) => (
-        event: React.KeyboardEvent | React.MouseEvent,
-    ) => {
-        //if event not triggered from click => Don't do anything
-        if (
-            event &&
-            event.type === 'keydown' &&
-            ((event as React.KeyboardEvent).key === 'Tab' ||
-                (event as React.KeyboardEvent).key === 'Shift')
-        ) {
-            return;
-        }
-        setDrawerOpen(opened);
-    };
-
-    return (
-        <React.Fragment key={'bottom'}>
-            {/* <Button onClick={toggleDrawer(true)}>click this bottom</Button> */}
-            <div onClick={toggleDrawer(true)}>
-                {props.children}
-            </div>
-            <SwipeableDrawer
-                anchor={'bottom'}
-                open={drawerOpen}
-                onClose={toggleDrawer(false)}
-                onOpen={toggleDrawer(true)}
-            >
-                {navigationList()}
-            </SwipeableDrawer>
-        </React.Fragment>
-    );
+  return (
+    <>
+      <div onClick={() => setDrawerOpen(true)} className="cursor-pointer">
+        {children}
+      </div>
+      <Drawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        onOpen={() => setDrawerOpen(true)}
+        anchor="bottom"
+      >
+        <nav className="py-4">
+          <ul className="list-none m-0 p-0">
+            {menuItems.map((item) => (
+              <li key={item.label}>
+                <button
+                  onClick={() => handleNavigate(item.action)}
+                  className="w-full text-left px-6 py-4 text-dark-blue hover:bg-light-blue/50 transition-colors duration-200 text-base"
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </Drawer>
+    </>
+  );
 }
+
 export default SwipeableBottomDrawer;

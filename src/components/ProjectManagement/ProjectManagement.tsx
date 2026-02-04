@@ -1,68 +1,50 @@
-import * as React from 'react'
-import "./ProjectManagement.css"
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LaunchIcon from '@material-ui/icons/Launch';
-import Chip from '@material-ui/core/Chip';
+import { Github, ExternalLink } from 'lucide-react';
+import { Chip, IconLink } from '../ui';
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-type Props = {
-}
-const ProjectManagement: React.FC<Props> = (props) => {
+function ProjectManagement() {
+  const technologies = [
+    "AWS DynamoDB", "AWS S3", "AWS Lambda", "AWS Cognito",
+    "Angular", "SendGrid", "Typescript"
+  ];
 
-    const getProjectHeader = () => (
-        <section className="horizontal-padding">
-            <h4 className="project-name">Project Tracking Website</h4>
-            <div className="flex-header">
-                <h3 className="big-title">Assign tasks to users</h3>
-                <span className="small-empty-span"/>
-                <div className="icon-container">
-                    <a href="https://github.com/SpasZahariev/CAD-SpasZahariev" target="_blank" className="github">
-                        <GitHubIcon></GitHubIcon>
-                    </a>
-                    <a href="http://spas-zahariev.cad.s3-website.eu-west-1.amazonaws.com/" target="_blank" className="launch-icon">
-                        <LaunchIcon></LaunchIcon>
-                    </a>
-                </div>
-            </div>
-        </section>
-    )
-
-    const getCarousel = () => {
-        return (
-            <div>
-                <Carousel autoPlay={false}>
-                    <img src="images/cloud-app-dev/user-info.jpg" alt="user-info" />
-                    <img src="images/cloud-app-dev/project-dashboard.jpg" alt="project-dashboard" />
-                    <img src="images/cloud-app-dev/compose-email.jpg" alt="compose-email" />
-                    <img src="images/cloud-app-dev/login-screen.jpg" alt="login-screen" />
-                </Carousel>
-            </div>
-        );
-
-    }
-    const getUtilisedTools = () => (
-        <section className="horizontal-padding utilised-tools-margin">
-            <span>
-                <h2 className="utilised-tools-text">Utilised Tools: </h2>
-                <Chip variant="outlined" size="small" label="AWS DynamoDB" />
-                <Chip variant="outlined" size="small" label="AWS S3" />
-                <Chip variant="outlined" size="small" label="AWS Lambda" />
-                <Chip variant="outlined" size="small" label="AWS Cognito" />
-                <Chip variant="outlined" size="small" label="Angular" />
-                <Chip variant="outlined" size="small" label="SendGrid" />
-                <Chip variant="outlined" size="small" label="Typescript" />
-            </span>
-        </section>
-    )
-
-    return (
-        <div>
-            {getProjectHeader()}
-            {getCarousel()}
-            {getUtilisedTools()}
+  return (
+    <div>
+      <section className="px-4">
+        <h4 className="text-very-blue text-sm font-semibold mb-1">Project Tracking Website</h4>
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h3 className="text-xl md:text-2xl font-bold text-dark-blue">Assign tasks to users</h3>
+          <div className="flex items-center gap-4">
+            <IconLink href="https://github.com/SpasZahariev/CAD-SpasZahariev" target="_blank">
+              <Github size={22} />
+            </IconLink>
+            <IconLink href="http://spas-zahariev.cad.s3-website.eu-west-1.amazonaws.com/" target="_blank">
+              <ExternalLink size={22} />
+            </IconLink>
+          </div>
         </div>
-    );
+      </section>
+
+      <div className="my-4">
+        <Carousel autoPlay={false} showThumbs={false}>
+          <img src="images/cloud-app-dev/user-info.jpg" alt="user-info" />
+          <img src="images/cloud-app-dev/project-dashboard.jpg" alt="project-dashboard" />
+          <img src="images/cloud-app-dev/compose-email.jpg" alt="compose-email" />
+          <img src="images/cloud-app-dev/login-screen.jpg" alt="login-screen" />
+        </Carousel>
+      </div>
+
+      <section className="px-4 mt-4">
+        <h2 className="text-sm font-semibold text-dark-blue mb-2">Utilised Tools:</h2>
+        <div className="flex flex-wrap">
+          {technologies.map((tech) => (
+            <Chip key={tech} label={tech} />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export default ProjectManagement;

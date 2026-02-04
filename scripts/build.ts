@@ -8,12 +8,28 @@ const PUBLIC_DIR = join(process.cwd(), "public");
 const OPTIMISED_IMAGES_DIR = join(process.cwd(), "optimised-images", "lossful", "images");
 const ENTRY_POINT = join(process.cwd(), "src", "index.tsx");
 const HTML_TEMPLATE = join(PUBLIC_DIR, "index.html");
+const CSS_INPUT = join(process.cwd(), "src", "styles", "globals.css");
+const CSS_OUTPUT = join(BUILD_DIR, "styles.css");
 
 // Clean and create build directory
 if (existsSync(BUILD_DIR)) {
   rmSync(BUILD_DIR, { recursive: true, force: true });
 }
 mkdirSync(BUILD_DIR, { recursive: true });
+
+// Build Tailwind CSS
+console.log("Building Tailwind CSS...");
+const cssResult = Bun.spawnSync({
+  cmd: ["bun", "run", "tailwindcss", "-i", CSS_INPUT, "-o", CSS_OUTPUT, "--minify"],
+  stdout: "inherit",
+  stderr: "inherit",
+});
+
+if (cssResult.exitCode !== 0) {
+  console.error("Tailwind CSS build failed");
+  process.exit(1);
+}
+console.log("Tailwind CSS built successfully");
 
 console.log("Building bundle with Bun...");
 
@@ -97,6 +113,10 @@ if (!existsSync(HTML_TEMPLATE)) {
 }
 
 let html = readFileSync(HTML_TEMPLATE, "utf-8");
+
+// Inject the CSS link in <head>
+const cssLink = '  <link rel="stylesheet" href="styles.css">\n</head>';
+html = html.replace("</head>", cssLink);
 
 // Inject the bundle script before closing </body> tag
 const scriptTag = '  <script src="myMegaBundle.js"></script>\n</body>';

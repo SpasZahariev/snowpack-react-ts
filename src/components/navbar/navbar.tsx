@@ -1,73 +1,67 @@
-import * as React from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import SwipeableBottomDrawer from '../common/SwipeableBottomDrawer/SwipeableBottomDrawer';
-import "./navbar.css";
-// import * as Logo from "../../assets/spas-logo.svg";
 
-type Props = {
-    handleHome: () => void;
-    handleAbout: () => void;
-    handleExperience: () => void;
-    handleProjects: () => void;
-    handleContact: () => void;
+interface Props {
+  handleHome: () => void;
+  handleAbout: () => void;
+  handleExperience: () => void;
+  handleProjects: () => void;
+  handleContact: () => void;
 }
 
-const NavBar: React.FunctionComponent<Props> = (props) => {
+function NavBar({
+  handleHome,
+  handleAbout,
+  handleExperience,
+  handleProjects,
+  handleContact
+}: Props) {
+  const [visible, setVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
-    const [visible, setVisible] = React.useState(true);
-    const [prevScrollPos, setPrevScrollPos] = React.useState(window.pageYOffset);
+  const handleScroll = useCallback(() => {
+    const currentScrollPos = window.scrollY;
+    const isVisibleNow = prevScrollPos > currentScrollPos || currentScrollPos < 10;
+    setPrevScrollPos(currentScrollPos);
+    setVisible(isVisibleNow);
+  }, [prevScrollPos]);
 
-    //call this every time the scrollbar position changes
-    const handleScroll = () => {
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
-        const currentScrollPos = window.pageYOffset;
-        const isVisibleNow = prevScrollPos > currentScrollPos;
+  const navItems = [
+    { label: 'About', action: handleAbout },
+    { label: 'Experience', action: handleExperience },
+    { label: 'Projects', action: handleProjects },
+    { label: 'Contact', action: handleContact },
+  ];
 
-        setPrevScrollPos(currentScrollPos);
-        setVisible(isVisibleNow);
-    };
-
-    React.useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        }
-    }, [prevScrollPos]);
-
-    return (
-        <nav className={visible ? "navbar" : "navbar navbar-hidden"}>
-            <div className="nav-flex">
-                <span onClick={() => props.handleHome()}>{getSvg()}</span>
-                <div className="section-names">
-                    <span onClick={() => props.handleAbout()}>About</span>
-                    <span onClick={() => props.handleExperience()}>Experience</span>
-                    <span onClick={() => props.handleProjects()}>Projects</span>
-                    <span onClick={() => props.handleContact()}>Contact</span>
-                </div>
-                <div className="hamburger">
-                    <SwipeableBottomDrawer
-                        handleAbout={props.handleAbout}
-                        handleExperience={props.handleExperience}
-                        handleProjects={props.handleProjects}
-                        handleContact={props.handleContact}>
-                        <div id="nav-icon4">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </SwipeableBottomDrawer>
-                </div>
-            </div>
-        </nav>
-    );
-}
-
-const getSvg = () => (
-    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 900.000000 900.000000" className="svg-container">
-        <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
-            fill="#28518a" stroke="none">
-            <path id="svg-border"
+  return (
+    <nav
+      className={`w-full fixed top-0 z-50 bg-whiteish rounded-b-xl transition-all duration-500 ease-in-out ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
+      <div className="px-4 py-1 flex justify-between items-center">
+        {/* Logo */}
+        <span onClick={handleHome} className="cursor-pointer group">
+          <svg
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 900.000000 900.000000"
+            className="h-10 w-10"
+          >
+            <g
+              transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+              fill="#28518a"
+              stroke="none"
+              className="group-hover:animate-spin origin-center"
+              style={{ animationDuration: '0.8s', animationIterationCount: '1' }}
+            >
+              <path
                 d="M2145 8935 c-5 -3 -44 -9 -85 -14 -143 -20 -360 -73 -412 -101 -10
 -6 -26 -10 -36 -10 -9 0 -26 -6 -37 -14 -11 -7 -37 -19 -58 -26 -66 -21 -298
 -142 -391 -204 -351 -231 -618 -522 -815 -885 -28 -52 -51 -97 -51 -100 0 -3
@@ -105,8 +99,9 @@ const getSvg = () => (
 175 306 4 6 29 40 55 76 26 36 66 86 90 111 23 24 55 62 71 83 15 21 45 51 66
 66 21 16 57 46 79 67 23 21 73 61 111 90 39 28 75 55 80 60 34 27 228 139 283
 164 37 17 85 38 107 48 130 58 330 113 479 131 44 6 87 14 95 19 26 15 4521 6
-4601 -9z"/>
-            <path d="M4125 7104 c-209 -15 -447 -54 -510 -84 -11 -5 -55 -20 -97 -34 -338
+4601 -9z"
+              />
+              <path d="M4125 7104 c-209 -15 -447 -54 -510 -84 -11 -5 -55 -20 -97 -34 -338
 -110 -666 -379 -813 -668 -41 -79 -105 -265 -105 -302 0 -14 -5 -37 -11 -52
 -5 -16 -10 -105 -10 -204 0 -176 9 -242 54 -395 26 -90 99 -231 152 -294 89
 -106 130 -147 195 -198 41 -32 77 -61 78 -65 2 -5 9 -8 15 -8 7 0 32 -14 57
@@ -132,13 +127,42 @@ const getSvg = () => (
 375 23 299 0 338 -5 565 -71 196 -58 364 -170 482 -321 83 -107 158 -299 178
 -455 l6 -47 307 2 307 3 3 54 c4 77 -42 326 -78 416 -101 258 -233 440 -430
 596 -216 170 -543 310 -840 358 -127 21 -217 30 -335 36 -66 3 -140 7 -165 9
--25 2 -126 -2 -225 -10z"/>
-        </g>
-    </svg>
-);
+-25 2 -126 -2 -225 -10z" />
+            </g>
+          </svg>
+        </span>
 
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-4">
+          {navItems.map((item) => (
+            <span
+              key={item.label}
+              onClick={item.action}
+              className="text-dark-blue cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-md transition-colors"
+            >
+              {item.label}
+            </span>
+          ))}
+        </div>
 
-
-// this guide looks like what I want
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <SwipeableBottomDrawer
+            handleAbout={handleAbout}
+            handleExperience={handleExperience}
+            handleProjects={handleProjects}
+            handleContact={handleContact}
+          >
+            <div className="relative w-10 h-10 cursor-pointer group">
+              <span className="absolute block h-1.5 w-full bg-dark-blue rounded-full left-0 top-1 transition-all duration-300 ease-in-out origin-left group-hover:rotate-45" />
+              <span className="absolute block h-1.5 w-full bg-dark-blue rounded-full left-0 top-[14px] transition-all duration-300 ease-in-out origin-left group-hover:opacity-0 group-hover:w-0" />
+              <span className="absolute block h-1.5 w-full bg-dark-blue rounded-full left-0 top-[26px] transition-all duration-300 ease-in-out origin-left group-hover:-rotate-45" />
+            </div>
+          </SwipeableBottomDrawer>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 export default NavBar;

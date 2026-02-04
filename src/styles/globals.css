@@ -1,0 +1,119 @@
+/* Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* Custom theme configuration for Tailwind v4 */
+@theme {
+  --color-whiteish: #f9f7f7;
+  --color-light-blue: #dbe2ef;
+  --color-very-blue: #3f72af;
+  --color-dark-blue: #112d4e;
+  --color-grayish: #707070;
+  --color-almost-black: #242424;
+  
+  --font-family-sans: 'Open Sans', sans-serif;
+  
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+  --animate-slide-up: slideUp 0.3s ease-out forwards;
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+  }
+}
+
+/* Base styles */
+@layer base {
+  html {
+    font-size: 15px;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply m-0 p-0 font-sans bg-whiteish text-dark-blue antialiased;
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive font sizing */
+  @media (min-width: 62.5em) {
+    html {
+      font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 2200px) {
+    html {
+      font-size: 21px;
+    }
+  }
+  
+  @media (min-width: 3000px) {
+    html {
+      font-size: 24px;
+    }
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-light-blue;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-blue;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-very-blue;
+  }
+}
+
+/* Component layer for reusable styles */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2 border border-dark-blue text-dark-blue rounded 
+           hover:bg-dark-blue hover:text-whiteish transition-colors duration-200
+           cursor-pointer bg-transparent;
+  }
+  
+  .btn-outline {
+    @apply px-4 py-2 border border-dark-blue text-dark-blue rounded
+           hover:bg-dark-blue hover:text-whiteish transition-colors duration-200
+           cursor-pointer bg-transparent text-sm;
+  }
+  
+  .chip {
+    @apply inline-flex items-center px-3 py-1 text-xs border border-dark-blue 
+           rounded-full text-dark-blue mr-2 mb-2;
+  }
+  
+  .section-title {
+    @apply text-2xl font-semibold text-dark-blue mb-6 relative
+           before:content-[''] before:absolute before:bottom-[-8px] before:left-0 
+           before:w-12 before:h-1 before:bg-very-blue;
+  }
+  
+  .styled-paragraph {
+    @apply text-grayish leading-relaxed mb-4 max-w-2xl;
+  }
+  
+  .anchor-override {
+    @apply no-underline text-inherit;
+  }
+}
+
+/* Utility layer for custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

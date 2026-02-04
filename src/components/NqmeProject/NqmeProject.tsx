@@ -1,76 +1,49 @@
-import * as React from 'react'
-import "./NqmeProject.css"
-// import Carousel from 'react-material-ui-carousel'
-import { useState } from 'react'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LaunchIcon from '@material-ui/icons/Launch';
-import Chip from '@material-ui/core/Chip';
+import { Github, ExternalLink } from 'lucide-react';
+import { Chip, IconLink } from '../ui';
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+function NqmeProject() {
+  const technologies = [
+    "Python Flask", "GraphQL", "Docker", "React", "Typescript",
+    "Redux", "SocketIO", "Heroku", "AWS S3", "AWS CloudFront"
+  ];
 
-
-type Props = {
-}
-const NqmeProject: React.FC<Props> = (props) => {
-
-    const getProjectHeader = () => (
-        <section className="horizontal-padding">
-            <h4 className="project-name">Nqme website</h4>
-            <div className="flex-header">
-                <h3 className="big-title">Shared Music Player</h3>
-                <span className="small-empty-span"/>
-                <div className="icon-container">
-                    <a href="https://github.com/SpasZahariev/nqme-react" target="_blank" className="github">
-                        <GitHubIcon></GitHubIcon>
-                    </a>
-                    <a href="http://nqme.co.uk.s3-website.eu-west-2.amazonaws.com" target="_blank" className="launch-icon">
-                    {/* <a href="https://nqme.co.uk" target="_blank" className="launch-icon"> */}
-                        <LaunchIcon></LaunchIcon>
-                    </a>
-                </div>
-            </div>
-        </section>
-    )
-
-    const getCarousel = () => {
-        return (
-            <div>
-                <Carousel autoPlay={false} >
-                    <img src="images/nqme/nqme-homepage.jpg" alt="nqme-homepage" />
-                    <img src="images/nqme/room-with-songs.jpg" alt="room-with-songs" />
-                    <img src="images/nqme/many-users.jpg" alt="many-users" />
-                </Carousel>
-            </div>
-        );
-
-    }
-    const getUtilisedTools = () => (
-        <section className="horizontal-padding utilised-tools-margin">
-            <span>
-
-                <h2 className="utilised-tools-text">Utilised Tools: </h2>
-                <Chip variant="outlined" size="small" label="Python Flask" />
-                <Chip variant="outlined" size="small" label="GraphQL" />
-                <Chip variant="outlined" size="small" label="Docker" />
-                <Chip variant="outlined" size="small" label="React" />
-                <Chip variant="outlined" size="small" label="Typescript" />
-                <Chip variant="outlined" size="small" label="Redux" />
-                <Chip variant="outlined" size="small" label="SocketIO" />
-                <Chip variant="outlined" size="small" label="Heroku" />
-                <Chip variant="outlined" size="small" label="AWS S3" />
-                <Chip variant="outlined" size="small" label="AWS CloudFront" />
-            </span>
-        </section>
-    )
-
-    return (
-        <div>
-            {getProjectHeader()}
-            {getCarousel()}
-            {getUtilisedTools()}
+  return (
+    <div>
+      <section className="px-4">
+        <h4 className="text-very-blue text-sm font-semibold mb-1">Nqme website</h4>
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h3 className="text-xl md:text-2xl font-bold text-dark-blue">Shared Music Player</h3>
+          <div className="flex items-center gap-4">
+            <IconLink href="https://github.com/SpasZahariev/nqme-react" target="_blank">
+              <Github size={22} />
+            </IconLink>
+            <IconLink href="http://nqme.co.uk.s3-website.eu-west-2.amazonaws.com" target="_blank">
+              <ExternalLink size={22} />
+            </IconLink>
+          </div>
         </div>
-    );
+      </section>
+
+      <div className="my-4">
+        <Carousel autoPlay={false} showThumbs={false}>
+          <img src="images/nqme/nqme-homepage.jpg" alt="nqme-homepage" />
+          <img src="images/nqme/room-with-songs.jpg" alt="room-with-songs" />
+          <img src="images/nqme/many-users.jpg" alt="many-users" />
+        </Carousel>
+      </div>
+
+      <section className="px-4 mt-4">
+        <h2 className="text-sm font-semibold text-dark-blue mb-2">Utilised Tools:</h2>
+        <div className="flex flex-wrap">
+          {technologies.map((tech) => (
+            <Chip key={tech} label={tech} />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export default NqmeProject;
