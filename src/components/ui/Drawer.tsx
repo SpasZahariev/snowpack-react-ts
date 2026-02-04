@@ -52,7 +52,7 @@ export function Drawer({ open, onClose, anchor = 'bottom', children }: DrawerPro
     >
       <div
         ref={drawerRef}
-        className={`fixed bg-whiteish shadow-lg ${anchorClasses[anchor]}`}
+        className={`fixed bg-base shadow-lg ${anchorClasses[anchor]}`}
       >
         {children}
       </div>

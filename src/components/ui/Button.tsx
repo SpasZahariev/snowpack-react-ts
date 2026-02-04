@@ -9,9 +9,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'px-6 py-2 border border-dark-blue text-dark-blue rounded hover:bg-dark-blue hover:text-whiteish transition-colors duration-200 cursor-pointer bg-transparent',
-  outline: 'px-4 py-2 border border-dark-blue text-dark-blue rounded hover:bg-dark-blue hover:text-whiteish transition-colors duration-200 cursor-pointer bg-transparent text-sm',
-  ghost: 'px-4 py-2 text-dark-blue hover:bg-light-blue/50 transition-colors duration-200 cursor-pointer bg-transparent rounded',
+  primary: 'px-6 py-2 border border-pink text-pink rounded hover:bg-pink hover:text-base transition-colors duration-200 cursor-pointer bg-transparent',
+  outline: 'px-4 py-2 border border-pink text-pink rounded hover:bg-pink hover:text-base transition-colors duration-200 cursor-pointer bg-transparent text-sm',
+  ghost: 'px-4 py-2 text-pink hover:bg-surface0/50 transition-colors duration-200 cursor-pointer bg-transparent rounded',
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

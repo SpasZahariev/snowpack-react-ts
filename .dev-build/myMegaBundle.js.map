@@ -600,7 +600,7 @@
 
 /* src/styles/globals.css */
 @theme {
-  --color-whiteish: #f9f7f7; --color-light-blue: #dbe2ef; --color-very-blue: #3f72af; --color-dark-blue: #112d4e; --color-grayish: #707070; --color-almost-black: #242424; --font-family-sans: "Open Sans", sans-serif; --animate-fade-in: fadeIn .6s ease-out forwards; --animate-slide-up: slideUp .3s ease-out forwards; @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px) ; } 100% { opacity: 1; transform: translateY(0) ; } } @keyframes slideUp { 0% { transform: translateY(100%) ; } 100% { transform: translateY(0) ; } }
+   --color-base: #24273a; --color-mantle: #1e2030; --color-crust: #181926; --color-surface0: #363a4f; --color-surface1: #494d64; --color-surface2: #5b6078;  --color-text: #cad3f5; --color-subtext1: #b8c0e0; --color-subtext0: #a5adcb; --color-overlay2: #939ab7;  --color-pink: #f5bde6; --color-mauve: #c6a0f6; --color-flamingo: #f0c6c6; --color-rosewater: #f4dbd6;  --color-whiteish: #24273a; --color-light-blue: #363a4f; --color-very-blue: #f5bde6; --color-dark-blue: #cad3f5; --color-grayish: #a5adcb; --color-almost-black: #b8c0e0; --font-family-sans: "Open Sans", sans-serif; --animate-fade-in: fadeIn .6s ease-out forwards; --animate-slide-up: slideUp .3s ease-out forwards; @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px) ; } 100% { opacity: 1; transform: translateY(0) ; } } @keyframes slideUp { 0% { transform: translateY(100%) ; } 100% { transform: translateY(0) ; } }
 }
 
 @layer base {
@@ -613,7 +613,7 @@
     font-size: 1.1rem;
   }
 
-  @apply m-0 p-0 font-sans bg-whiteish text-dark-blue antialiased;
+  @apply m-0 p-0 font-sans bg-base text-text antialiased;
 
   @media (min-width: 62.5em) {
     html {
@@ -637,23 +637,23 @@
     width: 5px;
   }
 
-  @apply bg-light-blue;
+  @apply bg-surface0;
 
-  @apply bg-dark-blue;
+  @apply bg-pink;
 
-  @apply bg-very-blue;
+  @apply bg-mauve;
 }
 
 @layer components {
-  @apply px-6 py-2 border border-dark-blue text-dark-blue rounded hover:bg-dark-blue hover:text-whiteish transition-colors duration-200 cursor-pointer bg-transparent;
+  @apply px-6 py-2 border border-pink text-pink rounded hover:bg-pink hover:text-base transition-colors duration-200 cursor-pointer bg-transparent;
 
-  @apply px-4 py-2 border border-dark-blue text-dark-blue rounded hover:bg-dark-blue hover:text-whiteish transition-colors duration-200 cursor-pointer bg-transparent text-sm;
+  @apply px-4 py-2 border border-pink text-pink rounded hover:bg-pink hover:text-base transition-colors duration-200 cursor-pointer bg-transparent text-sm;
 
-  @apply inline-flex items-center px-3 py-1 text-xs border border-dark-blue rounded-full text-dark-blue mr-2 mb-2;
+  @apply inline-flex items-center px-3 py-1 text-xs border border-mauve rounded-full text-mauve mr-2 mb-2;
 
-  @apply text-2xl font-semibold text-dark-blue mb-6 relative before:content-[""] before:absolute before:bottom-[-8px] before:left-0 before:w-12 before:h-1 before:bg-very-blue;
+  @apply text-2xl font-semibold text-pink mb-6 relative before:content-[""] before:absolute before:bottom-[-8px] before:left-0 before:w-12 before:h-1 before:bg-mauve;
 
-  @apply text-grayish leading-relaxed mb-4 max-w-2xl;
+  @apply text-subtext0 leading-relaxed mb-4 max-w-2xl;
 
   @apply no-underline text-inherit;
 }

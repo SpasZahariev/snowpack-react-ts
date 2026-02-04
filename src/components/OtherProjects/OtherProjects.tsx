@@ -7,9 +7,9 @@ function OtherProjects() {
   return (
     <div>
       <section className="px-4">
-        <h4 className="text-very-blue text-sm font-semibold mb-1">Github Projects</h4>
+        <h4 className="text-pink text-sm font-semibold mb-1">Github Projects</h4>
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-xl md:text-2xl font-bold text-dark-blue">Check out more</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-flamingo">Check out more</h3>
           <div className="flex items-center gap-4">
             <IconLink href="https://github.com/SpasZahariev/" target="_blank">
               <Github size={22} />

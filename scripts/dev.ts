@@ -75,10 +75,43 @@ async function buildDev() {
 // Initial build
 await buildDev();
 
+// Track SSE clients for hot reload
+const sseClients: Set<ReadableStreamDefaultController> = new Set();
+
+// Function to notify all connected clients to reload
+function notifyReload() {
+  const message = `data: reload\n\n`;
+  sseClients.forEach((controller) => {
+    try {
+      controller.enqueue(new TextEncoder().encode(message));
+    } catch (e) {
+      // Client disconnected, remove it
+      sseClients.delete(controller);
+    }
+  });
+}
+
 // Watch for changes and rebuild
 watchFile(join(process.cwd(), "src"), { recursive: true }, async () => {
   console.log("File changed, rebuilding...");
-  await Promise.all([buildDev(), buildCSS()]);
+  await buildDev();
+  // Notify clients to reload after rebuild completes
+  notifyReload();
+});
+
+// Watch for CSS changes
+watchFile(CSS_INPUT, { recursive: false }, async () => {
+  console.log("CSS file changed, rebuilding...");
+  await buildCSS();
+  // Notify clients to reload after CSS rebuild completes
+  notifyReload();
+});
+
+// Watch for public directory changes (images, PDFs, etc.)
+watchFile(PUBLIC_DIR, { recursive: true }, async () => {
+  console.log("Public files changed, reloading...");
+  // Just reload, no rebuild needed for static files
+  notifyReload();
 });
 
 // Create dev server
@@ -96,8 +129,51 @@ const server = serve({
       // Inject bundle script
       const scriptTag = '  <script src="/myMegaBundle.js"></script>\n</body>';
       html = html.replace("</body>", scriptTag);
+      // Inject hot reload script
+      const hotReloadScript = `
+  <script>
+    if (typeof EventSource !== 'undefined') {
+      const eventSource = new EventSource('/__hot-reload');
+      eventSource.onmessage = function(event) {
+        if (event.data === 'reload') {
+          console.log('🔄 Hot reload: Reloading page...');
+          window.location.reload();
+        }
+      };
+      eventSource.onerror = function(event) {
+        console.error('Hot reload connection error');
+      };
+    }
+  </script>
+</body>`;
+      html = html.replace("</body>", hotReloadScript);
       return new Response(html, {
         headers: { "Content-Type": "text/html" },
+      });
+    }
+
+    // SSE endpoint for hot reload
+    if (url.pathname === "/__hot-reload") {
+      const stream = new ReadableStream({
+        start(controller) {
+          sseClients.add(controller);
+          // Send initial connection message
+          controller.enqueue(new TextEncoder().encode("data: connected\n\n"));
+          
+          // Clean up on client disconnect
+          req.signal.addEventListener("abort", () => {
+            sseClients.delete(controller);
+            controller.close();
+          });
+        },
+      });
+
+      return new Response(stream, {
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          "Connection": "keep-alive",
+        },
       });
     }
 

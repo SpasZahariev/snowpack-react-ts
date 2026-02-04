@@ -48,7 +48,7 @@ function SwipeableBottomDrawer({
               <li key={item.label}>
                 <button
                   onClick={() => handleNavigate(item.action)}
-                  className="w-full text-left px-6 py-4 text-dark-blue hover:bg-light-blue/50 transition-colors duration-200 text-base"
+                  className="w-full text-left px-6 py-4 text-text hover:bg-surface0 hover:text-pink transition-colors duration-200 text-base"
                 >
                   {item.label}
                 </button>

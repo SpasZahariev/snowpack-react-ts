@@ -9,9 +9,9 @@ function Doily() {
   return (
     <div>
       <section className="px-4">
-        <h4 className="text-very-blue text-sm font-semibold mb-1">Java Painting Application</h4>
+        <h4 className="text-pink text-sm font-semibold mb-1">Java Painting Application</h4>
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-xl md:text-2xl font-bold text-dark-blue">Mirrors your drawing in symmetrical sectors</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-flamingo">Mirrors your drawing in symmetrical sectors</h3>
           <div className="flex items-center gap-4">
             <IconLink href="https://github.com/SpasZahariev/Digital-Doily" target="_blank">
               <Github size={22} />
@@ -29,7 +29,7 @@ function Doily() {
       </div>
 
       <section className="px-4 mt-4">
-        <h2 className="text-sm font-semibold text-dark-blue mb-2">Utilised Tools:</h2>
+        <h2 className="text-sm font-semibold text-flamingo mb-2">Utilised Tools:</h2>
         <div className="flex flex-wrap">
           {technologies.map((tech) => (
             <Chip key={tech} label={tech} />

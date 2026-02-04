@@ -7,7 +7,7 @@ interface IconLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 export function IconLink({ children, className = '', ...props }: IconLinkProps) {
   return (
     <a
-      className={`text-dark-blue hover:text-very-blue transition-colors duration-200 ${className}`}
+      className={`text-text hover:text-pink transition-colors duration-200 ${className}`}
       {...props}
     >
       {children}
