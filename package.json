@@ -21,10 +21,10 @@
   },
   "dependencies": {
     "@tsparticles/react": "^3.0.0",
+    "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.563.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-responsive-carousel": "^3.2.20",
     "tailwindcss": "^4.1.18",
     "tsparticles": "^3.0.0"
   }

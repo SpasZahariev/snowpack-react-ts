@@ -1,10 +1,14 @@
 import { Github } from 'lucide-react';
 import { Chip, IconLink } from '../ui';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import EmblaCarousel from '../common/EmblaCarousel/EmblaCarousel';
 
 function Doily() {
   const technologies = ["Java", "Java Swing and AWT"];
+  const slides = [
+    { src: "images/doily/circle.jpg", alt: "circle" },
+    { src: "images/doily/many-zones.jpg", alt: "many-zones" },
+    { src: "images/doily/reflection.jpg", alt: "reflection" },
+  ];
 
   return (
     <div>
@@ -21,11 +25,7 @@ function Doily() {
       </section>
 
       <div className="my-4">
-        <Carousel autoPlay={false} showThumbs={false}>
-          <img src="images/doily/circle.jpg" alt="circle" />
-          <img src="images/doily/many-zones.jpg" alt="many-zones" />
-          <img src="images/doily/reflection.jpg" alt="reflection" />
-        </Carousel>
+        <EmblaCarousel slides={slides} />
       </div>
 
       <section className="px-4 mt-4">

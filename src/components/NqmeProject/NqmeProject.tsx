@@ -1,12 +1,16 @@
 import { Github, ExternalLink } from 'lucide-react';
 import { Chip, IconLink } from '../ui';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import EmblaCarousel from '../common/EmblaCarousel/EmblaCarousel';
 
 function NqmeProject() {
   const technologies = [
     "Python Flask", "GraphQL", "Docker", "React", "Typescript",
     "Redux", "SocketIO", "Heroku", "AWS S3", "AWS CloudFront"
+  ];
+  const slides = [
+    { src: "images/nqme/nqme-homepage.jpg", alt: "nqme-homepage" },
+    { src: "images/nqme/room-with-songs.jpg", alt: "room-with-songs" },
+    { src: "images/nqme/many-users.jpg", alt: "many-users" },
   ];
 
   return (
@@ -27,11 +31,7 @@ function NqmeProject() {
       </section>
 
       <div className="my-4">
-        <Carousel autoPlay={false} showThumbs={false}>
-          <img src="images/nqme/nqme-homepage.jpg" alt="nqme-homepage" />
-          <img src="images/nqme/room-with-songs.jpg" alt="room-with-songs" />
-          <img src="images/nqme/many-users.jpg" alt="many-users" />
-        </Carousel>
+        <EmblaCarousel slides={slides} />
       </div>
 
       <section className="px-4 mt-4">

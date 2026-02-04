@@ -930,9 +930,6 @@
   .text-dark-blue {
     color: var(--color-dark-blue);
   }
-  .text-flamingo {
-    color: var(--color-flamingo);
-  }
   .text-mauve {
     color: var(--color-mauve);
   }
@@ -987,6 +984,10 @@
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .backdrop-filter {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
@@ -1366,6 +1367,86 @@
     color: inherit;
     text-decoration-line: none;
   }
+  .embla {
+    width: 100%;
+  }
+  .embla__viewport {
+    overflow: hidden;
+    position: relative;
+  }
+  .embla__container {
+    display: flex;
+    gap: 1rem;
+  }
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    position: relative;
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: opacity 300ms ease;
+  }
+  .embla__slide:focus-visible {
+    outline: 2px solid var(--color-mauve);
+    outline-offset: 4px;
+  }
+  .embla__slide__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    background-color: var(--color-surface0);
+  }
+  .embla__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .embla__button {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--color-pink);
+    color: var(--color-pink);
+    border-radius: 0.5rem;
+    background: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .embla__button:hover {
+    background-color: var(--color-pink);
+    color: var(--color-base);
+  }
+  .embla__button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .embla__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 0.75rem;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 9999px;
+    background-color: rgba(36, 39, 58, 0.6);
+    backdrop-filter: blur(6px);
+    pointer-events: auto;
+  }
+  .embla__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    border: 1px solid var(--color-mauve);
+    background: transparent;
+    cursor: pointer;
+  }
+  .embla__dot--selected {
+    background-color: var(--color-pink);
+    border-color: var(--color-pink);
+  }
 }
 @layer utilities {
   .text-balance {
@@ -1543,6 +1624,42 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -1642,6 +1759,15 @@
       --tw-drop-shadow-color: initial;
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
       --tw-duration: initial;
       --tw-ease: initial;
       --tw-content: "";

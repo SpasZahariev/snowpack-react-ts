@@ -1,9 +1,13 @@
 import { Github } from 'lucide-react';
 import { IconLink } from '../ui';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import EmblaCarousel from '../common/EmblaCarousel/EmblaCarousel';
 
 function OtherProjects() {
+  const slides = [
+    { src: "images/other/new-york.jpg", alt: "new-york" },
+    { src: "images/other/board-with-obstacles.png", alt: "board-with-obstacles" },
+    { src: "images/other/score-0.png", alt: "tetris" },
+  ];
   return (
     <div>
       <section className="px-4">
@@ -19,11 +23,7 @@ function OtherProjects() {
       </section>
 
       <div className="my-4">
-        <Carousel autoPlay={false} showThumbs={false}>
-          <img src="images/other/new-york.jpg" alt="new-york" />
-          <img src="images/other/board-with-obstacles.png" alt="board-with-obstacles" />
-          <img src="images/other/score-0.png" alt="tetris" className="mx-auto" />
-        </Carousel>
+        <EmblaCarousel slides={slides} />
       </div>
     </div>
   );

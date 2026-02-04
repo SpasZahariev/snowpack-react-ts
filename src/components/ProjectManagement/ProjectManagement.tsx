@@ -1,12 +1,17 @@
 import { Github, ExternalLink } from 'lucide-react';
 import { Chip, IconLink } from '../ui';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import EmblaCarousel from '../common/EmblaCarousel/EmblaCarousel';
 
 function ProjectManagement() {
   const technologies = [
     "AWS DynamoDB", "AWS S3", "AWS Lambda", "AWS Cognito",
     "Angular", "SendGrid", "Typescript"
+  ];
+  const slides = [
+    { src: "images/cloud-app-dev/user-info.jpg", alt: "user-info" },
+    { src: "images/cloud-app-dev/project-dashboard.jpg", alt: "project-dashboard" },
+    { src: "images/cloud-app-dev/compose-email.jpg", alt: "compose-email" },
+    { src: "images/cloud-app-dev/login-screen.jpg", alt: "login-screen" },
   ];
 
   return (
@@ -27,12 +32,7 @@ function ProjectManagement() {
       </section>
 
       <div className="my-4">
-        <Carousel autoPlay={false} showThumbs={false}>
-          <img src="images/cloud-app-dev/user-info.jpg" alt="user-info" />
-          <img src="images/cloud-app-dev/project-dashboard.jpg" alt="project-dashboard" />
-          <img src="images/cloud-app-dev/compose-email.jpg" alt="compose-email" />
-          <img src="images/cloud-app-dev/login-screen.jpg" alt="login-screen" />
-        </Carousel>
+        <EmblaCarousel slides={slides} />
       </div>
 
       <section className="px-4 mt-4">
