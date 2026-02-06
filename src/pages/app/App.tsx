@@ -97,7 +97,7 @@ function App() {
     particles: {
       color: { value: "#f5bde6" },
       links: { color: "#c6a0f6", distance: 150, enable: true, opacity: 0.5, width: 1 },
-      move: { enable: true, speed: 1 },
+      move: { enable: true, speed: 0.1 },
       number: { density: { enable: true }, value: 80 },
       opacity: { value: 0.5 },
       shape: { type: "circle" as const },
