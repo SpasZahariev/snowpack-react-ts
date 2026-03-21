@@ -8,7 +8,7 @@ function NqmeProject() {
   const [isInfoHovered, setIsInfoHovered] = useState(false);
   const showInfo = isInfoPinned || isInfoHovered;
 
-  const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  const description = "A real-time shared music playlist web app. Multiple users create a room, add songs from YouTube, and have them play on the host's device. The playlist sorts itself in real time based on user likes. Rooms are joined via a 4-digit code. Built with a Python Flask + GraphQL backend communicating over Socket.IO for two-way real-time updates, and a React + TypeScript frontend hosted on AWS S3 with CloudFront.";
 
   const technologies = [
     "Python Flask", "GraphQL", "Docker", "React", "Typescript",
@@ -25,7 +25,7 @@ function NqmeProject() {
       <section className="px-4">
         <h4 className="text-pink text-sm font-semibold mb-1">Nqme website</h4>
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-xl md:text-2xl font-bold text-mauve">Shared Music Player</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-subtext0">Shared Music Player</h3>
           <div className="flex items-center gap-4">
             <button
               type="button"

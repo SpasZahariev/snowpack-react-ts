@@ -49,6 +49,8 @@ export function Drawer({ open, onClose, anchor = 'bottom', children }: DrawerPro
     <div
       className="fixed inset-0 z-50 bg-black/50 transition-opacity"
       onClick={handleBackdropClick}
+      role="dialog"
+      aria-modal="true"
     >
       <div
         ref={drawerRef}

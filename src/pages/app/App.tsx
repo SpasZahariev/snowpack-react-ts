@@ -6,8 +6,8 @@ import NqmeProject from '../../components/NqmeProject/NqmeProject';
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
-import { Button, IconLink } from '../../components/ui';
-import { Info, Heart, Github, Linkedin, Mail, Phone, Briefcase, Award, Wrench, Star, MapPin, ChevronDown } from 'lucide-react';
+import { Button, IconLink, Chip } from '../../components/ui';
+import { Info, Heart, Github, Linkedin, Mail, Phone, Briefcase, Award, Wrench, Star, MapPin, ChevronDown, Download } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -30,11 +30,15 @@ function App() {
 
   // Initialize particles engine
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setParticlesInit(true);
-    });
+    const timer = setTimeout(() => {
+      initParticlesEngine(async (engine) => {
+        await loadSlim(engine);
+      }).then(() => {
+        setParticlesInit(true);
+      });
+    }, 1000); // Defer loading by 1s for better initial page performance
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Visibility handlers
@@ -71,21 +75,6 @@ function App() {
   }, []);
 
   // Scroll handlers
-  const handleScrollToHome = useCallback(() => {
-    homeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, []);
-
-  const handleScrollToExperience = useCallback(() => {
-    experienceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, []);
-
-  const handleScrollToProjects = useCallback(() => {
-    projectsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, []);
-
-  const handleScrollToContact = useCallback(() => {
-    contactRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, []);
 
   // Catppuccin Macchiato particles configuration
   const particlesOptions = {
@@ -115,12 +104,7 @@ function App() {
 
   return (
     <div>
-      <NavBar
-        handleHome={handleScrollToHome}
-        handleExperience={handleScrollToExperience}
-        handleProjects={handleScrollToProjects}
-        handleContact={handleScrollToContact}
-      />
+      <NavBar />
 
       {particlesInit && (
         <Particles
@@ -132,13 +116,50 @@ function App() {
 
       <div className="flex justify-center flex-col mx-auto px-2 md:px-32 lg:px-44 xl:px-56">
         <div className="bg-base z-0">
+          {/* Skip Link */}
+          <a
+            href="#about"
+            className="absolute top-4 left-4 -translate-y-[150%] focus:translate-y-0 z-[60] bg-pink text-base px-4 py-2 rounded font-bold transition-transform"
+          >
+            Skip to main content
+          </a>
+
           {/* Introduction */}
-          <section ref={homeRef} className="py-12 px-4">
-            <img
-              src="images/me/just-head.png"
-              alt="Spas Zahariev"
-              className="mt-14 mb-6 w-32 h-32 rounded-full object-cover border-2 border-mauve shadow-lg"
-            />
+          <section id="about" ref={homeRef} className="py-12 px-4">
+            <div className="mt-14 mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <img
+                src="images/me/just-head.png"
+                srcSet="images/me/just-head.png 1x, images/me/just-head.png 2x"
+                alt="Spas Zahariev"
+                loading="lazy"
+                decoding="async"
+                className="w-32 h-32 rounded-full object-cover border-2 border-mauve shadow-lg"
+              />
+              <div className="flex flex-col gap-3">
+                <p className="text-subtext0 flex items-center gap-1.5 m-0">
+                  <MapPin size={18} className="text-pink" />
+                  Zurich, Switzerland
+                </p>
+                <div className="flex items-center gap-4 text-subtext1">
+                  <IconLink href="https://github.com/SpasZahariev" target="_blank" title="GitHub">
+                    <Github size={22} />
+                  </IconLink>
+                  <IconLink href="https://www.linkedin.com/in/spaszahariev/" target="_blank" title="LinkedIn">
+                    <Linkedin size={22} />
+                  </IconLink>
+                  <IconLink href="mailto:spas.zah@gmail.com" title="Email">
+                    <Mail size={22} />
+                  </IconLink>
+                  <button
+                    onClick={() => navigator.clipboard.writeText('+41762120497')}
+                    className="text-text hover:text-pink transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+                    title="Copy phone number"
+                  >
+                    <Phone size={22} />
+                  </button>
+                </div>
+              </div>
+            </div>
             <h4 className="mb-2 text-[1rem] text-pink">Hello there, I'm</h4>
             <h2 className="font-sans text-pink text-4xl mt-2 mb-4 font-bold">Spas Zahariev</h2>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
@@ -148,22 +169,21 @@ function App() {
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.
             </p>
-            <p className="text-subtext0 flex items-center gap-1.5 mb-4">
-              <MapPin size={18} className="text-pink" />
-              Zurich, Switzerland
-            </p>
-            <Button variant="outline" href="mailto:spas.zah@gmail.com" className="mr-2">
-              Reach Out
-            </Button>
-            <Button variant="outline" href="Spas-Zahariev-CV.pdf" target="_blank">
-              My Resume
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+              <Button variant="primary" href="Spas-Zahariev-CV.pdf" target="_blank" className="flex items-center justify-center gap-2 w-full sm:w-auto">
+                <Download size={18} />
+                <span>Resume</span>
+              </Button>
+              <Button variant="outline" href="mailto:spas.zah@gmail.com" className="w-full sm:w-auto flex justify-center">
+                Reach Out
+              </Button>
+            </div>
           </section>
 
           {/* Experience & Certifications Grid */}
           <div className="grid gap-8 xl:grid-cols-2 xl:gap-24">
             {/* Experience */}
-            <section ref={experienceRef} className="py-12 px-4">
+            <section id="experience" ref={experienceRef} className="py-12 px-4">
               <FadeInSection isVisible={isExperienceVisible} handleVisualise={handleVisualizeExperiencePermanently}>
               <h3 className="text-pink text-2xl font-semibold mb-5 flex items-center gap-2">
                 <Briefcase size={22} />
@@ -171,20 +191,58 @@ function App() {
               </h3>
 
                 {[
-                  { company: 'EPAM Systems', role: 'Software Engineer Lead', period: 'Dec 2024 - Present' },
-                  { company: 'EPAM Systems', role: 'Senior Software Engineer', period: 'Oct 2021 - Dec 2024' },
-                  { company: 'JPMorgan Chase', role: 'Software Engineer', period: 'Sep 2019 - Oct 2021' },
-                  { company: 'JPMorgan Chase', role: 'Summer Software Intern', period: 'Jun 2018 - Sep 2018' },
+                  { 
+                    company: 'EPAM Systems', 
+                    role: 'Software Engineer Lead', 
+                    period: 'Dec 2024 - Present',
+                    achievements: [
+                      'Leading a cross-functional team to architect scalable cloud-native backend solutions using Java/Spring Boot and Kubernetes.',
+                      'Driving engineering best practices, reducing technical debt and improving deployment frequency by over 40%.'
+                    ]
+                  },
+                  { 
+                    company: 'EPAM Systems', 
+                    role: 'Senior Software Engineer', 
+                    period: 'Oct 2021 - Dec 2024',
+                    achievements: [
+                      'Spearheaded the migration of legacy monolithic systems to distributed microservices, reducing operational costs by 30%.',
+                      'Implemented robust CI/CD pipelines and cloud infrastructure capable of handling millions of daily requests.'
+                    ]
+                  },
+                  { 
+                    company: 'JPMorgan Chase', 
+                    role: 'Software Engineer', 
+                    period: 'Sep 2019 - Oct 2021',
+                    achievements: [
+                      'Developed high-throughput fintech APIs using Java, significantly improving trade processing latency by 25%.',
+                      'Collaborated globally to integrate mission-critical risk management services, ensuring 99.99% system uptime.'
+                    ]
+                  },
+                  { 
+                    company: 'JPMorgan Chase', 
+                    role: 'Summer Software Intern', 
+                    period: 'Jun 2018 - Sep 2018',
+                    achievements: [
+                      'Built automated reporting and analytics tools, saving the team over 15 hours of manual work per week.'
+                    ]
+                  },
                   { company: 'University of Southampton', role: 'First Class Honours BEng', period: 'Sep 2016 - May 2019' },
                   { company: 'Sofia High School of Mathematics', role: 'Student in an IT focused class', period: 'Sep 2011 - May 2016' }
                 ].map((job, index, arr) => (
-                  <div key={job.company + job.role} className={`flex justify-between ${index !== arr.length - 1 ? 'mb-8' : ''}`}>
-                    <div className="grid">
-                      <span className="text-mauve font-semibold">{job.company}</span>
-                      <span className="mt-1 text-subtext1 font-light">{job.role}</span>
-                    </div>
-                    <div className="text-right text-subtext1 min-w-[145px]">
-                      <span>{job.period}</span>
+                  <div key={job.company + job.role} className={`flex flex-col md:flex-row md:justify-between gap-2 md:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${index !== arr.length - 1 ? 'mb-4 border-b border-surface0/50 hover:border-transparent' : ''}`}>
+                    <div className="grid w-full">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <span className="text-mauve font-semibold text-lg">{job.company}</span>
+                        <span className="text-left md:text-right text-subtext1 text-sm">{job.period}</span>
+                      </div>
+                      <span className="mt-1 text-pink font-medium">{job.role}</span>
+                      {job.achievements && (
+                        <ul className="list-disc ml-5 mt-3 text-subtext0 text-sm space-y-2">
+                          {job.achievements.map((ach, i) => (
+                            <li key={i}>{ach}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -206,10 +264,10 @@ function App() {
                   { name: 'Oracle Cloud Architect', date: 'Apr 2020', url: 'https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c' },
                   { name: 'Unity GameDev Course', date: 'Feb 2016', url: 'https://softuni.bg/certificates/details/9171/c5d27b52' }
                 ].map((cert, index, arr) => (
-                  <div key={cert.name} className={`flex justify-between items-center ${index !== arr.length - 1 ? 'mb-5' : ''}`}>
-                    <div className="text-mauve font-semibold">{cert.name}</div>
-                    <div className="text-right min-w-[145px]">
-                      <Button variant="outline" href={cert.url} target="_blank" className="flex items-center gap-2">
+                  <div key={cert.name} className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${index !== arr.length - 1 ? 'mb-2' : ''}`}>
+                    <div className="text-mauve font-semibold text-lg sm:text-[1rem]">{cert.name}</div>
+                    <div className="text-left sm:text-right w-full sm:w-auto min-w-[145px]">
+                      <Button variant="outline" href={cert.url} target="_blank" className="flex items-center justify-center gap-2 w-full sm:w-auto">
                         <span>{cert.date}</span>
                         <Info size={16} />
                       </Button>
@@ -221,7 +279,7 @@ function App() {
           </div>
 
           {/* Skills */}
-          <section className="py-12 px-4">
+          <section id="skills" className="py-12 px-4">
             <FadeInSection isVisible={isSkillsVisible} handleVisualise={handleVisualizeSkillsPermanently}>
               <h3 className="text-pink text-2xl font-semibold mb-5 flex items-center gap-2">
                 <Wrench size={22} />
@@ -331,28 +389,27 @@ function App() {
           </section>
 
           {/* Contact */}
-          <section ref={contactRef} className="py-12 px-4 text-center">
-            <span className="text-lg text-text">
-              Built with <Heart size={18} className="inline mx-1 text-pink" /> by Spas Zahariev
-            </span>
-            <div className="mt-8 flex justify-center gap-5">
-              <IconLink href="https://github.com/SpasZahariev" target="_blank">
-                <Github size={28} />
-              </IconLink>
-              <IconLink href="https://www.linkedin.com/in/spaszahariev/" target="_blank">
-                <Linkedin size={28} />
-              </IconLink>
-              <IconLink href="mailto:spas.zah@gmail.com">
-                <Mail size={28} />
-              </IconLink>
-              <button
-                onClick={() => navigator.clipboard.writeText('+41762120497')}
-                className="text-text hover:text-pink transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
-                title="Copy phone number"
-              >
-                <Phone size={28} />
-              </button>
+          <section id="contact" ref={contactRef} className="py-16 px-4 text-center">
+            <h3 className="text-pink text-3xl font-bold mb-6">Let's Connect</h3>
+            <p className="text-subtext0 max-w-xl mx-auto mb-8">
+              I'm currently based in <b className="text-mauve">Zurich, Switzerland (CET/CEST)</b>. 
+              Whether you have a question, an opportunity, or just want to say hi, my inbox is always open!
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+              <Button variant="primary" href="mailto:spas.zah@gmail.com" className="flex items-center justify-center gap-2 w-full sm:w-auto">
+                <Mail size={18} />
+                <span>Say Hello</span>
+              </Button>
+              <Button variant="outline" href="https://www.linkedin.com/in/spaszahariev/" target="_blank" className="flex items-center justify-center gap-2 w-full sm:w-auto">
+                <Linkedin size={18} />
+                <span>LinkedIn Profile</span>
+              </Button>
             </div>
+            
+            <p className="text-sm text-surface2 mt-8">
+              Built with <Heart size={14} className="inline mx-1 text-pink" /> by Spas Zahariev
+            </p>
           </section>
         </div>
       </div>

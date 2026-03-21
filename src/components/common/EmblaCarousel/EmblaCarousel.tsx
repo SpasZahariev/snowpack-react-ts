@@ -106,7 +106,7 @@ function EmblaCarousel({
               onClick={handleSlideClick}
               aria-label="Go to next slide"
             >
-              <img className="embla__slide__img" src={slide.src} alt={slide.alt} />
+              <img className="embla__slide__img" src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
             </button>
           ))}
         </div>
@@ -118,7 +118,7 @@ function EmblaCarousel({
             }`}
             onClick={onOverlayClick}
           >
-            <p className="text-white text-base md:text-lg font-medium leading-relaxed max-w-prose drop-shadow-md text-left">
+            <p className="text-white text-[1rem] md:text-lg font-medium leading-relaxed max-w-prose drop-shadow-md text-left">
               {description}
             </p>
           </div>

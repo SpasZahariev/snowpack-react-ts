@@ -8,7 +8,7 @@ function RagPulled() {
   const [isInfoHovered, setIsInfoHovered] = useState(false);
   const showInfo = isInfoPinned || isInfoHovered;
 
-  const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  const description = "An end-to-end Retrieval-Augmented Generation platform with document ingestion, semantic search, and AI-driven chat. Features an async worker queue on PostgreSQL for extracting, chunking, and embedding documents (PDF, CSV, TXT). Leverages local LLMs via Ollama for private, offline processing. The chat interface provides precise citations showing which document chunks and vector match percentages informed each answer.";
 
   const technologies = [
     "React", "TypeScript", "Hono API", "PostgreSQL", "Drizzle ORM",
@@ -25,7 +25,7 @@ function RagPulled() {
       <section className="px-4">
         <h4 className="text-pink text-sm font-semibold mb-1">RagPull WebApp</h4>
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-xl md:text-2xl font-bold text-mauve">Fullstack RAG platform and AI chat</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-subtext0">Fullstack RAG platform and AI chat</h3>
           <div className="flex items-center gap-4">
             <button
               type="button"

@@ -8,7 +8,7 @@ function Doily() {
   const [isInfoHovered, setIsInfoHovered] = useState(false);
   const showInfo = isInfoPinned || isInfoHovered;
 
-  const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  const description = "A desktop painting application that mirrors brush strokes across up to 360 symmetrical sectors on the canvas. Users can adjust colours, brush widths, and the number of duplication sectors. Paintings can be saved as JPEG files and browsed in a built-in gallery. A \"Crazy Colours\" mode randomises the brush colour in a separate thread every 50ms for generative art effects.";
 
   const technologies = ["Java", "Java Swing and AWT"];
   const slides = [
@@ -22,7 +22,7 @@ function Doily() {
       <section className="px-4">
         <h4 className="text-pink text-sm font-semibold mb-1">Java Painting Application</h4>
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-xl md:text-2xl font-bold text-mauve">Mirrors your drawing in symmetrical sectors</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-subtext0">Draw/Export Doily Patterns</h3>
           <div className="flex items-center gap-4">
             <button
               type="button"

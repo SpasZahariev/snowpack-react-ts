@@ -8,7 +8,7 @@ function ProjectManagement() {
   const [isInfoHovered, setIsInfoHovered] = useState(false);
   const showInfo = isInfoPinned || isInfoHovered;
 
-  const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  const description = "A serverless project management platform for organising developers and projects. Users register and confirm via verification email, then receive role-based access (Developer, Manager, Admin). Managers create projects and assign team members. Features include a dashboard with filtering, user profiles showing project involvement, and in-app email composition via SendGrid. Fully serverless on AWS using Lambda, DynamoDB, Cognito, and S3.";
 
   const technologies = [
     "AWS DynamoDB", "AWS S3", "AWS Lambda", "AWS Cognito",
@@ -26,7 +26,7 @@ function ProjectManagement() {
       <section className="px-4">
         <h4 className="text-pink text-sm font-semibold mb-1">Project Tracking Website</h4>
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-xl md:text-2xl font-bold text-mauve">Assign tasks to users</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-subtext0">Assign tasks to users</h3>
           <div className="flex items-center gap-4">
             <button
               type="button"
