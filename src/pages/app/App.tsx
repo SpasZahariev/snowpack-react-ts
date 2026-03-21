@@ -6,7 +6,7 @@ import ProjectManagement from '../../components/ProjectManagement/ProjectManagem
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import { Button, IconLink } from '../../components/ui';
-import { Info, Heart, Github, Linkedin, Instagram, Briefcase, Award, Wrench, Star } from 'lucide-react';
+import { Info, Heart, Github, Linkedin, Instagram, Briefcase, Award, Wrench, Star, MapPin } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -137,6 +137,10 @@ function App() {
               I like building cool things in my free time and coding gives me the freedom to do that without limits.
               I always strive to write clean, efficient code and constantly search for ways to improve my craft.
             </p>
+            <p className="text-subtext0 flex items-center gap-1.5 mb-4">
+              <MapPin size={18} className="text-pink" />
+              Zurich, Switzerland
+            </p>
             <Button variant="outline" href="mailto:spas.zah@gmail.com" className="mr-2">
               Reach Out
             </Button>
@@ -183,8 +187,10 @@ function App() {
               </h3>
 
                 {[
+                  { name: 'Certified Kubernetes Application Developer', date: 'Mar 2026', url: 'https://www.credly.com/badges/6c5e8fdb-3671-4194-95f6-d7dfa8b70d08/linked_in_profile' },
+                  { name: 'Google Professional ML Engineer', date: 'Mar 2026', url: 'https://www.credly.com/badges/368ae43e-f886-4d99-9235-660b9d5d2765/linked_in_profile' },
                   { name: 'Microsoft Azure AZ-900', date: 'Sep 2020', url: 'https://www.youracclaim.com/badges/ea3e55cb-5f9d-4c1c-8ef7-d28c8281f5eb?source=linked_in_profile' },
-                  { name: 'Associate OCI Architect', date: 'Apr 2020', url: 'https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c' },
+                  { name: 'Oracle Cloud Architect', date: 'Apr 2020', url: 'https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c' },
                   { name: 'Unity GameDev Course', date: 'Feb 2016', url: 'https://softuni.bg/certificates/details/9171/c5d27b52' }
                 ].map((cert, index, arr) => (
                   <div key={cert.name} className={`flex justify-between items-center ${index !== arr.length - 1 ? 'mb-5' : ''}`}>
