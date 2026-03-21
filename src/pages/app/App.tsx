@@ -137,7 +137,7 @@ function App() {
             <img
               src="images/me/just-head.png"
               alt="Spas Zahariev"
-              className="mt-14 mb-6 w-32 h-32 rounded-full object-cover border-2 border-pink shadow-lg"
+              className="mt-14 mb-6 w-32 h-32 rounded-full object-cover border-2 border-mauve shadow-lg"
             />
             <h4 className="mb-2 text-[1rem] text-pink">Hello there, I'm</h4>
             <h2 className="font-sans text-pink text-4xl mt-2 mb-4 font-bold">Spas Zahariev</h2>
