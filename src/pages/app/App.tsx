@@ -7,7 +7,7 @@ import ProjectManagement from '../../components/ProjectManagement/ProjectManagem
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import { Button, IconLink } from '../../components/ui';
-import { Info, Heart, Github, Linkedin, Instagram, Briefcase, Award, Wrench, Star, MapPin, ChevronDown } from 'lucide-react';
+import { Info, Heart, Github, Linkedin, Mail, Phone, Briefcase, Award, Wrench, Star, MapPin, ChevronDown } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -143,11 +143,10 @@ function App() {
             <h2 className="font-sans text-pink text-4xl mt-2 mb-4 font-bold">Spas Zahariev</h2>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               I'm a Software Engineer Lead with 7+ years of industry experience, currently at <b className="text-mauve">EPAM Systems</b> in Zurich.
-              I hold a First Class Honours BEng from the <b className="text-mauve">University of Southampton</b> and have worked across fintech and large-scale consulting.
-              My core expertise is in Java/Spring Boot backend systems, but I work across the full stack — from Kubernetes and cloud infrastructure to AI and frontend development.
+              I've worked across fintech and large-scale consulting, with a focus on Java/Spring Boot backend systems - but I thrive across the full stack, from Kubernetes and cloud infrastructure to AI and frontend development.
             </p>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
-              When I'm not working, I'm usually halfway through building something I thought of in the shower — a RAG-powered AI app one month, a mobile tool the next.
+              When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.
             </p>
             <p className="text-subtext0 flex items-center gap-1.5 mb-4">
               <MapPin size={18} className="text-pink" />
@@ -336,14 +335,6 @@ function App() {
             <span className="text-lg text-text">
               Built with <Heart size={18} className="inline mx-1 text-pink" /> by Spas Zahariev
             </span>
-            <p className="mt-4 text-subtext0">
-              Feel free to reach out via: <b className="text-mauve">
-                <a href="mailto:spas.zah@gmail.com" className="no-underline text-pink hover:text-mauve">
-                  spas.zah@gmail.com
-                </a>
-              </b>
-            </p>
-            <p className="text-subtext0">Swiss mobile: <b className="text-mauve">0762120497</b></p>
             <div className="mt-8 flex justify-center gap-5">
               <IconLink href="https://github.com/SpasZahariev" target="_blank">
                 <Github size={28} />
@@ -351,9 +342,16 @@ function App() {
               <IconLink href="https://www.linkedin.com/in/spaszahariev/" target="_blank">
                 <Linkedin size={28} />
               </IconLink>
-              <IconLink href="https://www.instagram.com/spas_zah/" target="_blank">
-                <Instagram size={28} />
+              <IconLink href="mailto:spas.zah@gmail.com">
+                <Mail size={28} />
               </IconLink>
+              <button
+                onClick={() => navigator.clipboard.writeText('+41762120497')}
+                className="text-text hover:text-pink transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+                title="Copy phone number"
+              >
+                <Phone size={28} />
+              </button>
             </div>
           </section>
         </div>

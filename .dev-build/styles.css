@@ -849,6 +849,10 @@
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
+  .border-none {
+    --tw-border-style: none;
+    border-style: none;
+  }
   .border-mauve {
     border-color: var(--color-mauve);
   }
@@ -1240,13 +1244,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-dark-blue);
-      }
-    }
-  }
-  .hover\:text-mauve {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-mauve);
       }
     }
   }
