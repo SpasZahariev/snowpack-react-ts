@@ -143,12 +143,11 @@ function App() {
             <h2 className="font-sans text-pink text-4xl mt-2 mb-4 font-bold">Spas Zahariev</h2>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               I'm a Software Engineer Lead with 7+ years of industry experience, currently at <b className="text-mauve">EPAM Systems</b> in Zurich.
-              I hold a First Class Honours BEng from the <b className="text-mauve">University of Southampton</b> and have worked across fintech (<b className="text-mauve">JPMorgan Chase</b>) and large-scale consulting.
-              My core expertise is in Java/Spring Boot backend systems, but I work across the full stack — from Kubernetes and cloud infrastructure to React frontends.
+              I hold a First Class Honours BEng from the <b className="text-mauve">University of Southampton</b> and have worked across fintech and large-scale consulting.
+              My core expertise is in Java/Spring Boot backend systems, but I work across the full stack — from Kubernetes and cloud infrastructure to AI and frontend development.
             </p>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
-              Outside of work, I build end-to-end projects to explore new technologies — from RAG-powered AI apps to cross-platform mobile tools.
-              I'm a certified Kubernetes Application Developer and Google Professional ML Engineer, and I'm always looking for the next hard problem to solve.
+              When I'm not working, I'm usually halfway through building something I thought of in the shower — a RAG-powered AI app one month, a mobile tool the next.
             </p>
             <p className="text-subtext0 flex items-center gap-1.5 mb-4">
               <MapPin size={18} className="text-pink" />
