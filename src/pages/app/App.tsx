@@ -232,15 +232,15 @@ function App() {
                   <div>
                     <p className="text-xl text-mauve font-semibold mb-1">Languages</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['Java', 'Python', 'Haskell', 'C#', 'C++', 'Rust', 'SQL', 'Bash', 'JavaScript', 'TypeScript', 'Css/Scss'].map(skill => (
+                      {['Java', 'Python', 'TypeScript', 'JavaScript', 'Go', 'Kotlin', 'SQL', 'C#', 'C++', 'Rust', 'Bash', 'Haskell'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <p className="text-xl text-mauve font-semibold mb-1">Technologies</p>
+                    <p className="text-xl text-mauve font-semibold mb-1">Frameworks & Tools</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['Spring Boot', 'Kafka', 'Protobuf', 'Docker', 'Kubernetes', 'React', 'Angular', 'GraphQL', 'Flask', 'Flutter', 'Git'].map(skill => (
+                      {['Spring Boot', 'Kafka', 'Docker', 'Kubernetes', 'Terraform', 'React', 'Angular', 'Node.js', 'GraphQL', 'gRPC/Protobuf', 'Flask', 'Flutter'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
@@ -248,17 +248,17 @@ function App() {
                 </div>
                 <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(120px,0.5fr))]">
                   <div>
-                    <p className="text-xl text-mauve font-semibold mb-1">Services</p>
+                    <p className="text-xl text-mauve font-semibold mb-1">Cloud & Data</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['Amazon Web Services', 'Google Cloud Engine', 'Heroku', 'DynamoDB', 'PostgresSQL', 'Oracle SQL Developer', 'Jenkins CI/CD', 'IBM Websphere MQ'].map(skill => (
+                      {['AWS', 'Google Cloud Platform', 'Microsoft Azure', 'Oracle Cloud', 'PostgreSQL', 'MongoDB', 'DynamoDB', 'Apache Spark', 'Databricks', 'BigQuery', 'Elastic Stack', 'Jenkins CI/CD'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <p className="text-xl text-mauve font-semibold mb-1">Other</p>
+                    <p className="text-xl text-mauve font-semibold mb-1">AI & Practices</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['Web Penetration Testing', 'Data wrangling', 'General Machine Learning', 'Mobile Game Development', 'Agile Methodologies', 'Scrum Master'].map(skill => (
+                      {['Machine Learning', 'Deep Learning', 'LLMs & Gen AI', 'TensorFlow', 'MLOps', 'Microservices', 'Domain-Driven Design', 'Clean Code & SOLID', 'Agile & Scrum', 'DevOps & CI/CD', 'Cloud Security'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
