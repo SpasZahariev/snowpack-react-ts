@@ -1,8 +1,15 @@
-import { Github, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { Github, ExternalLink, Info } from 'lucide-react';
 import { Chip, IconLink } from '../ui';
 import EmblaCarousel from '../common/EmblaCarousel/EmblaCarousel';
 
 function RagPulled() {
+  const [isInfoPinned, setIsInfoPinned] = useState(false);
+  const [isInfoHovered, setIsInfoHovered] = useState(false);
+  const showInfo = isInfoPinned || isInfoHovered;
+
+  const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+
   const technologies = [
     "React", "TypeScript", "Hono API", "PostgreSQL", "Drizzle ORM",
     "Ollama", "Firebase Auth", "Docker", "Tailwind CSS", "Vite"
@@ -20,6 +27,16 @@ function RagPulled() {
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-xl md:text-2xl font-bold text-mauve">Fullstack RAG platform and AI chat</h3>
           <div className="flex items-center gap-4">
+            <button
+              type="button"
+              className="text-text hover:text-pink transition-colors duration-200 cursor-pointer"
+              onMouseEnter={() => setIsInfoHovered(true)}
+              onMouseLeave={() => setIsInfoHovered(false)}
+              onClick={() => setIsInfoPinned((prev) => !prev)}
+              aria-label="Show project description"
+            >
+              <Info size={22} />
+            </button>
             <IconLink href="https://github.com/SpasZahariev/rag-pulled" target="_blank">
               <Github size={22} />
             </IconLink>
@@ -31,7 +48,12 @@ function RagPulled() {
       </section>
 
       <div className="my-4">
-        <EmblaCarousel slides={slides} />
+        <EmblaCarousel 
+          slides={slides} 
+          description={description}
+          showDescription={showInfo}
+          onOverlayClick={() => setIsInfoPinned(false)}
+        />
       </div>
 
       <section className="px-4 mt-4">

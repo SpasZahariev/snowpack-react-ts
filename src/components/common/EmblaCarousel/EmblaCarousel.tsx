@@ -13,6 +13,9 @@ interface EmblaCarouselProps {
   options?: EmblaOptionsType;
   showDots?: boolean;
   showArrows?: boolean;
+  description?: string;
+  showDescription?: boolean;
+  onOverlayClick?: () => void;
 }
 
 function EmblaCarousel({
@@ -21,6 +24,9 @@ function EmblaCarousel({
   options,
   showDots = true,
   showArrows = false,
+  description,
+  showDescription,
+  onOverlayClick,
 }: EmblaCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -104,6 +110,19 @@ function EmblaCarousel({
             </button>
           ))}
         </div>
+
+        {description && (
+          <div
+            className={`absolute inset-0 z-10 flex items-end justify-start bg-black/70 backdrop-blur-sm rounded-xl p-6 pb-12 transition-opacity duration-300 ease-in-out cursor-pointer ${
+              showDescription ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}
+            onClick={onOverlayClick}
+          >
+            <p className="text-white text-base md:text-lg font-medium leading-relaxed max-w-prose drop-shadow-md text-left">
+              {description}
+            </p>
+          </div>
+        )}
 
         {showDots && (
           <div className="embla__dots">
