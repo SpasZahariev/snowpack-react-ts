@@ -7,7 +7,7 @@ import ProjectManagement from '../../components/ProjectManagement/ProjectManagem
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import { Button, IconLink } from '../../components/ui';
-import { Info, Heart, Github, Linkedin, Instagram, Briefcase, Award, Wrench, Star, MapPin } from 'lucide-react';
+import { Info, Heart, Github, Linkedin, Instagram, Briefcase, Award, Wrench, Star, MapPin, ChevronDown } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -20,6 +20,7 @@ function App() {
   const [isProjectManagementVisible, setIsProjectManagementVisible] = useState(false);
   const [isDoilyVisible, setIsDoilyVisible] = useState(false);
   const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState(false);
+  const [areMoreProjectsExpanded, setAreMoreProjectsExpanded] = useState(false);
   const [particlesInit, setParticlesInit] = useState(false);
 
   const homeRef = useRef<HTMLElement>(null);
@@ -295,19 +296,39 @@ function App() {
               </FadeInSection>
             </section>
 
-            {/* Doily */}
-            <section className="py-12">
-              <FadeInSection isVisible={isDoilyVisible} handleVisualise={handleVisualizeDoilyPermanently}>
-                <Doily />
-              </FadeInSection>
-            </section>
+            {/* Expand/Collapse button */}
+            <div className="flex items-center gap-4 py-4 px-4">
+              <div className="flex-1 h-px bg-surface1" />
+              <button
+                onClick={() => setAreMoreProjectsExpanded((prev) => !prev)}
+                className="flex items-center gap-2 px-5 py-2.5 text-sm text-subtext0 hover:text-pink border border-surface1 hover:border-pink rounded-full transition-colors duration-200 cursor-pointer bg-transparent shrink-0"
+              >
+                {areMoreProjectsExpanded ? 'Show fewer projects' : 'Show more projects'}
+                <ChevronDown
+                  size={18}
+                  className={`transition-transform duration-300 ${areMoreProjectsExpanded ? 'rotate-180' : ''}`}
+                />
+              </button>
+              <div className="flex-1 h-px bg-surface1" />
+            </div>
 
-            {/* Other Projects */}
-            <section className="py-12">
-              <FadeInSection isVisible={isOtherProjectsSectionVisible} handleVisualise={handleVisualizeOtherProjectsSectionPermanently}>
-                <OtherProjects />
-              </FadeInSection>
-            </section>
+            {areMoreProjectsExpanded && (
+              <>
+                {/* Doily */}
+                <section className="py-12">
+                  <FadeInSection isVisible={isDoilyVisible} handleVisualise={handleVisualizeDoilyPermanently}>
+                    <Doily />
+                  </FadeInSection>
+                </section>
+
+                {/* Other Projects */}
+                <section className="py-12">
+                  <FadeInSection isVisible={isOtherProjectsSectionVisible} handleVisualise={handleVisualizeOtherProjectsSectionPermanently}>
+                    <OtherProjects />
+                  </FadeInSection>
+                </section>
+              </>
+            )}
           </section>
 
           {/* Contact */}
@@ -322,7 +343,7 @@ function App() {
                 </a>
               </b>
             </p>
-            <p className="text-subtext0">UK mobile: <b className="text-mauve">07784239930</b></p>
+            <p className="text-subtext0">Swiss mobile: <b className="text-mauve">0762120497</b></p>
             <div className="mt-8 flex justify-center gap-5">
               <IconLink href="https://github.com/SpasZahariev" target="_blank">
                 <Github size={28} />
