@@ -24,9 +24,9 @@ function ProjectManagement() {
             <IconLink href="https://github.com/SpasZahariev/CAD-SpasZahariev" target="_blank">
               <Github size={22} />
             </IconLink>
-            <IconLink href="http://spas-zahariev.cad.s3-website.eu-west-1.amazonaws.com/" target="_blank">
+            <span className="text-surface1 cursor-not-allowed opacity-40" title="Website not available">
               <ExternalLink size={22} />
-            </IconLink>
+            </span>
           </div>
         </div>
       </section>

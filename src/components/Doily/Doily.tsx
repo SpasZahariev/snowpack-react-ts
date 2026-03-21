@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 import { Chip, IconLink } from '../ui';
 import EmblaCarousel from '../common/EmblaCarousel/EmblaCarousel';
 
@@ -20,6 +20,9 @@ function Doily() {
             <IconLink href="https://github.com/SpasZahariev/Digital-Doily" target="_blank">
               <Github size={22} />
             </IconLink>
+            <span className="text-surface1 cursor-not-allowed opacity-40" title="Website not available">
+              <ExternalLink size={22} />
+            </span>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
+import RagPulled from '../../components/RagPulled/RagPulled';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
 import Doily from '../../components/Doily/Doily';
@@ -14,6 +15,7 @@ function App() {
   const [isExperienceVisible, setIsExperienceVisible] = useState(false);
   const [isCertsVisible, setIsCertsVisible] = useState(false);
   const [isSkillsVisible, setIsSkillsVisible] = useState(false);
+  const [isRagPulledVisible, setIsRagPulledVisible] = useState(false);
   const [isNqmeVisible, setIsNqmeVisible] = useState(false);
   const [isProjectManagementVisible, setIsProjectManagementVisible] = useState(false);
   const [isDoilyVisible, setIsDoilyVisible] = useState(false);
@@ -45,6 +47,10 @@ function App() {
 
   const handleVisualizeSkillsPermanently = useCallback((isIntersecting: boolean) => {
     if (isIntersecting) setIsSkillsVisible(true);
+  }, []);
+
+  const handleVisualizeRagPulledPermanently = useCallback((isIntersecting: boolean) => {
+    if (isIntersecting) setIsRagPulledVisible(true);
   }, []);
 
   const handleVisualizeNqmePermanently = useCallback((isIntersecting: boolean) => {
@@ -127,11 +133,16 @@ function App() {
         <div className="bg-base z-0">
           {/* Introduction */}
           <section ref={homeRef} className="py-12 px-4">
-            <h4 className="mt-14 mb-2 text-[1rem] text-pink">Hello there, I'm</h4>
+            <img
+              src="images/me/just-head.png"
+              alt="Spas Zahariev"
+              className="mt-14 mb-6 w-32 h-32 rounded-full object-cover border-2 border-pink shadow-lg"
+            />
+            <h4 className="mb-2 text-[1rem] text-pink">Hello there, I'm</h4>
             <h2 className="font-sans text-pink text-4xl mt-2 mb-4 font-bold">Spas Zahariev</h2>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               I'm an engineering graduate from the <b className="text-mauve">University of Southampton</b> and my main strength is writing Java backend.
-              At the moment I am a fullstack software engineer at <b className="text-mauve">JPMorgan Chase</b> where I've help my team build and maintain applications for tracking account liquidity.
+              At the moment I am a Software Engineer Lead at <b className="text-mauve">EPAM Systems</b> where I lead teams in building and maintaining enterprise applications.
             </p>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               I like building cool things in my free time and coding gives me the freedom to do that without limits.
@@ -152,7 +163,7 @@ function App() {
           {/* Experience & Certifications Grid */}
           <div className="grid gap-8 xl:grid-cols-2 xl:gap-24">
             {/* Experience */}
-            <section className="py-12 px-4">
+            <section ref={experienceRef} className="py-12 px-4">
               <FadeInSection isVisible={isExperienceVisible} handleVisualise={handleVisualizeExperiencePermanently}>
               <h3 className="text-pink text-2xl font-semibold mb-5 flex items-center gap-2">
                 <Briefcase size={22} />
@@ -160,7 +171,9 @@ function App() {
               </h3>
 
                 {[
-                  { company: 'JPMorgan Chase', role: 'Software Engineer', period: 'Sep 2019 - Present' },
+                  { company: 'EPAM Systems', role: 'Software Engineer Lead', period: 'Dec 2024 - Present' },
+                  { company: 'EPAM Systems', role: 'Senior Software Engineer', period: 'Oct 2021 - Dec 2024' },
+                  { company: 'JPMorgan Chase', role: 'Software Engineer', period: 'Sep 2019 - Oct 2021' },
                   { company: 'JPMorgan Chase', role: 'Summer Software Intern', period: 'Jun 2018 - Sep 2018' },
                   { company: 'University of Southampton', role: 'First Class Honours BEng', period: 'Sep 2016 - May 2019' },
                   { company: 'Sofia High School of Mathematics', role: 'Student in an IT focused class', period: 'Sep 2011 - May 2016' }
@@ -179,7 +192,7 @@ function App() {
             </section>
 
             {/* Certifications */}
-            <section ref={experienceRef} className="py-12 px-4">
+            <section className="py-12 px-4">
               <FadeInSection isVisible={isCertsVisible} handleVisualise={handleVisualizeCertsPermanently}>
               <h3 className="text-pink text-2xl font-semibold mb-5 flex items-center gap-2">
                 <Award size={22} />
@@ -257,13 +270,20 @@ function App() {
 
           {/* Projects */}
           <section className="py-12">
-            {/* Nqme Project */}
+            {/* RagPulled Project */}
             <section ref={projectsRef} className="pb-12">
-              <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualizeNqmePermanently}>
+              <FadeInSection isVisible={isRagPulledVisible} handleVisualise={handleVisualizeRagPulledPermanently}>
                 <h3 className="text-pink text-2xl font-semibold mb-5 px-4 flex items-center gap-2">
                   <Star size={22} />
                   Featured Projects
                 </h3>
+                <RagPulled />
+              </FadeInSection>
+            </section>
+
+            {/* Nqme Project */}
+            <section className="py-12">
+              <FadeInSection isVisible={isNqmeVisible} handleVisualise={handleVisualizeNqmePermanently}>
                 <NqmeProject />
               </FadeInSection>
             </section>
