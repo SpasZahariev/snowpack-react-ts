@@ -121,7 +121,7 @@ function App() {
         />
       )}
 
-      <div className="flex justify-center flex-col mx-auto px-2 md:px-32 lg:px-44 xl:px-56">
+      <div className="flex justify-center flex-col mx-auto px-2 md:px-32 lg:px-44 xl:px-48">
         <div className="bg-base z-0">
           {/* Skip Link */}
           <a
@@ -203,7 +203,7 @@ function App() {
           </section>
 
           {/* Experience & Certifications Grid */}
-          <div className="grid gap-8 xl:grid-cols-2 xl:gap-24">
+          <div className="grid gap-8 xl:grid-cols-2 xl:gap-12">
             {/* Experience */}
             <section id="experience" ref={experienceRef} className="py-12 px-4">
               <FadeInSection isVisible={isExperienceVisible} handleVisualise={handleVisualizeExperiencePermanently}>
@@ -288,8 +288,8 @@ function App() {
                 ].map((cert, index, arr) => (
                   <div key={cert.name} className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${index !== arr.length - 1 ? 'mb-2' : ''}`}>
                     <div className="text-mauve font-semibold text-lg sm:text-[1rem]">{cert.name}</div>
-                    <div className="text-left sm:text-right w-full sm:w-auto min-w-[145px]">
-                      <Button variant="outline" href={cert.url} target="_blank" className="flex items-center justify-center gap-2 w-full sm:w-auto">
+                    <div className="text-left sm:text-right w-full sm:w-auto shrink-0">
+                      <Button variant="outline" href={cert.url} target="_blank" className="flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap">
                         <span>{cert.date}</span>
                         <Info size={16} />
                       </Button>
@@ -431,6 +431,10 @@ function App() {
             
             <p className="text-sm text-surface2 mt-8">
               Built with <Heart size={14} className="inline mx-1 text-pink" /> by Spas Zahariev
+              {' · '}
+              <a href="/2021/" className="hover:text-mauve transition-colors duration-200">
+                Go Back to <span className="font-bold text-mauve">2021</span> version
+              </a>
             </p>
           </section>
         </div>

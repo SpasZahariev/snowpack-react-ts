@@ -250,6 +250,17 @@ const server = serve({
       }
     }
 
+    // Serve the 2021 legacy portfolio as static files
+    if (url.pathname.startsWith("/2021")) {
+      const subPath = url.pathname === "/2021" || url.pathname === "/2021/"
+        ? "/index.html"
+        : url.pathname.replace("/2021", "");
+      const filePath = join(PUBLIC_DIR, "2021", subPath);
+      if (existsSync(filePath)) {
+        return new Response(Bun.file(filePath));
+      }
+    }
+
     return new Response(null, { status: 404 });
   },
 });

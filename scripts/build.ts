@@ -106,6 +106,14 @@ for (const font of fontFiles) {
   }
 }
 
+// Copy 2021 legacy portfolio
+const legacySource = join(PUBLIC_DIR, "2021");
+if (existsSync(legacySource)) {
+  console.log("Copying 2021 legacy portfolio...");
+  cpSync(legacySource, join(BUILD_DIR, "2021"), { recursive: true });
+  console.log("2021 portfolio copied successfully");
+}
+
 // Read HTML template
 if (!existsSync(HTML_TEMPLATE)) {
   console.error(`Error: HTML template not found at ${HTML_TEMPLATE}`);
