@@ -280,9 +280,10 @@ function App() {
               </h3>
 
                 {[
-                  { name: 'Certified Kubernetes Application Developer', date: 'Mar 2026', url: 'https://www.credly.com/badges/6c5e8fdb-3671-4194-95f6-d7dfa8b70d08/linked_in_profile' },
                   { name: 'Google Professional ML Engineer', date: 'Mar 2026', url: 'https://www.credly.com/badges/368ae43e-f886-4d99-9235-660b9d5d2765/linked_in_profile' },
-                  { name: 'Microsoft Azure AZ-900', date: 'Sep 2020', url: 'https://www.youracclaim.com/badges/ea3e55cb-5f9d-4c1c-8ef7-d28c8281f5eb?source=linked_in_profile' },
+                  { name: 'Certified Kubernetes Application Developer', date: 'May 2023', url: 'https://www.credly.com/badges/6c5e8fdb-3671-4194-95f6-d7dfa8b70d08/linked_in_profile' },
+                  { name: 'Microsoft Azure AZ-204 Cloud Developer Associate', date: 'Apr 2023', url: 'https://www.credly.com/badges/bb59dbf9-72c8-4614-814e-04e8bdc8fc89?source=linked_in_profile' },
+                  { name: 'Microsoft Azure AZ-900 Azure Fundamentals', date: 'Sep 2020', url: 'https://www.youracclaim.com/badges/ea3e55cb-5f9d-4c1c-8ef7-d28c8281f5eb?source=linked_in_profile' },
                   { name: 'Oracle Cloud Architect', date: 'Apr 2020', url: 'https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c' },
                   { name: 'Unity GameDev Course', date: 'Feb 2016', url: 'https://softuni.bg/certificates/details/9171/c5d27b52' }
                 ].map((cert, index, arr) => (
