@@ -22,6 +22,8 @@ function App() {
   const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState(false);
   const [areMoreProjectsExpanded, setAreMoreProjectsExpanded] = useState(false);
   const [particlesInit, setParticlesInit] = useState(false);
+  const [particlesVisible, setParticlesVisible] = useState(false);
+  const [isWinking, setIsWinking] = useState(false);
 
   const homeRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
@@ -35,6 +37,11 @@ function App() {
         await loadSlim(engine);
       }).then(() => {
         setParticlesInit(true);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setParticlesVisible(true);
+          });
+        });
       });
     }, 1000); // Defer loading by 1s for better initial page performance
 
@@ -109,7 +116,7 @@ function App() {
       {particlesInit && (
         <Particles
           id="tsparticles"
-          className="fixed inset-0 -z-10 hidden md:block"
+          className={`fixed inset-0 -z-10 hidden md:block transition-opacity duration-[2000ms] ease-in ${particlesVisible ? 'opacity-100' : 'opacity-0'}`}
           options={particlesOptions}
         />
       )}
@@ -127,14 +134,29 @@ function App() {
           {/* Introduction */}
           <section id="about" ref={homeRef} className="py-12 px-4">
             <div className="mt-14 mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-              <img
-                src="images/me/just-head.png"
-                srcSet="images/me/just-head.png 1x, images/me/just-head.png 2x"
-                alt="Spas Zahariev"
-                loading="lazy"
-                decoding="async"
-                className="w-32 h-32 rounded-full object-cover border-2 border-mauve shadow-lg"
-              />
+              <div
+                className="relative shrink-0 select-none"
+                onMouseEnter={() => setIsWinking(true)}
+                onMouseLeave={() => setIsWinking(false)}
+              >
+                <img
+                  src="images/me/just-head.png"
+                  srcSet="images/me/just-head.png 1x, images/me/just-head.png 2x"
+                  alt="Spas Zahariev"
+                  loading="lazy"
+                  decoding="async"
+                  className={`w-32 h-32 rounded-full object-cover shadow-lg transition-all duration-300 cursor-pointer ${isWinking ? 'border-[4px] border-pink shadow-[0_0_30px_rgba(245,189,230,0.6)] animate-glitch' : 'border-[3px] border-mauve'}`}
+                />
+
+                <svg
+                  viewBox="0 0 100 30"
+                  className={`absolute -top-0.5 left-1/2 -translate-x-1/2 w-16 pointer-events-none ${isWinking ? 'animate-crown-flash' : 'opacity-0'}`}
+                  fill="none"
+                >
+                  <path d="M15 28 L25 8 L38 20 L50 2 L62 20 L75 8 L85 28" stroke="#f5bde6" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                  <line x1="15" y1="28" x2="85" y2="28" stroke="#f5bde6" strokeWidth="3" strokeLinecap="round"/>
+                </svg>
+              </div>
               <div className="flex flex-col gap-3">
                 <p className="text-subtext0 flex items-center gap-1.5 m-0">
                   <MapPin size={18} className="text-pink" />
@@ -163,8 +185,8 @@ function App() {
             <h4 className="mb-2 text-[1rem] text-pink">Hello there, I'm</h4>
             <h2 className="font-sans text-pink text-4xl mt-2 mb-4 font-bold">Spas Zahariev</h2>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
-              I'm a Software Engineer Lead with 7+ years of industry experience, currently at <b className="text-mauve">EPAM Systems</b> in Zurich.
-              I've worked across fintech and large-scale consulting, with a focus on Java/Spring Boot backend systems - but I thrive across the full stack, from Kubernetes and cloud infrastructure to AI and frontend development.
+              I'm a Software Engineer Lead with <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>7+ years</span> of industry experience, currently at <b className="text-mauve">EPAM Systems</b> in Zurich.
+              I've worked across fintech and large-scale consulting, with a focus on <b className="text-mauve">Java/Python</b> backend systems - but I thrive across the <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>full stack</span>, from Kubernetes and cloud infrastructure to AI and frontend development.
             </p>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.

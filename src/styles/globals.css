@@ -38,6 +38,8 @@
   
   --animate-fade-in: fadeIn 0.6s ease-out forwards;
   --animate-slide-up: slideUp 0.3s ease-out forwards;
+  --animate-glitch: glitch 0.4s steps(1) forwards;
+  --animate-crown-flash: crownFlash 0.4s steps(1) forwards;
   
   @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
@@ -47,6 +49,28 @@
   @keyframes slideUp {
     0% { transform: translateY(100%); }
     100% { transform: translateY(0); }
+  }
+
+  @keyframes glitch {
+    0%  { transform: translate(0); filter: hue-rotate(0deg); }
+    10% { transform: translate(-4px, 2px); filter: hue-rotate(90deg) saturate(2); }
+    15% { transform: translate(3px, -1px) skewX(-2deg); filter: hue-rotate(180deg) brightness(1.3); }
+    20% { transform: translate(-2px, -3px); clip-path: inset(20% 0 40% 0); }
+    25% { transform: translate(4px, 1px) skewX(3deg); clip-path: inset(60% 0 5% 0); filter: hue-rotate(270deg); }
+    30% { transform: translate(-1px, 3px); clip-path: inset(10% 0 70% 0); filter: saturate(3) contrast(1.5); }
+    35% { transform: translate(3px, -2px) skewX(-1deg); clip-path: none; filter: hue-rotate(45deg); }
+    40% { transform: translate(-3px, 0); filter: hue-rotate(0deg) brightness(1.5); }
+    45% { transform: translate(0); filter: none; clip-path: none; }
+    100% { transform: translate(0); filter: none; clip-path: none; }
+  }
+
+  @keyframes crownFlash {
+    0%   { opacity: 0; }
+    15%  { opacity: 0; }
+    20%  { opacity: 1; filter: drop-shadow(0 0 6px #f5bde6); }
+    35%  { opacity: 1; filter: drop-shadow(0 0 4px #f5bde6); }
+    40%  { opacity: 0; }
+    100% { opacity: 0; }
   }
 }
 
