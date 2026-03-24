@@ -1,4 +1,5 @@
 import { useEffect, useRef, ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface DrawerProps {
   open: boolean;
@@ -30,34 +31,37 @@ export function Drawer({ open, onClose, anchor = 'bottom', children }: DrawerPro
     };
   }, [open, onClose]);
 
-  // Handle click outside
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
-  if (!open) return null;
+  if (!open || typeof document === 'undefined') return null;
 
   const anchorClasses = {
-    bottom: 'bottom-0 left-0 right-0 rounded-t-2xl animate-slide-up',
-    left: 'top-0 bottom-0 left-0 w-64',
-    right: 'top-0 bottom-0 right-0 w-64',
+    bottom:
+      'bottom-0 left-0 right-0 w-full max-w-[100vw] rounded-t-xl border-t border-pink/15 bg-mantle/95 shadow-[0_-8px_32px_rgba(0,0,0,0.45)] backdrop-blur-md animate-slide-up',
+    left: 'top-0 bottom-0 left-0 w-64 max-w-[85vw]',
+    right: 'top-0 bottom-0 right-0 w-64 max-w-[85vw]',
   };
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 bg-black/50 transition-opacity"
+      className="fixed inset-0 z-[100] bg-black/45 backdrop-blur-[2px] transition-opacity"
       onClick={handleBackdropClick}
-      role="dialog"
-      aria-modal="true"
+      role="presentation"
     >
       <div
         ref={drawerRef}
-        className={`fixed bg-base shadow-lg ${anchorClasses[anchor]}`}
+        role="dialog"
+        aria-modal="true"
+        className={`fixed z-[101] ${anchorClasses[anchor]}`}
+        onClick={(e) => e.stopPropagation()}
       >
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

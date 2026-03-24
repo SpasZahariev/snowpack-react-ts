@@ -328,13 +328,27 @@ function App() {
                   { name: 'Oracle Cloud Architect', date: 'Apr 2020', url: 'https://www.youracclaim.com/badges/5b76572c-312b-4428-a370-de3ffa891f2c' },
                   { name: 'Unity GameDev Course', date: 'Feb 2016', url: 'https://softuni.bg/certificates/details/9171/c5d27b52' }
                 ].map((cert, index, arr) => (
-                  <div key={cert.name} className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${index !== arr.length - 1 ? 'mb-2' : ''}`}>
-                    <div className="text-mauve font-semibold text-lg sm:text-[1rem]">{cert.name}</div>
-                    <div className="text-left sm:text-right w-full sm:w-auto shrink-0">
-                      <Button variant="outline" href={cert.url} target="_blank" className="flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap">
-                        <span>{cert.date}</span>
-                        <Info size={16} />
-                      </Button>
+                  <div
+                    key={cert.name}
+                    className={`group -mx-4 rounded-xl border border-surface1/45 bg-surface0/20 p-3 shadow-sm transition-all duration-300 sm:border-transparent sm:bg-transparent sm:p-4 sm:shadow-none hover:border-pink/20 hover:bg-surface0/35 sm:hover:-translate-y-1 sm:hover:border-transparent ${index !== arr.length - 1 ? 'mb-3 sm:mb-2' : ''}`}
+                  >
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                      <div className="hidden min-w-0 flex-1 text-[1rem] font-semibold text-mauve sm:block sm:pr-2">{cert.name}</div>
+                      <div className="flex min-w-0 flex-col gap-1.5 sm:w-auto sm:shrink-0 sm:items-end">
+                        <Button
+                          variant="outline"
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${cert.name} credential (issued ${cert.date})`}
+                          className="flex w-full items-start justify-between gap-3 py-3.5 pl-4 pr-3 text-left text-[0.9375rem] font-semibold leading-snug sm:w-auto sm:items-center sm:justify-center sm:py-2.5 sm:pl-6 sm:pr-6 sm:text-[1rem]"
+                        >
+                          <span className="line-clamp-4 min-w-0 sm:hidden">{cert.name}</span>
+                          <span className="hidden whitespace-nowrap sm:inline">{cert.date}</span>
+                          <Info size={16} className="mt-0.5 shrink-0 opacity-90 sm:mt-0" aria-hidden />
+                        </Button>
+                        <p className="px-1 text-xs text-subtext0 sm:hidden">{cert.date}</p>
+                      </div>
                     </div>
                   </div>
                 ))}

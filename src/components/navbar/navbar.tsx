@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Menu } from 'lucide-react';
 import SwipeableBottomDrawer from '../common/SwipeableBottomDrawer/SwipeableBottomDrawer';
 
 function NavBar() {
@@ -28,14 +29,18 @@ function NavBar() {
       className={`w-full fixed top-0 z-50 bg-base rounded-b-xl transition-all duration-500 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'
         }`}
     >
-      <div className="px-4 py-1 flex justify-between items-center">
-        {/* Logo */}
-        <a href="#about" className="cursor-pointer group block" title="Back to top">
+      <div className="flex items-center justify-between px-3 py-0.5 md:px-4 md:py-1">
+        {/* Logo — compact on mobile to match hamburger; larger on md+ */}
+        <a
+          href="#about"
+          className="group flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-transparent text-pink transition-colors hover:border-pink/25 hover:bg-surface0/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink md:block md:h-auto md:w-auto md:rounded-none md:border-0 md:hover:border-transparent md:hover:bg-transparent"
+          title="Back to top"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
-            className="h-9 w-9"
+            className="h-6 w-6 opacity-90 md:h-9 md:w-9 md:opacity-100"
             aria-hidden="true"
           >
             <circle
@@ -47,7 +52,7 @@ function NavBar() {
             />
             <path
               d="M7.5 14L12 9L16.5 14"
-              className="stroke-pink group-hover:translate-y-[-2px] transition-transform duration-300 ease-out"
+              className="stroke-pink transition-transform duration-300 ease-out group-hover:translate-y-[-2px]"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -68,14 +73,10 @@ function NavBar() {
           ))}
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile menu */}
         <div className="md:hidden">
           <SwipeableBottomDrawer>
-            <div className="relative w-10 h-10 cursor-pointer group">
-              <span className="absolute block h-1.5 w-full bg-pink rounded-full left-0 top-1 transition-all duration-300 ease-in-out origin-left group-hover:rotate-45" />
-              <span className="absolute block h-1.5 w-full bg-pink rounded-full left-0 top-[14px] transition-all duration-300 ease-in-out origin-left group-hover:opacity-0 group-hover:w-0" />
-              <span className="absolute block h-1.5 w-full bg-pink rounded-full left-0 top-[26px] transition-all duration-300 ease-in-out origin-left group-hover:-rotate-45" />
-            </div>
+            <Menu size={20} strokeWidth={1.75} className="opacity-90" aria-hidden />
           </SwipeableBottomDrawer>
         </div>
       </div>
