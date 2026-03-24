@@ -357,9 +357,9 @@
 
   @apply bg-surface0;
 
-  @apply bg-pink;
+  @apply bg-surface2;
 
-  @apply bg-mauve;
+  @apply bg-overlay2;
 }
 
 @layer components {

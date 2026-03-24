@@ -115,11 +115,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-pink;
+    @apply bg-surface2;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-mauve;
+    @apply bg-overlay2;
   }
 }
 

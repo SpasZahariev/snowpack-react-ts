@@ -42,8 +42,8 @@ const EXPERIENCE_JOBS: ExperienceEntry[] = [
     role: 'Software Engineer',
     period: 'Sep 2019 - Oct 2021',
     achievements: [
-      'Developed high-throughput fintech APIs using Java, significantly improving trade processing latency by 25%.',
-      'Collaborated globally to integrate mission-critical risk management services, ensuring 99.99% system uptime.'
+      'Built and launched a regulatory intraday liquidity dashboard with live metric updates (WebSockets, React/Redux) and automated Excel report generation, streamlining workflows for 200+ business analysts.',
+      'Optimized a high-volume messaging pipeline to process 150K+ funding messages/hour, cutting publication time from 30 minutes to under 5 minutes using Apache Kafka and async processing.'
     ]
   },
   {
@@ -51,7 +51,7 @@ const EXPERIENCE_JOBS: ExperienceEntry[] = [
     role: 'Summer Software Intern',
     period: 'Jun 2018 - Sep 2018',
     achievements: [
-      'Built automated reporting and analytics tools, saving the team over 15 hours of manual work per week.'
+      'Used Java Spring Boot and Angular to build a Test Progress Dashboard and search engine to manage thousands of automated tests.'
     ]
   },
   {

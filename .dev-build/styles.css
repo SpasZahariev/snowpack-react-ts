@@ -1964,10 +1964,10 @@
     background-color: var(--color-surface0);
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-pink);
+    background-color: var(--color-surface2);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-mauve);
+    background-color: var(--color-overlay2);
   }
 }
 @layer components {
