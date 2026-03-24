@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import RagPulled from '../../components/RagPulled/RagPulled';
@@ -54,11 +54,96 @@ const EXPERIENCE_JOBS: ExperienceEntry[] = [
       'Built automated reporting and analytics tools, saving the team over 15 hours of manual work per week.'
     ]
   },
-  { company: 'University of Southampton', role: 'First Class Honours BEng', period: 'Sep 2016 - May 2019' },
-  { company: 'Sofia High School of Mathematics', role: 'Student in an IT focused class', period: 'Sep 2011 - May 2016' }
+  {
+    company: 'University of Southampton',
+    role: 'First Class Honours BEng',
+    period: 'Sep 2016 - May 2019',
+    achievements: [
+      'Software engineering degree with a focus on cybersecurity and safety-critical systems.',
+      'Designed and implemented a lexer and parser end to end for a toy SQL-like query language.'
+    ]
+  },
+  {
+    company: 'Sofia High School of Mathematics',
+    role: 'Student in an IT focused class',
+    period: 'Sep 2011 - May 2016',
+    achievements: [
+      'Practical C++ and foundational web development.',
+      'Strong grounding in core programming principles.'
+    ]
+  }
 ];
 
 const EXPERIENCE_VISIBLE_COUNT = 3;
+
+/** Stable reference required: @tsparticles/react reloads the engine whenever `options` identity changes. */
+const PARTICLES_OPTIONS = {
+  background: { color: { value: '#24273a' } },
+  fpsLimit: 60,
+  interactivity: {
+    events: {
+      onClick: { enable: true, mode: 'push' as const },
+      onHover: { enable: true, mode: 'grab' as const }
+    },
+    modes: {
+      push: { quantity: 4 },
+      grab: { distance: 150 }
+    }
+  },
+  particles: {
+    color: { value: '#f5bde6' },
+    links: { color: '#c6a0f6', distance: 150, enable: true, opacity: 0.35, width: 1 },
+    move: { enable: true, speed: 0.08 },
+    number: { density: { enable: true }, value: 72 },
+    opacity: { value: 0.38 },
+    shape: { type: 'circle' as const },
+    size: { value: { min: 1, max: 3 } }
+  },
+  detectRetina: true
+};
+
+/**
+ * No props — stays memoized when parent fades in so @tsparticles/react does not destroy/recreate the canvas
+ * on unrelated App state updates (its useEffect depends on the whole props object).
+ */
+const StableParticlesLayer = memo(function StableParticlesLayer() {
+  return (
+    <Particles
+      id="tsparticles"
+      className="absolute inset-0 size-full"
+      options={PARTICLES_OPTIONS}
+    />
+  );
+});
+
+function ParticlesBackground() {
+  const [engineReady, setEngineReady] = useState(false);
+  const [fadedIn, setFadedIn] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      initParticlesEngine(async (engine) => {
+        await loadSlim(engine);
+      }).then(() => {
+        setEngineReady(true);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => setFadedIn(true));
+        });
+      });
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div
+      className={`fixed inset-0 -z-10 hidden transition-opacity duration-[2000ms] ease-in md:block ${fadedIn ? 'opacity-100' : 'opacity-0'}`}
+      aria-hidden
+    >
+      {engineReady ? <StableParticlesLayer /> : null}
+    </div>
+  );
+}
 
 function ExperienceJobRow({ job, index, length }: { job: ExperienceEntry; index: number; length: number }) {
   return (
@@ -94,32 +179,12 @@ function App() {
   const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState(false);
   const [areMoreProjectsExpanded, setAreMoreProjectsExpanded] = useState(false);
   const [areMoreExperienceExpanded, setAreMoreExperienceExpanded] = useState(false);
-  const [particlesInit, setParticlesInit] = useState(false);
-  const [particlesVisible, setParticlesVisible] = useState(false);
   const [isWinking, setIsWinking] = useState(false);
 
   const homeRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
-
-  // Initialize particles engine
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      initParticlesEngine(async (engine) => {
-        await loadSlim(engine);
-      }).then(() => {
-        setParticlesInit(true);
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            setParticlesVisible(true);
-          });
-        });
-      });
-    }, 1000); // Defer loading by 1s for better initial page performance
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Visibility handlers
   const handleVisualizeExperiencePermanently = useCallback((isIntersecting: boolean) => {
@@ -154,45 +219,11 @@ function App() {
     if (isIntersecting) setIsOtherProjectsSectionVisible(true);
   }, []);
 
-  // Scroll handlers
-
-  // Catppuccin Macchiato particles configuration
-  const particlesOptions = {
-    background: { color: { value: "#24273a" } },
-    fpsLimit: 60,
-    interactivity: {
-      events: {
-        onClick: { enable: true, mode: "push" as const },
-        onHover: { enable: true, mode: "grab" as const }
-      },
-      modes: {
-        push: { quantity: 4 },
-        grab: { distance: 150 }
-      }
-    },
-    particles: {
-      color: { value: "#f5bde6" },
-      links: { color: "#c6a0f6", distance: 150, enable: true, opacity: 0.5, width: 1 },
-      move: { enable: true, speed: 0.1 },
-      number: { density: { enable: true }, value: 80 },
-      opacity: { value: 0.5 },
-      shape: { type: "circle" as const },
-      size: { value: { min: 1, max: 4 } }
-    },
-    detectRetina: true
-  };
-
   return (
     <div>
       <NavBar />
 
-      {particlesInit && (
-        <Particles
-          id="tsparticles"
-          className={`fixed inset-0 -z-10 hidden md:block transition-opacity duration-[2000ms] ease-in ${particlesVisible ? 'opacity-100' : 'opacity-0'}`}
-          options={particlesOptions}
-        />
-      )}
+      <ParticlesBackground />
 
       <div className="flex justify-center flex-col mx-auto px-2 md:px-32 lg:px-44 xl:px-48">
         <div className="bg-base z-0">
