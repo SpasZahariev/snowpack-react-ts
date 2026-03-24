@@ -11,6 +11,78 @@ import { Info, Heart, Github, Linkedin, Mail, Phone, Briefcase, Award, Wrench, S
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
+interface ExperienceEntry {
+  company: string;
+  role: string;
+  period: string;
+  achievements?: string[];
+}
+
+const EXPERIENCE_JOBS: ExperienceEntry[] = [
+  {
+    company: 'EPAM Systems',
+    role: 'Software Engineer Lead',
+    period: 'Dec 2024 - Present',
+    achievements: [
+      'Leading a cross-functional team to architect scalable cloud-native backend solutions using Java/Spring Boot and Kubernetes.',
+      'Driving engineering best practices, reducing technical debt and improving deployment frequency by over 40%.'
+    ]
+  },
+  {
+    company: 'EPAM Systems',
+    role: 'Senior Software Engineer',
+    period: 'Oct 2021 - Dec 2024',
+    achievements: [
+      'Spearheaded the migration of legacy monolithic systems to distributed microservices, reducing operational costs by 30%.',
+      'Implemented robust CI/CD pipelines and cloud infrastructure capable of handling millions of daily requests.'
+    ]
+  },
+  {
+    company: 'JPMorgan Chase',
+    role: 'Software Engineer',
+    period: 'Sep 2019 - Oct 2021',
+    achievements: [
+      'Developed high-throughput fintech APIs using Java, significantly improving trade processing latency by 25%.',
+      'Collaborated globally to integrate mission-critical risk management services, ensuring 99.99% system uptime.'
+    ]
+  },
+  {
+    company: 'JPMorgan Chase',
+    role: 'Summer Software Intern',
+    period: 'Jun 2018 - Sep 2018',
+    achievements: [
+      'Built automated reporting and analytics tools, saving the team over 15 hours of manual work per week.'
+    ]
+  },
+  { company: 'University of Southampton', role: 'First Class Honours BEng', period: 'Sep 2016 - May 2019' },
+  { company: 'Sofia High School of Mathematics', role: 'Student in an IT focused class', period: 'Sep 2011 - May 2016' }
+];
+
+const EXPERIENCE_VISIBLE_COUNT = 3;
+
+function ExperienceJobRow({ job, index, length }: { job: ExperienceEntry; index: number; length: number }) {
+  return (
+    <div
+      className={`flex flex-col md:flex-row md:justify-between gap-2 md:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${index !== length - 1 ? 'mb-4 border-b border-surface0/50 hover:border-transparent' : ''}`}
+    >
+      <div className="grid w-full">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+          <span className="text-mauve font-semibold text-lg">{job.company}</span>
+          <span className="text-left md:text-right text-subtext1 text-sm">{job.period}</span>
+        </div>
+        <span className="mt-1 text-pink font-medium">{job.role}</span>
+        {job.achievements && (
+          <ul className="list-disc ml-5 mt-3 text-subtext0 text-sm space-y-2">
+            {job.achievements.map((ach, i) => (
+              <li key={i}>{ach}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [isExperienceVisible, setIsExperienceVisible] = useState(false);
   const [isCertsVisible, setIsCertsVisible] = useState(false);
@@ -21,6 +93,7 @@ function App() {
   const [isDoilyVisible, setIsDoilyVisible] = useState(false);
   const [isOtherProjectsSectionVisible, setIsOtherProjectsSectionVisible] = useState(false);
   const [areMoreProjectsExpanded, setAreMoreProjectsExpanded] = useState(false);
+  const [areMoreExperienceExpanded, setAreMoreExperienceExpanded] = useState(false);
   const [particlesInit, setParticlesInit] = useState(false);
   const [particlesVisible, setParticlesVisible] = useState(false);
   const [isWinking, setIsWinking] = useState(false);
@@ -186,10 +259,10 @@ function App() {
             <h2 className="font-sans text-pink text-4xl mt-2 mb-4 font-bold">Spas Zahariev</h2>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               I'm a Software Engineer Lead with <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>7+ years</span> of industry experience, currently at <b className="text-mauve">EPAM Systems</b> in Zurich.
-              I've worked across fintech and large-scale consulting, with a focus on <b className="text-mauve">Java/Python</b> backend systems - but I thrive across the <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>full stack</span>, from Kubernetes and cloud infrastructure to AI and frontend development.
+              I've worked across fintech and large-scale consulting, with a focus on <b className="text-mauve">Java/Python</b> systems.
             </p>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
-              When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.
+              Backend developer by day, <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>fullstack</span> tinkerer by night. When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
               <Button variant="primary" href="Spas-Zahariev-CV.pdf" target="_blank" className="flex items-center justify-center gap-2 w-full sm:w-auto">
@@ -212,62 +285,30 @@ function App() {
                 Experience
               </h3>
 
-                {[
-                  { 
-                    company: 'EPAM Systems', 
-                    role: 'Software Engineer Lead', 
-                    period: 'Dec 2024 - Present',
-                    achievements: [
-                      'Leading a cross-functional team to architect scalable cloud-native backend solutions using Java/Spring Boot and Kubernetes.',
-                      'Driving engineering best practices, reducing technical debt and improving deployment frequency by over 40%.'
-                    ]
-                  },
-                  { 
-                    company: 'EPAM Systems', 
-                    role: 'Senior Software Engineer', 
-                    period: 'Oct 2021 - Dec 2024',
-                    achievements: [
-                      'Spearheaded the migration of legacy monolithic systems to distributed microservices, reducing operational costs by 30%.',
-                      'Implemented robust CI/CD pipelines and cloud infrastructure capable of handling millions of daily requests.'
-                    ]
-                  },
-                  { 
-                    company: 'JPMorgan Chase', 
-                    role: 'Software Engineer', 
-                    period: 'Sep 2019 - Oct 2021',
-                    achievements: [
-                      'Developed high-throughput fintech APIs using Java, significantly improving trade processing latency by 25%.',
-                      'Collaborated globally to integrate mission-critical risk management services, ensuring 99.99% system uptime.'
-                    ]
-                  },
-                  { 
-                    company: 'JPMorgan Chase', 
-                    role: 'Summer Software Intern', 
-                    period: 'Jun 2018 - Sep 2018',
-                    achievements: [
-                      'Built automated reporting and analytics tools, saving the team over 15 hours of manual work per week.'
-                    ]
-                  },
-                  { company: 'University of Southampton', role: 'First Class Honours BEng', period: 'Sep 2016 - May 2019' },
-                  { company: 'Sofia High School of Mathematics', role: 'Student in an IT focused class', period: 'Sep 2011 - May 2016' }
-                ].map((job, index, arr) => (
-                  <div key={job.company + job.role} className={`flex flex-col md:flex-row md:justify-between gap-2 md:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${index !== arr.length - 1 ? 'mb-4 border-b border-surface0/50 hover:border-transparent' : ''}`}>
-                    <div className="grid w-full">
-                      <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-                        <span className="text-mauve font-semibold text-lg">{job.company}</span>
-                        <span className="text-left md:text-right text-subtext1 text-sm">{job.period}</span>
-                      </div>
-                      <span className="mt-1 text-pink font-medium">{job.role}</span>
-                      {job.achievements && (
-                        <ul className="list-disc ml-5 mt-3 text-subtext0 text-sm space-y-2">
-                          {job.achievements.map((ach, i) => (
-                            <li key={i}>{ach}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  </div>
+                {EXPERIENCE_JOBS.slice(0, EXPERIENCE_VISIBLE_COUNT).map((job, index, arr) => (
+                  <ExperienceJobRow key={`${job.company}-${job.role}`} job={job} index={index} length={arr.length} />
                 ))}
+
+                <div className="flex items-center gap-4 py-4">
+                  <div className="flex-1 h-px bg-surface1" />
+                  <button
+                    type="button"
+                    onClick={() => setAreMoreExperienceExpanded((prev) => !prev)}
+                    className="flex items-center gap-2 px-5 py-2.5 text-sm text-subtext0 hover:text-pink border border-surface1 hover:border-pink rounded-full transition-colors duration-200 cursor-pointer bg-transparent shrink-0"
+                  >
+                    {areMoreExperienceExpanded ? 'Show less experience' : 'Show more experience'}
+                    <ChevronDown
+                      size={18}
+                      className={`transition-transform duration-300 ${areMoreExperienceExpanded ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  <div className="flex-1 h-px bg-surface1" />
+                </div>
+
+                {areMoreExperienceExpanded &&
+                  EXPERIENCE_JOBS.slice(EXPERIENCE_VISIBLE_COUNT).map((job, index, arr) => (
+                    <ExperienceJobRow key={`${job.company}-${job.role}`} job={job} index={index} length={arr.length} />
+                  ))}
               </FadeInSection>
             </section>
 
