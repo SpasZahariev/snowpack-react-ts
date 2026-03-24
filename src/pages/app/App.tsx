@@ -7,7 +7,7 @@ import ProjectManagement from '../../components/ProjectManagement/ProjectManagem
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import { Button, IconLink, Chip } from '../../components/ui';
-import { Info, Heart, Github, Linkedin, Mail, Phone, Briefcase, Award, Wrench, Star, MapPin, ChevronDown, Download } from 'lucide-react';
+import { Heart, Github, Linkedin, Mail, Phone, Briefcase, Award, Wrench, Star, MapPin, ChevronDown, Download } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -376,7 +376,6 @@ function App() {
                         >
                           <span className="line-clamp-4 min-w-0 sm:hidden">{cert.name}</span>
                           <span className="hidden whitespace-nowrap sm:inline">{cert.date}</span>
-                          <Info size={16} className="mt-0.5 shrink-0 opacity-90 sm:mt-0" aria-hidden />
                         </Button>
                         <p className="px-1 text-xs text-subtext0 sm:hidden">{cert.date}</p>
                       </div>
