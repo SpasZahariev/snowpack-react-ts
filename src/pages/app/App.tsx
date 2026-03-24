@@ -313,7 +313,7 @@ function App() {
                   <div>
                     <p className="text-xl text-mauve font-semibold mb-1">Languages</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['Java', 'Python', 'TypeScript', 'JavaScript', 'Go', 'Kotlin', 'SQL', 'C#', 'C++', 'Rust', 'Bash', 'Haskell'].map(skill => (
+                      {['Java', 'Python', 'TypeScript', 'JavaScript', 'Go', 'Kotlin', 'Dart', 'SQL', 'C#', 'C++', 'Rust', 'Bash', 'Lua', 'Haskell'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
@@ -321,7 +321,7 @@ function App() {
                   <div>
                     <p className="text-xl text-mauve font-semibold mb-1">Frameworks & Tools</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['Spring Boot', 'Kafka', 'Docker', 'Kubernetes', 'Terraform', 'React', 'Angular', 'Node.js', 'GraphQL', 'gRPC/Protobuf', 'Flask', 'Flutter'].map(skill => (
+                      {['Spring Boot', 'Docker', 'Kubernetes', 'Neovim', 'Terraform', 'React', 'Angular', 'Node.js', 'REST & WebSockets', 'GraphQL', 'Neo4j', 'gRPC/Protobuf', 'Flask', 'Flutter'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
@@ -331,7 +331,7 @@ function App() {
                   <div>
                     <p className="text-xl text-mauve font-semibold mb-1">Cloud & Data</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['AWS', 'Google Cloud Platform', 'Microsoft Azure', 'Oracle Cloud', 'PostgreSQL', 'MongoDB', 'DynamoDB', 'Apache Spark', 'Databricks', 'BigQuery', 'Elastic Stack', 'Jenkins CI/CD'].map(skill => (
+                      {['AWS', 'Google Cloud Platform', 'Microsoft Azure', 'Azure Purview', 'GCP Vertex AI', 'PostgreSQL', 'IBM DB2', 'Amazon S3', 'Apache Kafka', 'Apache Spark', 'Apache Beam', 'BigQuery', 'Cloud Functions', 'Jenkins CI/CD'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
@@ -339,7 +339,7 @@ function App() {
                   <div>
                     <p className="text-xl text-mauve font-semibold mb-1">AI & Practices</p>
                     <ul className="list-none p-0 text-subtext1">
-                      {['Machine Learning', 'Deep Learning', 'LLMs & Gen AI', 'TensorFlow', 'MLOps', 'Microservices', 'Domain-Driven Design', 'Clean Code & SOLID', 'Agile & Scrum', 'DevOps & CI/CD', 'Cloud Security'].map(skill => (
+                      {['Machine Learning', 'Deep Learning', 'LLMs & Gen AI', 'RAG', 'TensorFlow & Keras', 'MLOps & AI metrics', 'Microservices', 'Event-driven architecture', 'Domain-Driven Design', 'Clean Code & SOLID', 'Agile & Scrum', 'Technical mentoring', 'DevOps & CI/CD', 'Cloud Security'].map(skill => (
                         <li key={skill} className="my-2">{skill}</li>
                       ))}
                     </ul>
