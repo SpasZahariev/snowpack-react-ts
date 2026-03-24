@@ -11,6 +11,17 @@ const ENTRY_POINT = join(process.cwd(), "src", "index.tsx");
 const DEV_BUILD_DIR = join(process.cwd(), ".dev-build");
 const CSS_INPUT = join(process.cwd(), "src", "styles", "globals.css");
 const CSS_OUTPUT = join(DEV_BUILD_DIR, "styles.css");
+// Run Tailwind CLI with Node when available: under Bun, loading @tailwindcss/oxide probes
+// @tailwindcss/oxide-darwin-universal first; that package is not published, and Bun may log a 404
+// while resolving the failed require. Node only throws MODULE_NOT_FOUND and continues to arm64/x64.
+const TAILWIND_CLI = join(
+  process.cwd(),
+  "node_modules",
+  "@tailwindcss",
+  "cli",
+  "dist",
+  "index.mjs",
+);
 
 // Ensure dev build directory exists
 if (!existsSync(DEV_BUILD_DIR)) {
@@ -20,8 +31,11 @@ if (!existsSync(DEV_BUILD_DIR)) {
 // Build Tailwind CSS
 async function buildCSS() {
   console.log("Building Tailwind CSS...");
+  const node = Bun.which("node");
   const cssResult = Bun.spawnSync({
-    cmd: ["bun", "run", "tailwindcss", "-i", CSS_INPUT, "-o", CSS_OUTPUT],
+    cmd: node
+      ? [node, TAILWIND_CLI, "-i", CSS_INPUT, "-o", CSS_OUTPUT]
+      : ["bun", "run", "tailwindcss", "-i", CSS_INPUT, "-o", CSS_OUTPUT],
     stdout: "inherit",
     stderr: "inherit",
   });

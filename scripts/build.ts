@@ -10,6 +10,15 @@ const ENTRY_POINT = join(process.cwd(), "src", "index.tsx");
 const HTML_TEMPLATE = join(PUBLIC_DIR, "index.html");
 const CSS_INPUT = join(process.cwd(), "src", "styles", "globals.css");
 const CSS_OUTPUT = join(BUILD_DIR, "styles.css");
+// Run Tailwind CLI with Node when available: see scripts/dev.ts.
+const TAILWIND_CLI = join(
+  process.cwd(),
+  "node_modules",
+  "@tailwindcss",
+  "cli",
+  "dist",
+  "index.mjs",
+);
 
 // Clean and create build directory
 if (existsSync(BUILD_DIR)) {
@@ -19,8 +28,11 @@ mkdirSync(BUILD_DIR, { recursive: true });
 
 // Build Tailwind CSS
 console.log("Building Tailwind CSS...");
+const node = Bun.which("node");
 const cssResult = Bun.spawnSync({
-  cmd: ["bun", "run", "tailwindcss", "-i", CSS_INPUT, "-o", CSS_OUTPUT, "--minify"],
+  cmd: node
+    ? [node, TAILWIND_CLI, "-i", CSS_INPUT, "-o", CSS_OUTPUT, "--minify"]
+    : ["bun", "run", "tailwindcss", "-i", CSS_INPUT, "-o", CSS_OUTPUT, "--minify"],
   stdout: "inherit",
   stderr: "inherit",
 });
