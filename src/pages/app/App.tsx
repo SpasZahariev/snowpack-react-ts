@@ -24,8 +24,8 @@ const EXPERIENCE_JOBS: ExperienceEntry[] = [
     role: 'Software Engineer Lead',
     period: 'Dec 2024 - Present',
     achievements: [
-      'Leading a cross-functional team to architect scalable cloud-native backend solutions using Java/Spring Boot and Kubernetes.',
-      'Driving engineering best practices, reducing technical debt and improving deployment frequency by over 40%.'
+      'Architected and led the team in building a Python workflow to scrape and parse SQL lineage from multiple analytics data warehouses, publishing results daily to Azure Purview so auditors can trace data from its sources through to where it is stored.',
+      'Served on internal expert assessment committees, with ongoing mentoring of engineers and responsibility for technical interviews.'
     ]
   },
   {
@@ -33,8 +33,8 @@ const EXPERIENCE_JOBS: ExperienceEntry[] = [
     role: 'Senior Software Engineer',
     period: 'Oct 2021 - Dec 2024',
     achievements: [
-      'Spearheaded the migration of legacy monolithic systems to distributed microservices, reducing operational costs by 30%.',
-      'Implemented robust CI/CD pipelines and cloud infrastructure capable of handling millions of daily requests.'
+      'Led a team of developers to deliver a metadata synchronisation service that connected multiple systems and distributed metadata changes reliably across them, processing around half a million records per day.',
+      'Designed and implemented a Java adapter microservice that exposed a mainframe SOAP service as a REST API, enabling clients to integrate with standard HTTP-based tooling.'
     ]
   },
   {
