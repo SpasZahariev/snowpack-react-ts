@@ -20,12 +20,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (href) {
       return (
-        <a 
+        <a
           ref={ref as any}
-          href={href} 
-          target={target} 
           className={`${classes} no-underline`}
           {...(props as any)}
+          href={href}
+          target={target}
         >
           {children}
         </a>

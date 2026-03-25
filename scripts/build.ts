@@ -94,10 +94,10 @@ if (existsSync(OPTIMISED_IMAGES_DIR)) {
 }
 
 // Copy PDF
-const pdfSource = join(PUBLIC_DIR, "Spas-Zahariev-CV.pdf");
+const pdfSource = join(PUBLIC_DIR, "resume.pdf");
 if (existsSync(pdfSource)) {
   console.log(`Copying PDF from ${pdfSource}...`);
-  cpSync(pdfSource, join(BUILD_DIR, "Spas-Zahariev-CV.pdf"));
+  cpSync(pdfSource, join(BUILD_DIR, "resume.pdf"));
   console.log("PDF copied successfully");
 } else {
   console.warn(`Warning: PDF not found at ${pdfSource}`);

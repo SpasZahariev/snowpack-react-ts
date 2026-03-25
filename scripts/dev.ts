@@ -245,8 +245,8 @@ const server = serve({
     }
 
     // Serve PDF
-    if (url.pathname === "/Spas-Zahariev-CV.pdf") {
-      const pdfPath = join(PUBLIC_DIR, "Spas-Zahariev-CV.pdf");
+    if (url.pathname === "/resume.pdf") {
+      const pdfPath = join(PUBLIC_DIR, "resume.pdf");
       if (existsSync(pdfPath)) {
         const file = Bun.file(pdfPath);
         return new Response(file, {
