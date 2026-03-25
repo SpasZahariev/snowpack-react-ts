@@ -1,9 +1,18 @@
 #!/usr/bin/env bun
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync, cpSync, rmSync } from "fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, cpSync, rmSync } from "fs";
 import { join } from "path";
 
 const BUILD_DIR = join(process.cwd(), "build");
+
+/** Wipe build output but keep `build/.git` so `build/` can be a git submodule (GitHub Pages repo). */
+function cleanBuildDirPreservingGit(dir: string) {
+  if (!existsSync(dir)) return;
+  for (const name of readdirSync(dir, { withFileTypes: true })) {
+    if (name.name === ".git") continue;
+    rmSync(join(dir, name.name), { recursive: true, force: true });
+  }
+}
 const PUBLIC_DIR = join(process.cwd(), "public");
 const OPTIMISED_IMAGES_DIR = join(process.cwd(), "optimised-images", "lossful", "images");
 const ENTRY_POINT = join(process.cwd(), "src", "index.tsx");
@@ -20,11 +29,12 @@ const TAILWIND_CLI = join(
   "index.mjs",
 );
 
-// Clean and create build directory
-if (existsSync(BUILD_DIR)) {
-  rmSync(BUILD_DIR, { recursive: true, force: true });
+// Clean build directory (preserve .git when build/ is a submodule)
+if (!existsSync(BUILD_DIR)) {
+  mkdirSync(BUILD_DIR, { recursive: true });
+} else {
+  cleanBuildDirPreservingGit(BUILD_DIR);
 }
-mkdirSync(BUILD_DIR, { recursive: true });
 
 // Build Tailwind CSS
 console.log("Building Tailwind CSS...");
@@ -83,14 +93,23 @@ if (!existsSync(OUTPUT_BUNDLE)) {
 
 console.log("Bundle created successfully");
 
-// Copy images
+// Copy images (optimised lossful assets used by most projects)
+const imagesDest = join(BUILD_DIR, "images");
 if (existsSync(OPTIMISED_IMAGES_DIR)) {
-  const imagesDest = join(BUILD_DIR, "images");
   console.log(`Copying images from ${OPTIMISED_IMAGES_DIR} to ${imagesDest}...`);
   cpSync(OPTIMISED_IMAGES_DIR, imagesDest, { recursive: true });
   console.log("Images copied successfully");
 } else {
   console.warn(`Warning: Images directory not found at ${OPTIMISED_IMAGES_DIR}`);
+}
+
+// Merge in public/images (profile photo, RAG screenshots, etc. — not always under optimised-images)
+const publicImagesDir = join(PUBLIC_DIR, "images");
+if (existsSync(publicImagesDir)) {
+  mkdirSync(imagesDest, { recursive: true });
+  console.log(`Merging public/images into ${imagesDest}...`);
+  cpSync(publicImagesDir, imagesDest, { recursive: true });
+  console.log("Public images merged successfully");
 }
 
 // Copy PDF
@@ -103,10 +122,19 @@ if (existsSync(pdfSource)) {
   console.warn(`Warning: PDF not found at ${pdfSource}`);
 }
 
-// Copy favicon if it exists
-const faviconSource = join(PUBLIC_DIR, "spas-logo.svg");
-if (existsSync(faviconSource)) {
-  cpSync(faviconSource, join(BUILD_DIR, "spas-logo.svg"));
+// Copy favicon and logo from public
+const faviconSvg = join(PUBLIC_DIR, "favicon.svg");
+if (existsSync(faviconSvg)) {
+  cpSync(faviconSvg, join(BUILD_DIR, "favicon.svg"));
+}
+const logoSource = join(PUBLIC_DIR, "spas-logo.svg");
+if (existsSync(logoSource)) {
+  cpSync(logoSource, join(BUILD_DIR, "spas-logo.svg"));
+}
+
+const robotsSource = join(PUBLIC_DIR, "robots.txt");
+if (existsSync(robotsSource)) {
+  cpSync(robotsSource, join(BUILD_DIR, "robots.txt"));
 }
 
 // Copy other public assets (fonts, etc.)

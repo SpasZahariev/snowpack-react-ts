@@ -296,7 +296,7 @@ function App() {
               Backend developer by day, <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>fullstack</span> tinkerer by night. When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-              <Button variant="primary" href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full sm:w-auto">
+              <Button variant="primary" href="resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full sm:w-auto">
                 <Download size={18} />
                 <span>Resume</span>
               </Button>
@@ -518,7 +518,7 @@ function App() {
             <p className="text-sm text-surface2 mt-8">
               Built with <Heart size={14} className="inline mx-1 text-pink" /> by Spas Zahariev
               {' · '}
-              <a href="/2021/" className="hover:text-mauve transition-colors duration-200">
+              <a href="2021/index.html" className="hover:text-mauve transition-colors duration-200">
                 Go Back to <span className="font-bold text-mauve">2021</span> version
               </a>
             </p>
