@@ -46,6 +46,7 @@ scripts/build.ts           # Production build script
 scripts/dev.ts             # Development server script
 public/index.html          # HTML template
 build/                     # Git submodule → github.com/SpasZahariev/spas-zahariev (GitHub Pages)
+awesome-cv/                # Git submodule for generating the LaTeX resume
 ```
 
 ## Project Structure
@@ -82,8 +83,14 @@ build/                     # Git submodule → github.com/SpasZahariev/spas-zaha
 │   └── setup.ts                     # Test setup (jest-dom)
 ├── tailwind.config.ts               # Tailwind configuration
 ├── postcss.config.js                # PostCSS configuration
-└── build/                           # Production output (git submodule: spas-zahariev)
+├── build/                           # Production output (git submodule: spas-zahariev)
+└── awesome-cv/                      # LaTeX resume source (git submodule)
 ```
+
+### Submodule Notes
+
+- `build/` is a git submodule that stores production-ready website assets intended for deployment.
+- `awesome-cv/` is a git submodule used to build and maintain the LaTeX resume.
 
 ## Tailwind CSS Configuration
 
