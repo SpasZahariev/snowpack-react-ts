@@ -264,7 +264,7 @@ function App() {
               <div className="flex flex-col gap-3">
                 <p className="text-subtext0 flex items-center gap-1.5 m-0">
                   <a
-                    href="https://www.google.com/maps/place/Zurich,+Switzerland"
+                    href="https://www.google.com/maps/place/Pferdestatue+der+ungez%C3%A4hmte+Horizont+von+Yves+Netzhammer/@47.3918595,8.5183743,17z/data=!3m1!4b1!4m6!3m5!1s0x47900b0028ba37e7:0x89639dfad9dff0ce!8m2!3d47.3918595!4d8.5209492!16s%2Fg%2F11xsy4bqsh?entry=ttu&g_ep=EgoyMDI2MDQxMy4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Open Zurich, Switzerland in Google Maps"

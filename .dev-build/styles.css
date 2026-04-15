@@ -583,17 +583,8 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
-  .top-1 {
-    top: calc(var(--spacing) * 1);
-  }
   .top-4 {
     top: calc(var(--spacing) * 4);
-  }
-  .top-\[14px\] {
-    top: 14px;
-  }
-  .top-\[26px\] {
-    top: 26px;
   }
   .right-0 {
     right: calc(var(--spacing) * 0);
@@ -755,17 +746,11 @@
   .h-1 {
     height: calc(var(--spacing) * 1);
   }
-  .h-1\.5 {
-    height: calc(var(--spacing) * 1.5);
-  }
   .h-6 {
     height: calc(var(--spacing) * 6);
   }
   .h-9 {
     height: calc(var(--spacing) * 9);
-  }
-  .h-10 {
-    height: calc(var(--spacing) * 10);
   }
   .h-32 {
     height: calc(var(--spacing) * 32);
@@ -778,9 +763,6 @@
   }
   .w-9 {
     width: calc(var(--spacing) * 9);
-  }
-  .w-10 {
-    width: calc(var(--spacing) * 10);
   }
   .w-16 {
     width: calc(var(--spacing) * 16);
@@ -812,9 +794,6 @@
   .min-w-0 {
     min-width: calc(var(--spacing) * 0);
   }
-  .min-w-\[145px\] {
-    min-width: 145px;
-  }
   .flex-1 {
     flex: 1;
   }
@@ -829,9 +808,6 @@
   }
   .border-collapse {
     border-collapse: collapse;
-  }
-  .origin-left {
-    transform-origin: 0;
   }
   .-translate-x-1\/2 {
     --tw-translate-x: calc(calc(1/2 * 100%) * -1);
@@ -973,10 +949,6 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
-  .rounded-t-2xl {
-    border-top-left-radius: var(--radius-2xl);
-    border-top-right-radius: var(--radius-2xl);
-  }
   .rounded-t-xl {
     border-top-left-radius: var(--radius-xl);
     border-top-right-radius: var(--radius-xl);
@@ -988,10 +960,6 @@
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
-  }
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
   }
   .border-\[3px\] {
     border-style: var(--tw-border-style);
@@ -1053,12 +1021,6 @@
     background-color: color-mix(in srgb, #000 45%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-black) 45%, transparent);
-    }
-  }
-  .bg-black\/50 {
-    background-color: color-mix(in srgb, #000 50%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
     }
   }
   .bg-black\/70 {
@@ -1250,10 +1212,6 @@
     --tw-leading: var(--leading-snug);
     line-height: var(--leading-snug);
   }
-  .leading-tight {
-    --tw-leading: var(--leading-tight);
-    line-height: var(--leading-tight);
-  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
@@ -1265,10 +1223,6 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
-  }
-  .tracking-tight {
-    --tw-tracking: var(--tracking-tight);
-    letter-spacing: var(--tracking-tight);
   }
   .tracking-wide {
     --tw-tracking: var(--tracking-wide);
@@ -1469,39 +1423,11 @@
     -webkit-user-select: none;
     user-select: none;
   }
-  .group-hover\:w-0 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        width: calc(var(--spacing) * 0);
-      }
-    }
-  }
   .group-hover\:translate-y-\[-2px\] {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         --tw-translate-y: -2px;
         translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
-  .group-hover\:-rotate-45 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        rotate: calc(45deg * -1);
-      }
-    }
-  }
-  .group-hover\:rotate-45 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        rotate: 45deg;
-      }
-    }
-  }
-  .group-hover\:opacity-0 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        opacity: 0%;
       }
     }
   }
@@ -1828,17 +1754,6 @@
       padding-left: calc(var(--spacing) * 6);
     }
   }
-  .sm\:text-right {
-    @media (width >= 40rem) {
-      text-align: right;
-    }
-  }
-  .sm\:text-2xl {
-    @media (width >= 40rem) {
-      font-size: var(--text-2xl);
-      line-height: var(--tw-leading, var(--text-2xl--line-height));
-    }
-  }
   .sm\:text-\[1rem\] {
     @media (width >= 40rem) {
       font-size: 1rem;
@@ -2005,19 +1920,9 @@
       gap: calc(var(--spacing) * 12);
     }
   }
-  .xl\:gap-24 {
-    @media (width >= 80rem) {
-      gap: calc(var(--spacing) * 24);
-    }
-  }
   .xl\:px-48 {
     @media (width >= 80rem) {
       padding-inline: calc(var(--spacing) * 48);
-    }
-  }
-  .xl\:px-56 {
-    @media (width >= 80rem) {
-      padding-inline: calc(var(--spacing) * 56);
     }
   }
 }
