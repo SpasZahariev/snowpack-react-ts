@@ -2,3 +2,6 @@
 	path = build
 	url = git@github.com:SpasZahariev/spas-zahariev.git
 	branch = master
+[submodule "awesome-cv"]
+	path = awesome-cv
+	url = git@github.com:SpasZahariev/Awesome-CV.git
