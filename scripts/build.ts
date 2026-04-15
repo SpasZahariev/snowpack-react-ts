@@ -5,11 +5,11 @@ import { join } from "path";
 
 const BUILD_DIR = join(process.cwd(), "build");
 
-/** Wipe build output but keep `build/.git` so `build/` can be a git submodule (GitHub Pages repo). */
+/** Wipe build output but keep submodule metadata and CNAME for GitHub Pages custom domain. */
 function cleanBuildDirPreservingGit(dir: string) {
   if (!existsSync(dir)) return;
   for (const name of readdirSync(dir, { withFileTypes: true })) {
-    if (name.name === ".git") continue;
+    if (name.name === ".git" || name.name === "CNAME") continue;
     rmSync(join(dir, name.name), { recursive: true, force: true });
   }
 }
