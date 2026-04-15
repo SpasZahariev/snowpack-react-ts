@@ -263,7 +263,16 @@ function App() {
               </div>
               <div className="flex flex-col gap-3">
                 <p className="text-subtext0 flex items-center gap-1.5 m-0">
-                  <MapPin size={18} className="text-pink" />
+                  <a
+                    href="https://www.google.com/maps/place/Zurich,+Switzerland"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Zurich, Switzerland in Google Maps"
+                    title="Open Zurich on Google Maps"
+                    className="inline-flex items-center text-pink hover:text-mauve transition-colors duration-200"
+                  >
+                    <MapPin size={18} />
+                  </a>
                   Zurich, Switzerland
                 </p>
                 <div className="flex items-center gap-4 text-subtext1">
@@ -293,7 +302,7 @@ function App() {
               I've worked across fintech and large-scale consulting, with a focus on <b className="text-mauve">Java/Python</b> systems.
             </p>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
-              Backend developer by day, <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>fullstack</span> tinkerer by night. When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.
+              <b className="text-mauve">Backend developer</b> by day, <span className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}>fullstack</span> tinkerer by night. When I'm not working, I'm usually halfway through building something I thought of in the shower - a RAG-powered AI app one month, a mobile tool the next.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
               <Button variant="primary" href="resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full sm:w-auto">
