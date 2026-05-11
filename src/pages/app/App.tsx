@@ -389,12 +389,45 @@ function App() {
                 7+ years
               </span>{' '}
               of industry experience, currently at{' '}
-              <b className="text-mauve">EPAM Systems</b> in Zurich. I've worked
-              across fintech and large-scale consulting, with a focus on{' '}
-              <b className="text-mauve">Java/Python</b> systems.
+              <a
+                href="https://www.epam.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mauve hover:bg-pink/25 hover:text-pink transition-all duration-300 rounded-sm"
+              >
+                EPAM Systems
+              </a>{' '}
+              in Zurich. I've worked across fintech and large-scale consulting,
+              with a focus on{' '}
+              <a
+                href="https://spring.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mauve hover:bg-pink/25 hover:text-pink transition-all duration-300 rounded-sm"
+              >
+                Java
+              </a>
+              /
+              <a
+                href="https://www.tensorflow.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mauve hover:bg-pink/25 hover:text-pink transition-all duration-300 rounded-sm"
+              >
+                Python
+              </a>{' '}
+              systems.
             </p>
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
-              <b className="text-mauve">Backend developer</b> by day,{' '}
+              <a
+                href="https://grugbrain.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mauve hover:bg-pink/25 hover:text-pink transition-all duration-300 rounded-sm"
+              >
+                Backend developer
+              </a>{' '}
+              by day,{' '}
               <span
                 className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}
               >
@@ -540,12 +573,12 @@ function App() {
                     className={`group -mx-4 block rounded-xl border border-surface1/45 bg-surface0/20 p-2 shadow-sm transition-all duration-300 sm:border-transparent sm:bg-transparent sm:p-3 sm:shadow-none hover:border-pink/20 hover:bg-surface0/35 sm:hover:-translate-y-1 sm:hover:border-transparent ${index !== arr.length - 1 ? 'mb-3 sm:mb-2' : ''}`}
                   >
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                      <div className="hidden min-w-0 flex-1 text-[1rem] font-semibold text-mauve sm:block sm:pr-2">
+                      <div className="hidden min-w-0 flex-1 text-[1rem] font-semibold text-mauve group-hover:text-pink transition-colors duration-300 sm:block sm:pr-2">
                         {cert.name}
                       </div>
                       <div className="flex min-w-0 flex-col gap-1.5 sm:w-auto sm:shrink-0 sm:items-end">
                         <span className="flex w-full items-start justify-between gap-3 py-2.5 pl-3 pr-2 text-left text-[0.9375rem] font-semibold leading-snug sm:w-auto sm:items-center sm:justify-center sm:py-1.5 sm:pl-4 sm:pr-4 sm:text-[1rem]">
-                          <span className="line-clamp-4 min-w-0 text-mauve sm:hidden">
+                          <span className="line-clamp-4 min-w-0 text-mauve group-hover:text-pink transition-colors duration-300 sm:hidden">
                             {cert.name}
                           </span>
                           <span className="hidden whitespace-nowrap sm:inline text-subtext1">
@@ -714,7 +747,7 @@ function App() {
             </section>
 
             {/* Project Management */}
-            <section className="py-12">
+            <section className="py-6">
               <FadeInSection
                 isVisible={isProjectManagementVisible}
                 handleVisualise={handleVisualizeProjectManagementPermanently}
@@ -777,8 +810,15 @@ function App() {
             <h3 className="text-pink text-3xl font-bold mb-6">Let's Connect</h3>
             <p className="text-subtext0 max-w-xl mx-auto mb-8">
               I'm currently based in{' '}
-              <b className="text-mauve">Zurich, Switzerland (CET/CEST)</b>.
-              Whether you have a question, an opportunity, or just want to say
+              <a
+                href="https://www.google.com/maps/place/Pferdestatue+der+ungez%C3%A4hmte+Horizont+von+Yves+Netzhammer/@47.3918595,8.5183743,17z/data=!3m1!4b1!4m6!3m5!1s0x47900b0028ba37e7:0x89639dfad9dff0ce!8m2!3d47.3918595!4d8.5209492!16s%2Fg%2F11xsy4bqsh?entry=ttu&g_ep=EgoyMDI2MDQxMy4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mauve hover:bg-pink/25 hover:text-pink transition-all duration-300 rounded-sm"
+              >
+                Zurich, Switzerland (CET/CEST)
+              </a>
+              . Whether you have a question, an opportunity, or just want to say
               hi, my inbox is always open!
             </p>
 
@@ -803,16 +843,23 @@ function App() {
             </div>
 
             <p className="text-sm text-surface2 mt-8">
-              Built with <Heart size={14} className="inline mx-1 text-pink" />{' '}
-              by Spas Zahariev
-              {' · '}
-              <a
-                href="2021/index.html"
-                className="hover:text-mauve transition-colors duration-200"
-              >
-                Go Back to <span className="font-bold text-mauve">2021</span>{' '}
-                version
-              </a>
+              Built with{' '}
+              <span className="group">
+                <a href="2021/index.html" className="inline-block">
+                  <Heart
+                    size={14}
+                    className="inline-block align-middle mx-1 text-pink group-hover:text-mauve group-hover:fill-mauve transition-all duration-300 -translate-y-[2px]"
+                  />
+                </a>{' '}
+                by Spas Zahariev
+                {' · '}
+                <a
+                  href="2021/index.html"
+                  className="group-hover:text-mauve transition-colors duration-200"
+                >
+                  Go back to <span className="font-bold">2021</span> version
+                </a>
+              </span>
             </p>
           </section>
         </div>
