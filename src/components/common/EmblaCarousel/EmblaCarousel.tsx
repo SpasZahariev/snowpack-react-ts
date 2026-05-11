@@ -51,7 +51,8 @@ function EmblaCarousel({
   }, [emblaApi]);
 
   const setSlideRegistry = useCallback((api: NonNullable<typeof emblaApi>) => {
-    const registryFn = (api as { slideRegistry?: () => number[][] }).slideRegistry;
+    const registryFn = (api as { slideRegistry?: () => number[][] })
+      .slideRegistry;
     if (typeof registryFn === 'function') {
       slideRegistry.current = registryFn();
       return;
@@ -59,21 +60,28 @@ function EmblaCarousel({
     slideRegistry.current = api.scrollSnapList().map((_, index) => [index]);
   }, []);
 
-  const tweenOpacity = useCallback((api: NonNullable<typeof emblaApi>, eventName?: string) => {
-    const scrollProgress = api.scrollProgress();
-    const slidesInView = api.slidesInView();
+  const tweenOpacity = useCallback(
+    (api: NonNullable<typeof emblaApi>, eventName?: string) => {
+      const scrollProgress = api.scrollProgress();
+      const slidesInView = api.slidesInView();
 
-    api.scrollSnapList().forEach((snap, snapIndex) => {
-      const diffToTarget = snap - scrollProgress;
-      const slidesInSnap = slideRegistry.current[snapIndex] ?? [];
+      api.scrollSnapList().forEach((snap, snapIndex) => {
+        const diffToTarget = snap - scrollProgress;
+        const slidesInSnap = slideRegistry.current[snapIndex] ?? [];
 
-      slidesInSnap.forEach((slideIndex) => {
-        if (eventName === 'scroll' && !slidesInView.includes(slideIndex)) return;
-        const opacity = Math.min(Math.max(1 - Math.abs(diffToTarget), 0.3), 1);
-        api.slideNodes()[slideIndex].style.opacity = `${opacity}`;
+        slidesInSnap.forEach((slideIndex) => {
+          if (eventName === 'scroll' && !slidesInView.includes(slideIndex))
+            return;
+          const opacity = Math.min(
+            Math.max(1 - Math.abs(diffToTarget), 0.3),
+            1,
+          );
+          api.slideNodes()[slideIndex].style.opacity = `${opacity}`;
+        });
       });
-    });
-  }, []);
+    },
+    [],
+  );
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -106,19 +114,27 @@ function EmblaCarousel({
               onClick={handleSlideClick}
               aria-label="Go to next slide"
             >
-              <img className="embla__slide__img" src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
+              <img
+                className="embla__slide__img"
+                src={slide.src}
+                alt={slide.alt}
+                loading="lazy"
+                decoding="async"
+              />
             </button>
           ))}
         </div>
 
         {description && (
           <div
-            className={`absolute inset-0 z-10 flex items-end justify-start bg-black/70 backdrop-blur-sm rounded-xl p-6 pb-12 transition-opacity duration-300 ease-in-out cursor-pointer ${
-              showDescription ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            className={`absolute inset-0 z-10 flex flex-col items-end justify-end bg-black/70 backdrop-blur-sm rounded-xl p-4 pb-8 md:p-6 md:pb-12 transition-opacity duration-300 ease-in-out cursor-pointer overflow-hidden ${
+              showDescription
+                ? 'opacity-100 pointer-events-auto'
+                : 'opacity-0 pointer-events-none'
             }`}
             onClick={onOverlayClick}
           >
-            <p className="text-white text-[1rem] md:text-lg font-medium leading-relaxed max-w-prose drop-shadow-md text-left">
+            <p className="text-white text-[1rem] md:text-lg font-medium leading-relaxed max-w-prose drop-shadow-md text-left overflow-y-auto max-h-[70vh] md:max-h-none">
               {description}
             </p>
           </div>
@@ -161,7 +177,6 @@ function EmblaCarousel({
           </button>
         </div>
       )}
-
     </div>
   );
 }
