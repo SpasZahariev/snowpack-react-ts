@@ -3,6 +3,7 @@ import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import RagPulled from '../../components/RagPulled/RagPulled';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
+import BookBeats from '../../components/BookBeats/BookBeats';
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
 import Doily from '../../components/Doily/Doily';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
@@ -205,6 +206,7 @@ function App() {
   const [isSkillsVisible, setIsSkillsVisible] = useState(false);
   const [isRagPulledVisible, setIsRagPulledVisible] = useState(false);
   const [isNqmeVisible, setIsNqmeVisible] = useState(false);
+  const [isBookBeatsVisible, setIsBookBeatsVisible] = useState(false);
   const [isProjectManagementVisible, setIsProjectManagementVisible] =
     useState(false);
   const [isDoilyVisible, setIsDoilyVisible] = useState(false);
@@ -252,6 +254,13 @@ function App() {
   const handleVisualizeNqmePermanently = useCallback(
     (isIntersecting: boolean) => {
       if (isIntersecting) setIsNqmeVisible(true);
+    },
+    [],
+  );
+
+  const handleVisualizeBookBeatsPermanently = useCallback(
+    (isIntersecting: boolean) => {
+      if (isIntersecting) setIsBookBeatsVisible(true);
     },
     [],
   );
@@ -746,13 +755,13 @@ function App() {
               </FadeInSection>
             </section>
 
-            {/* Project Management */}
+            {/* Book Beats */}
             <section className="py-6">
               <FadeInSection
-                isVisible={isProjectManagementVisible}
-                handleVisualise={handleVisualizeProjectManagementPermanently}
+                isVisible={isBookBeatsVisible}
+                handleVisualise={handleVisualizeBookBeatsPermanently}
               >
-                <ProjectManagement />
+                <BookBeats />
               </FadeInSection>
             </section>
 
@@ -776,6 +785,18 @@ function App() {
 
             {areMoreProjectsExpanded && (
               <>
+                {/* Project Management */}
+                <section className="py-6">
+                  <FadeInSection
+                    isVisible={isProjectManagementVisible}
+                    handleVisualise={
+                      handleVisualizeProjectManagementPermanently
+                    }
+                  >
+                    <ProjectManagement />
+                  </FadeInSection>
+                </section>
+
                 {/* Doily */}
                 <section className="py-12">
                   <FadeInSection
