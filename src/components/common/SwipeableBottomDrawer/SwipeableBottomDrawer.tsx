@@ -32,8 +32,15 @@ function SwipeableBottomDrawer({ children }: Props) {
         onOpen={() => setDrawerOpen(true)}
         anchor="bottom"
       >
-        <nav id="mobile-nav-drawer" className="px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2" aria-label="Primary">
-          <div className="mx-auto mb-2 h-1 w-9 rounded-full bg-surface2/80" aria-hidden />
+        <nav
+          id="mobile-nav-drawer"
+          className="px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2"
+          aria-label="Primary"
+        >
+          <div
+            className="mx-auto mb-2 h-1 w-9 rounded-full bg-surface2/80"
+            aria-hidden
+          />
           <ul className="m-0 list-none divide-y divide-surface1/60 p-0">
             {menuItems.map((item) => (
               <li key={item.label}>

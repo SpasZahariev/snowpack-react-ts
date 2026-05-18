@@ -6,6 +6,7 @@ import NqmeProject from '../../components/NqmeProject/NqmeProject';
 import BookBeats from '../../components/BookBeats/BookBeats';
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
 import Doily from '../../components/Doily/Doily';
+import HabitSlot from '../../components/HabitSlot/HabitSlot';
 import OtherProjects from '../../components/OtherProjects/OtherProjects';
 import { Button, IconLink, Chip } from '../../components/ui';
 import {
@@ -157,7 +158,9 @@ function ParticlesBackground() {
 
   return (
     <div
-      className={`fixed inset-0 -z-10 hidden transition-opacity duration-[2000ms] ease-in md:block ${fadedIn ? 'opacity-100' : 'opacity-0'}`}
+      className={`fixed inset-0 -z-10 hidden transition-opacity duration-[2000ms] ease-in md:block ${
+        fadedIn ? 'opacity-100' : 'opacity-0'
+      }`}
       aria-hidden
     >
       {engineReady ? <StableParticlesLayer /> : null}
@@ -176,7 +179,11 @@ function ExperienceJobRow({
 }) {
   return (
     <div
-      className={`flex flex-col md:flex-row md:justify-between gap-2 md:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${index !== length - 1 ? 'mb-4 border-b border-surface0/50 hover:border-transparent' : ''}`}
+      className={`flex flex-col md:flex-row md:justify-between gap-2 md:gap-4 p-4 -mx-4 rounded-xl hover:bg-surface0/30 hover:-translate-y-1 transition-all duration-300 ${
+        index !== length - 1
+          ? 'mb-4 border-b border-surface0/50 hover:border-transparent'
+          : ''
+      }`}
     >
       <div className="grid w-full">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
@@ -206,6 +213,7 @@ function App() {
   const [isSkillsVisible, setIsSkillsVisible] = useState(false);
   const [isRagPulledVisible, setIsRagPulledVisible] = useState(false);
   const [isNqmeVisible, setIsNqmeVisible] = useState(false);
+  const [isHabitSlotVisible, setIsHabitSlotVisible] = useState(false);
   const [isBookBeatsVisible, setIsBookBeatsVisible] = useState(false);
   const [isProjectManagementVisible, setIsProjectManagementVisible] =
     useState(false);
@@ -254,6 +262,13 @@ function App() {
   const handleVisualizeNqmePermanently = useCallback(
     (isIntersecting: boolean) => {
       if (isIntersecting) setIsNqmeVisible(true);
+    },
+    [],
+  );
+
+  const handleVisualizeHabitSlotPermanently = useCallback(
+    (isIntersecting: boolean) => {
+      if (isIntersecting) setIsHabitSlotVisible(true);
     },
     [],
   );
@@ -316,12 +331,18 @@ function App() {
                   alt="Spas Zahariev"
                   loading="lazy"
                   decoding="async"
-                  className={`w-32 h-32 rounded-full object-cover shadow-lg transition-all duration-300 cursor-pointer ${isWinking ? 'border-[4px] border-pink shadow-[0_0_30px_rgba(245,189,230,0.6)] animate-glitch' : 'border-[3px] border-mauve'}`}
+                  className={`w-32 h-32 rounded-full object-cover shadow-lg transition-all duration-300 cursor-pointer ${
+                    isWinking
+                      ? 'border-[4px] border-pink shadow-[0_0_30px_rgba(245,189,230,0.6)] animate-glitch'
+                      : 'border-[3px] border-mauve'
+                  }`}
                 />
 
                 <svg
                   viewBox="0 0 100 30"
-                  className={`absolute -top-0.5 left-1/2 -translate-x-1/2 w-16 pointer-events-none ${isWinking ? 'animate-crown-flash' : 'opacity-0'}`}
+                  className={`absolute -top-0.5 left-1/2 -translate-x-1/2 w-16 pointer-events-none ${
+                    isWinking ? 'animate-crown-flash' : 'opacity-0'
+                  }`}
                   fill="none"
                 >
                   <path
@@ -393,7 +414,9 @@ function App() {
             <p className="text-subtext0 leading-relaxed mb-4 max-w-2xl">
               I'm a Software Engineer Lead with{' '}
               <span
-                className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}
+                className={`transition-all duration-500 rounded-sm px-0.5 ${
+                  isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'
+                }`}
               >
                 7+ years
               </span>{' '}
@@ -438,7 +461,9 @@ function App() {
               </a>{' '}
               by day,{' '}
               <span
-                className={`transition-all duration-500 rounded-sm px-0.5 ${isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'}`}
+                className={`transition-all duration-500 rounded-sm px-0.5 ${
+                  isWinking ? 'bg-pink/25 text-pink' : 'bg-transparent'
+                }`}
               >
                 fullstack
               </span>{' '}
@@ -505,7 +530,9 @@ function App() {
                       : 'Show more experience'}
                     <ChevronDown
                       size={18}
-                      className={`transition-transform duration-300 ${areMoreExperienceExpanded ? 'rotate-180' : ''}`}
+                      className={`transition-transform duration-300 ${
+                        areMoreExperienceExpanded ? 'rotate-180' : ''
+                      }`}
                     />
                   </button>
                   <div className="flex-1 h-px bg-surface1" />
@@ -579,7 +606,9 @@ function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`View ${cert.name} credential (issued ${cert.date})`}
-                    className={`group -mx-4 block rounded-xl border border-surface1/45 bg-surface0/20 p-2 shadow-sm transition-all duration-300 sm:border-transparent sm:bg-transparent sm:p-3 sm:shadow-none hover:border-pink/20 hover:bg-surface0/35 sm:hover:-translate-y-1 sm:hover:border-transparent ${index !== arr.length - 1 ? 'mb-3 sm:mb-2' : ''}`}
+                    className={`group -mx-4 block rounded-xl border border-surface1/45 bg-surface0/20 p-2 shadow-sm transition-all duration-300 sm:border-transparent sm:bg-transparent sm:p-3 sm:shadow-none hover:border-pink/20 hover:bg-surface0/35 sm:hover:-translate-y-1 sm:hover:border-transparent ${
+                      index !== arr.length - 1 ? 'mb-3 sm:mb-2' : ''
+                    }`}
                   >
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                       <div className="hidden min-w-0 flex-1 text-[1rem] font-semibold text-mauve group-hover:text-pink transition-colors duration-300 sm:block sm:pr-2">
@@ -747,6 +776,16 @@ function App() {
               </FadeInSection>
             </section>
 
+            {/* Habit Slot Project */}
+            <section className="py-12">
+              <FadeInSection
+                isVisible={isHabitSlotVisible}
+                handleVisualise={handleVisualizeHabitSlotPermanently}
+              >
+                <HabitSlot />
+              </FadeInSection>
+            </section>
+
             {/* Nqme Project */}
             <section className="py-12">
               <FadeInSection
@@ -769,7 +808,9 @@ function App() {
                   : 'Show more projects'}
                 <ChevronDown
                   size={18}
-                  className={`transition-transform duration-300 ${areMoreProjectsExpanded ? 'rotate-180' : ''}`}
+                  className={`transition-transform duration-300 ${
+                    areMoreProjectsExpanded ? 'rotate-180' : ''
+                  }`}
                 />
               </button>
               <div className="flex-1 h-px bg-surface1" />

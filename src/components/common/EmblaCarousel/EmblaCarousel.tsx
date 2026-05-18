@@ -146,7 +146,9 @@ function EmblaCarousel({
               <button
                 key={index}
                 type="button"
-                className={`embla__dot ${index === selectedIndex ? 'embla__dot--selected' : ''}`}
+                className={`embla__dot ${
+                  index === selectedIndex ? 'embla__dot--selected' : ''
+                }`}
                 onClick={() => emblaApi?.scrollTo(index)}
                 aria-label={`Go to slide ${index + 1}`}
               />

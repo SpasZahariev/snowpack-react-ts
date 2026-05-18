@@ -417,6 +417,10 @@
     height: 100%;
   }
 
+  .habit-slot-carousel .embla__slide__img {
+    object-position: 60% center;
+  }
+
   .embla__buttons {
     display: flex;
     justify-content: space-between;

@@ -9,13 +9,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'inline-flex justify-center items-center px-6 py-2.5 font-semibold text-[1rem] border border-pink bg-pink text-[var(--color-base)] rounded hover:opacity-90 transition-all duration-200 cursor-pointer',
-  outline: 'inline-flex justify-center items-center px-6 py-2.5 font-semibold text-[1rem] border border-pink text-pink bg-transparent rounded hover:bg-pink hover:text-[var(--color-base)] transition-all duration-200 cursor-pointer',
-  ghost: 'inline-flex justify-center items-center px-6 py-2.5 font-semibold text-[1rem] text-pink hover:bg-surface0/50 transition-all duration-200 cursor-pointer bg-transparent rounded',
+  primary:
+    'inline-flex justify-center items-center px-6 py-2.5 font-semibold text-[1rem] border border-pink bg-pink text-[var(--color-base)] rounded hover:opacity-90 transition-all duration-200 cursor-pointer',
+  outline:
+    'inline-flex justify-center items-center px-6 py-2.5 font-semibold text-[1rem] border border-pink text-pink bg-transparent rounded hover:bg-pink hover:text-[var(--color-base)] transition-all duration-200 cursor-pointer',
+  ghost:
+    'inline-flex justify-center items-center px-6 py-2.5 font-semibold text-[1rem] text-pink hover:bg-surface0/50 transition-all duration-200 cursor-pointer bg-transparent rounded',
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', className = '', href, target, children, ...props }, ref) => {
+  (
+    { variant = 'primary', className = '', href, target, children, ...props },
+    ref,
+  ) => {
     const classes = `${variantClasses[variant]} ${className}`.trim();
 
     if (href) {
@@ -37,7 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

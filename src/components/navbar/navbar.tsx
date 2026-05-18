@@ -8,14 +8,15 @@ function NavBar() {
 
   const handleScroll = useCallback(() => {
     const currentScrollPos = window.scrollY;
-    const isVisibleNow = prevScrollPos > currentScrollPos || currentScrollPos < 10;
+    const isVisibleNow =
+      prevScrollPos > currentScrollPos || currentScrollPos < 10;
     setPrevScrollPos(currentScrollPos);
     setVisible(isVisibleNow);
   }, [prevScrollPos]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
   const navItems = [
@@ -26,8 +27,9 @@ function NavBar() {
 
   return (
     <nav
-      className={`w-full fixed top-0 z-50 bg-base rounded-b-xl transition-all duration-500 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'
-        }`}
+      className={`w-full fixed top-0 z-50 bg-base rounded-b-xl transition-all duration-500 ease-in-out ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      }`}
     >
       <div className="flex items-center justify-between px-3 py-0.5 md:px-4 md:py-1">
         {/* Logo — compact on mobile to match hamburger; larger on md+ */}
@@ -76,7 +78,12 @@ function NavBar() {
         {/* Mobile menu */}
         <div className="md:hidden">
           <SwipeableBottomDrawer>
-            <Menu size={20} strokeWidth={1.75} className="opacity-90" aria-hidden />
+            <Menu
+              size={20}
+              strokeWidth={1.75}
+              className="opacity-90"
+              aria-hidden
+            />
           </SwipeableBottomDrawer>
         </div>
       </div>

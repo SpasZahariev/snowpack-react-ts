@@ -9,7 +9,12 @@ interface DrawerProps {
   children: ReactNode;
 }
 
-export function Drawer({ open, onClose, anchor = 'bottom', children }: DrawerProps) {
+export function Drawer({
+  open,
+  onClose,
+  anchor = 'bottom',
+  children,
+}: DrawerProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
 
   // Handle escape key
@@ -62,6 +67,6 @@ export function Drawer({ open, onClose, anchor = 'bottom', children }: DrawerPro
         {children}
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
