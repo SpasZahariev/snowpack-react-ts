@@ -634,6 +634,7 @@ function App() {
                         'Bash',
                         'Lua',
                         'Haskell',
+                        'CSS/Tailwind',
                       ].map((skill) => (
                         <li key={skill} className="my-2">
                           {skill}
@@ -661,6 +662,7 @@ function App() {
                         'gRPC/Protobuf',
                         'Flask',
                         'Flutter',
+                        'Dioxus',
                       ].map((skill) => (
                         <li key={skill} className="my-2">
                           {skill}
@@ -755,16 +757,6 @@ function App() {
               </FadeInSection>
             </section>
 
-            {/* Book Beats */}
-            <section className="py-6">
-              <FadeInSection
-                isVisible={isBookBeatsVisible}
-                handleVisualise={handleVisualizeBookBeatsPermanently}
-              >
-                <BookBeats />
-              </FadeInSection>
-            </section>
-
             {/* Expand/Collapse button */}
             <div className="flex items-center gap-4 py-4 px-4">
               <div className="flex-1 h-px bg-surface1" />
@@ -785,6 +777,16 @@ function App() {
 
             {areMoreProjectsExpanded && (
               <>
+                {/* Book Beats */}
+                <section className="py-6">
+                  <FadeInSection
+                    isVisible={isBookBeatsVisible}
+                    handleVisualise={handleVisualizeBookBeatsPermanently}
+                  >
+                    <BookBeats />
+                  </FadeInSection>
+                </section>
+
                 {/* Project Management */}
                 <section className="py-6">
                   <FadeInSection
