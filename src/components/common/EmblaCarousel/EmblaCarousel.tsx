@@ -41,14 +41,28 @@ function EmblaCarousel({
     setNextBtnDisabled(!api.canScrollNext());
   }, []);
 
-  const handleSlideClick = useCallback(() => {
-    if (!emblaApi) return;
-    if (emblaApi.canScrollNext()) {
-      emblaApi.scrollNext();
-      return;
-    }
-    emblaApi.scrollTo(0);
-  }, [emblaApi]);
+  const handleSlideClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (!emblaApi) return;
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const isLeftSide = x < rect.width / 2;
+      if (isLeftSide) {
+        if (emblaApi.canScrollPrev()) {
+          emblaApi.scrollPrev();
+        } else {
+          emblaApi.scrollTo(emblaApi.scrollSnapList().length - 1);
+        }
+        return;
+      }
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+        return;
+      }
+      emblaApi.scrollTo(0);
+    },
+    [emblaApi],
+  );
 
   const setSlideRegistry = useCallback((api: NonNullable<typeof emblaApi>) => {
     const registryFn = (api as { slideRegistry?: () => number[][] })
@@ -112,7 +126,7 @@ function EmblaCarousel({
               key={slide.src}
               type="button"
               onClick={handleSlideClick}
-              aria-label="Go to next slide"
+              aria-label="Tap left for previous slide, right for next slide"
             >
               <img
                 className="embla__slide__img"
@@ -127,14 +141,14 @@ function EmblaCarousel({
 
         {description && (
           <div
-            className={`absolute inset-0 z-10 flex flex-col items-end justify-end bg-black/70 backdrop-blur-sm rounded-xl p-4 pb-8 md:p-6 md:pb-12 transition-opacity duration-300 ease-in-out cursor-pointer overflow-hidden ${
+            className={`absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/70 backdrop-blur-sm rounded-xl p-6 md:p-8 transition-opacity duration-300 ease-in-out cursor-pointer overflow-hidden ${
               showDescription
                 ? 'opacity-100 pointer-events-auto'
                 : 'opacity-0 pointer-events-none'
             }`}
             onClick={onOverlayClick}
           >
-            <p className="text-white text-[1rem] md:text-lg font-medium leading-relaxed max-w-prose drop-shadow-md text-left overflow-y-auto max-h-[70vh] md:max-h-none">
+            <p className="text-white text-center text-[1rem] md:text-lg font-medium leading-relaxed max-w-prose drop-shadow-md overflow-y-auto max-h-[80vh] md:max-h-none">
               {description}
             </p>
           </div>

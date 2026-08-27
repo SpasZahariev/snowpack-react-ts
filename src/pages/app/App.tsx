@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import NavBar from '../../components/navbar/navbar';
 import FadeInSection from '../../components/common/FadeInSection/fadeInSection';
 import RagPulled from '../../components/RagPulled/RagPulled';
+import YearlySpend from '../../components/YearlySpend/YearlySpend';
 import NqmeProject from '../../components/NqmeProject/NqmeProject';
 import BookBeats from '../../components/BookBeats/BookBeats';
 import ProjectManagement from '../../components/ProjectManagement/ProjectManagement';
@@ -212,6 +213,7 @@ function App() {
   const [isCertsVisible, setIsCertsVisible] = useState(false);
   const [isSkillsVisible, setIsSkillsVisible] = useState(false);
   const [isRagPulledVisible, setIsRagPulledVisible] = useState(false);
+  const [isYearlySpendVisible, setIsYearlySpendVisible] = useState(false);
   const [isNqmeVisible, setIsNqmeVisible] = useState(false);
   const [isHabitSlotVisible, setIsHabitSlotVisible] = useState(false);
   const [isBookBeatsVisible, setIsBookBeatsVisible] = useState(false);
@@ -255,6 +257,13 @@ function App() {
   const handleVisualizeRagPulledPermanently = useCallback(
     (isIntersecting: boolean) => {
       if (isIntersecting) setIsRagPulledVisible(true);
+    },
+    [],
+  );
+
+  const handleVisualizeYearlySpendPermanently = useCallback(
+    (isIntersecting: boolean) => {
+      if (isIntersecting) setIsYearlySpendVisible(true);
     },
     [],
   );
@@ -776,6 +785,16 @@ function App() {
               </FadeInSection>
             </section>
 
+            {/* YearlySpend Project */}
+            <section className="py-12">
+              <FadeInSection
+                isVisible={isYearlySpendVisible}
+                handleVisualise={handleVisualizeYearlySpendPermanently}
+              >
+                <YearlySpend />
+              </FadeInSection>
+            </section>
+
             {/* Habit Slot Project */}
             <section className="py-12">
               <FadeInSection
@@ -783,16 +802,6 @@ function App() {
                 handleVisualise={handleVisualizeHabitSlotPermanently}
               >
                 <HabitSlot />
-              </FadeInSection>
-            </section>
-
-            {/* Nqme Project */}
-            <section className="py-12">
-              <FadeInSection
-                isVisible={isNqmeVisible}
-                handleVisualise={handleVisualizeNqmePermanently}
-              >
-                <NqmeProject />
               </FadeInSection>
             </section>
 
@@ -818,6 +827,16 @@ function App() {
 
             {areMoreProjectsExpanded && (
               <>
+                {/* Nqme Project */}
+                <section className="py-6">
+                  <FadeInSection
+                    isVisible={isNqmeVisible}
+                    handleVisualise={handleVisualizeNqmePermanently}
+                  >
+                    <NqmeProject />
+                  </FadeInSection>
+                </section>
+
                 {/* Book Beats */}
                 <section className="py-6">
                   <FadeInSection
